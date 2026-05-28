@@ -30,7 +30,20 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Social icons */}
+        {/* Desktop navigation */}
+        <nav className="hidden md:flex items-center gap-6">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-xs font-medium text-brand-charcoal hover:text-brand-olive transition-colors uppercase tracking-wider"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Social icons + mobile toggle */}
         <div className="flex items-center gap-3">
           <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-brand-charcoal hover:text-brand-olive transition-colors">
             <InstagramIcon className="w-5 h-5" />
@@ -43,7 +56,9 @@ export default function Header() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="ml-2 md:hidden text-brand-charcoal"
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
@@ -58,7 +73,7 @@ export default function Header() {
 
       {/* Mobile navigation dropdown */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-brand-cream-dark bg-brand-cream px-4 py-3">
+        <nav id="mobile-nav" className="md:hidden border-t border-brand-cream-dark bg-brand-cream px-4 py-3">
           <ul className="flex flex-col gap-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
