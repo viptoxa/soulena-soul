@@ -1,13 +1,12 @@
 import Header from "@/components/Header";
+import HeroSlider from "@/components/HeroSlider";
 
 export default function Home() {
   return (
     <>
       <Header />
       <main>
-        <p className="p-8 font-serif text-2xl text-brand-olive">
-          Sections coming soon...
-        </p>
+        <HeroSlider />
       </main>
     </>
   );
