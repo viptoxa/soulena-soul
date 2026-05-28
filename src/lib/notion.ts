@@ -68,7 +68,8 @@ export async function fetchPackages(): Promise<Package[]> {
     });
 
     return response.results.map((page) => {
-      const props = (page as any).properties;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const props = (page as Record<string, any>).properties;
       return {
         id: page.id,
         name: props.Name?.title?.[0]?.plain_text ?? "Unnamed",

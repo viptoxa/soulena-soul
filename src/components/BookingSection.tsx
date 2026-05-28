@@ -1,23 +1,6 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { SECTION_IDS } from "@/lib/constants";
 
 export default function BookingSection() {
-  const [calLoaded, setCalLoaded] = useState(false);
-
-  useEffect(() => {
-    const calUsername = process.env.NEXT_PUBLIC_CAL_USERNAME;
-    if (!calUsername) {
-      setCalLoaded(true);
-      return;
-    }
-
-    import("@calcom/embed-react").then(() => {
-      setCalLoaded(true);
-    });
-  }, []);
-
   const calUsername = process.env.NEXT_PUBLIC_CAL_USERNAME;
 
   return (
