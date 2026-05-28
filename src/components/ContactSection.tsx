@@ -42,7 +42,7 @@ export default function ContactSection() {
                 className="flex items-center gap-3 text-brand-charcoal hover:text-brand-olive transition-colors"
               >
                 <InstagramIcon className="w-6 h-6" />
-                <span>@soulena.soul</span>
+                <span>{SITE.instagramHandle}</span>
               </a>
             </div>
           </div>

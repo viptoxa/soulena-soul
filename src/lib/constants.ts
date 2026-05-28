@@ -9,6 +9,7 @@ export const SITE = {
   whatsappUrl: "https://wa.me/66850350848",
   instagram: "https://www.instagram.com/soulena.soul",
   threads: "https://www.threads.net/@soulena.soul",
+  instagramHandle: "@soulena.soul",
 } as const;
 
 export const SECTION_IDS = {

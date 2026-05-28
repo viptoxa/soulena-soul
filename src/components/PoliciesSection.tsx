@@ -21,8 +21,8 @@ export default function PoliciesSection() {
         </p>
 
         <ul className="space-y-4">
-          {POLICIES.map((policy, i) => (
-            <li key={i} className="flex items-start gap-3 text-brand-charcoal/80 text-sm leading-relaxed">
+          {POLICIES.map((policy) => (
+            <li key={policy} className="flex items-start gap-3 text-brand-charcoal/80 text-sm leading-relaxed">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-sage mt-2 flex-shrink-0" />
               {policy}
             </li>
