@@ -4,8 +4,15 @@ import AboutSection from "@/components/AboutSection";
 import ClassesSection from "@/components/ClassesSection";
 import GallerySection from "@/components/GallerySection";
 import LocationSection from "@/components/LocationSection";
+import BookingSection from "@/components/BookingSection";
+import PricingSection from "@/components/PricingSection";
+import { fetchPackages } from "@/lib/notion";
 
-export default function Home() {
+export const revalidate = 3600; // ISR: revalidate every hour
+
+export default async function Home() {
+  const packages = await fetchPackages();
+
   return (
     <>
       <Header />
@@ -15,6 +22,8 @@ export default function Home() {
         <ClassesSection />
         <GallerySection />
         <LocationSection />
+        <BookingSection />
+        <PricingSection packages={packages} />
       </main>
     </>
   );
