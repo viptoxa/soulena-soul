@@ -23,7 +23,7 @@ export default function LocationSection() {
         </div>
         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-cream-dark">
           <Image
-            src="/images/phuket-map.svg"
+            src="/images/phuket-map.jpg"
             alt="Map of Phuket showing yoga class locations"
             fill
             className="object-cover"

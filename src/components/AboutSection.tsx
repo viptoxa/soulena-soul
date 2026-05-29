@@ -35,7 +35,7 @@ export default function AboutSection() {
         </div>
         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
           <Image
-            src="/images/about.svg"
+            src="/images/about.jpg"
             alt="Soulena practicing yoga on the beach"
             fill
             className="object-cover"

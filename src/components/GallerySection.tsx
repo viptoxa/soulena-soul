@@ -2,10 +2,10 @@ import Image from "next/image";
 import { SECTION_IDS } from "@/lib/constants";
 
 const GALLERY_IMAGES = [
-  { src: "/images/gallery-1.svg", alt: "Beach yoga session at sunset" },
-  { src: "/images/gallery-2.svg", alt: "Peaceful morning practice by the sea" },
-  { src: "/images/gallery-3.svg", alt: "Group yoga on Phuket beach" },
-  { src: "/images/gallery-4.svg", alt: "Meditation by the ocean" },
+  { src: "/images/gallery-1.jpg", alt: "Group meditation session on the deck surrounded by nature" },
+  { src: "/images/gallery-2.jpg", alt: "Pair yoga with sound bowls on the beach" },
+  { src: "/images/gallery-3.jpg", alt: "Sound healing ceremony under palm trees" },
+  { src: "/images/gallery-4.jpg", alt: "Beach yoga practice by the ocean" },
 ];
 
 export default function GallerySection() {

@@ -1,21 +1,26 @@
+import Image from "next/image";
 import { SECTION_IDS } from "@/lib/constants";
 
 const CLASS_OFFERINGS = [
   {
     title: "Yoga & Mobility",
     description: "Mindful movement to improve flexibility, strength, and body awareness.",
+    image: "/images/class-yoga.jpg",
   },
   {
     title: "Strength Training",
     description: "Build functional strength through intentional, guided exercises.",
+    image: "/images/class-strength.jpg",
   },
   {
     title: "Guided Meditation",
     description: "Calm your mind and find stillness through breath and meditation.",
+    image: "/images/class-meditation.jpg",
   },
   {
     title: "Sound Healing",
     description: "Immersive sound experiences to restore balance and inner peace.",
+    image: "/images/class-sound.jpg",
   },
 ];
 
@@ -37,14 +42,24 @@ export default function ClassesSection() {
           {CLASS_OFFERINGS.map((offering) => (
             <div
               key={offering.title}
-              className="bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center"
+              className="bg-white/60 backdrop-blur-sm rounded-xl overflow-hidden text-center"
             >
-              <h3 className="font-serif text-lg text-brand-olive mb-2">
-                {offering.title}
-              </h3>
-              <p className="text-sm text-brand-charcoal/70 leading-relaxed">
-                {offering.description}
-              </p>
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={offering.image}
+                  alt={offering.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-serif text-lg text-brand-olive mb-2">
+                  {offering.title}
+                </h3>
+                <p className="text-sm text-brand-charcoal/70 leading-relaxed">
+                  {offering.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

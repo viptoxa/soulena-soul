@@ -6,9 +6,9 @@ import { SITE, SECTION_IDS } from "@/lib/constants";
 import { FlowerIcon } from "@/components/icons/SocialIcons";
 
 const HERO_IMAGES = [
-  { src: "/images/hero-1.svg", alt: "Sunset yoga session on the beach" },
-  { src: "/images/hero-2.svg", alt: "Calm ocean waves during practice" },
-  { src: "/images/hero-3.svg", alt: "Yoga on beach rocks at golden hour" },
+  { src: "/images/hero-1.jpg", alt: "Sunset yoga session on the hilltop overlooking the ocean" },
+  { src: "/images/hero-2.jpg", alt: "Soulena assisting a student on the ocean deck" },
+  { src: "/images/hero-3.jpg", alt: "Beach yoga group practice at sunrise" },
 ];
 
 const CLASS_TYPES = [
@@ -56,7 +56,7 @@ export default function HeroSlider() {
         {/* Avatar */}
         <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white/30 mb-4">
           <Image
-            src="/images/avatar.svg"
+            src="/images/avatar.jpg"
             alt="Soulena Soul"
             width={128}
             height={128}
