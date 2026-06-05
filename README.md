@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Soulena Soul — Yoga & Movement Teacher
 
-## Getting Started
+Single-page website for Soulena Soul, a yoga and movement teacher based in Phuket, Thailand. Built with Next.js 16, Tailwind CSS 4, Cal.com booking, and Notion-powered pricing.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Styling:** Tailwind CSS 4
+- **Booking:** Cal.com (iframe embed)
+- **Pricing CMS:** Notion API (with static fallback)
+- **Hosting:** Vercel
+- **Rendering:** Static generation + ISR (revalidate every hour)
+
+## Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.local.example` to `.env.local` and fill in:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_CAL_USERNAME` | Cal.com username (e.g. `soulena.soul`). Without it, the booking section shows a placeholder. |
+| `NOTION_API_KEY` | Notion internal integration secret (`ntn_...`). Without it, pricing uses static fallback data. |
+| `NOTION_PACKAGES_DB_ID` | ID of the Notion "Packages" database. |
+| `REVALIDATION_TOKEN` | Bearer token protecting the `/api/revalidate` endpoint. |
 
-## Learn More
+> The site works without any env vars — Cal.com falls back to a placeholder and pricing uses built-in defaults. Configure them for full functionality.
 
-To learn more about Next.js, take a look at the following resources:
+## Editing Pricing (for Soulena)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pricing is managed in the Notion **Packages** database. Edit a package's price, description, or toggle `Active` — the site refreshes within an hour automatically, or instantly via the revalidation endpoint:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+curl -X POST https://YOUR_DOMAIN/api/revalidate \
+  -H "Authorization: Bearer YOUR_REVALIDATION_TOKEN"
+```
 
-## Deploy on Vercel
+### Notion "Packages" database schema
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Field | Type |
+|---|---|
+| Name | Title |
+| Category | Select (`Group` / `Private`) |
+| Price THB | Number |
+| Price USD | Number |
+| Description | Rich text |
+| Features | Rich text (one feature per line) |
+| Order | Number |
+| Active | Checkbox |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deployed on Vercel. Set the four environment variables in **Project → Settings → Environment Variables** for all environments, then push to the connected branch to trigger an automatic deploy.
+
+## Project Structure
+
+```
+src/
+  app/            # App Router pages, layout, API routes
+  components/     # Section components (Hero, About, Classes, …)
+  lib/            # Constants, Notion client
+  types/          # Shared TypeScript types
+public/
+  images/         # Web-optimized photos used by the site
+```
