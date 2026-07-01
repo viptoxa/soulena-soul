@@ -17,6 +17,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Leaflet map — match the warm brand aesthetic */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-brand-cream);
+}
+.leaflet-bar a {
+  color: var(--color-brand-olive);
+  border-bottom-color: var(--color-brand-cream-dark) !important;
+}
+.leaflet-bar a:hover {
+  color: var(--color-brand-olive-dark);
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  font-family: var(--font-serif);
+  color: var(--color-brand-charcoal);
+}
+.leaflet-popup-content {
+  margin: 0.6rem 1rem;
+  font-size: 0.95rem;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--color-brand-olive);
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-brand-charcoal);

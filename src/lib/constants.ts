@@ -34,10 +34,13 @@ export const NAV_LINKS = [
 ] as const;
 
 export const LOCATIONS = [
-  "Patong Beach",
-  "Kathu",
-  "Karon Beach",
-  "Kata Beach",
-  "Nai Harn Beach",
-  "Chalong",
+  { name: "Patong Beach", lat: 7.8966, lng: 98.2963 },
+  { name: "Kathu", lat: 7.9107, lng: 98.3348 },
+  { name: "Karon Beach", lat: 7.846, lng: 98.2946 },
+  { name: "Kata Beach", lat: 7.8206, lng: 98.2977 },
+  { name: "Nai Harn Beach", lat: 7.7745, lng: 98.304 },
+  { name: "Chalong", lat: 7.827, lng: 98.337 },
 ] as const;
+
+// Map view centered on Phuket island
+export const PHUKET_CENTER = { lat: 7.855, lng: 98.318, zoom: 11 } as const;
