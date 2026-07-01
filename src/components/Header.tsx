@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-cream-dark">
-      <div className="mx-auto max-w-[1200px] px-4 py-4 grid grid-cols-[1fr_auto_1fr] items-center">
+      <div className="mx-auto max-w-[1200px] px-4 py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
         {/* Contact info */}
         <div className="flex items-center gap-4">
           <a
