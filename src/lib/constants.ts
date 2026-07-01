@@ -7,9 +7,9 @@ export const SITE = {
   phone: "+66850350848",
   phoneDisplay: "+66 85 035 0848",
   whatsappUrl: "https://wa.me/66850350848",
-  instagram: "https://www.instagram.com/soulena.soul",
+  instagram: "https://www.instagram.com/soulena_soul/",
   threads: "https://www.threads.net/@soulena.soul",
-  instagramHandle: "@soulena.soul",
+  instagramHandle: "@soulena_soul",
 } as const;
 
 export const SECTION_IDS = {

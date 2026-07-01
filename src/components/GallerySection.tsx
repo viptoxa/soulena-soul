@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { SECTION_IDS } from "@/lib/constants";
+import GalleryLightbox from "./GalleryLightbox";
 
 const GALLERY_IMAGES = [
   { src: "/images/gallery-1.jpg", alt: "Group meditation session on the deck surrounded by nature" },
@@ -16,23 +16,7 @@ export default function GallerySection() {
         <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
           A Glimpse Into My Working Space
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {GALLERY_IMAGES.map((image, index) => (
-            <div
-              key={image.src}
-              className={`relative overflow-hidden rounded-xl ${
-                index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
-              }`}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          ))}
-        </div>
+        <GalleryLightbox images={GALLERY_IMAGES} />
       </div>
     </section>
   );

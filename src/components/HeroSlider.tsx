@@ -31,7 +31,7 @@ export default function HeroSlider() {
   }, [nextSlide]);
 
   return (
-    <section id={SECTION_IDS.hero} className="relative w-full h-[100svh] min-h-[600px] overflow-hidden">
+    <section id={SECTION_IDS.hero} className="relative w-full h-[calc(100svh-57px)] min-h-[540px] overflow-hidden">
       {/* Background slides */}
       {HERO_IMAGES.map((image, index) => (
         <div

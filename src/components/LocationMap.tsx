@@ -49,7 +49,7 @@ export default function LocationMap() {
         </ul>
       </div>
 
-      <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-cream-dark shadow-sm">
+      <div className="relative isolate aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-cream-dark shadow-sm">
         <PhuketMap
           locations={LOCATIONS}
           activeIndex={active}

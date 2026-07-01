@@ -99,7 +99,19 @@ export default function PhuketMap({
           icon={pinIcon(i === activeIndex)}
           eventHandlers={{ click: () => onMarkerClick(i) }}
         >
-          <Popup>{loc.name}</Popup>
+          <Popup>
+            <span className="block font-serif text-brand-charcoal">{loc.name}</span>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                loc.name + ", Phuket, Thailand"
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-olive text-xs underline underline-offset-2"
+            >
+              Open in Google Maps ↗
+            </a>
+          </Popup>
         </Marker>
       ))}
       <MapController locations={locations} activeIndex={activeIndex} />

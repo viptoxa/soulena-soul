@@ -27,13 +27,14 @@ function PackageCard({ pkg }: { pkg: Package }) {
       <h3 className="font-serif text-xl text-brand-charcoal mb-1.5">{pkg.name}</h3>
       <p className="text-sm text-brand-charcoal/60 mb-6 min-h-[2.5rem]">{pkg.description}</p>
       <div className="mb-6 flex items-baseline gap-2">
-        <span className="text-3xl font-serif text-brand-olive">
-          {pkg.priceTHB.toLocaleString()} THB
+        <span className="font-serif text-brand-olive">
+          <span className="text-3xl">{pkg.priceTHB.toLocaleString()}</span>
+          <span className="text-lg ml-1.5">THB</span>
         </span>
         <span className="text-sm text-brand-charcoal/50">~USD {pkg.priceUSD}</span>
       </div>
       <div className="h-px bg-brand-olive/10 mb-5" />
-      <ul className="space-y-2.5 mt-auto">
+      <ul className="space-y-2.5">
         {pkg.features.map((feature) => (
           <li key={feature} className="flex items-start gap-2.5 text-sm text-brand-charcoal/70">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-sage mt-1.5 flex-shrink-0" />

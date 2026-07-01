@@ -58,7 +58,7 @@ export default function PaymentSection() {
           <div className="grid sm:grid-cols-3 gap-8">
             {PAYMENT_STEPS.map((step, i) => (
               <div key={step.title} className="flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-olive text-white font-serif text-lg mb-4">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-olive text-white font-serif text-lg leading-none pt-0.5 mb-4">
                   {i + 1}
                 </div>
                 <h4 className="font-serif text-base text-brand-charcoal mb-1.5">
