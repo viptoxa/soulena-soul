@@ -8,9 +8,18 @@ export default function ContactSection() {
         <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-4">
           Let&apos;s Practice Together
         </h2>
-        <p className="text-center text-brand-charcoal/60 mb-12">
+        <p className="text-center text-brand-charcoal/60 mb-8">
           Explore · Follow Along
         </p>
+
+        <div className="flex justify-center mb-14">
+          <a
+            href={`#${SECTION_IDS.booking}`}
+            className="inline-block rounded-full bg-brand-olive px-10 py-4 text-sm uppercase tracking-wider text-white hover:bg-brand-olive-dark transition-colors shadow-sm"
+          >
+            Book a Class
+          </a>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact info */}

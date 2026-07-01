@@ -6,6 +6,7 @@ const GALLERY_IMAGES = [
   { src: "/images/gallery-2.jpg", alt: "Pair yoga with sound bowls on the beach" },
   { src: "/images/gallery-3.jpg", alt: "Sound healing ceremony under palm trees" },
   { src: "/images/gallery-4.jpg", alt: "Beach yoga practice by the ocean" },
+  { src: "/images/gallery-5.jpg", alt: "Partner yoga shoulderstands on the ocean deck" },
 ];
 
 export default function GallerySection() {
@@ -20,7 +21,7 @@ export default function GallerySection() {
             <div
               key={image.src}
               className={`relative overflow-hidden rounded-xl ${
-                index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-[3/4]"
+                index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
               }`}
             >
               <Image
