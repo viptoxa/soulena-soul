@@ -34,25 +34,25 @@ export default function ContactSection() {
             href={SITE.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors"
           >
-            <WhatsAppIcon className="w-5 h-5" />
+            <WhatsAppIcon className="w-4 h-4" />
             <span>{SITE.phoneDisplay}</span>
           </a>
           <a
             href={`mailto:${SITE.email}`}
-            className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors"
           >
-            <MailIcon className="w-5 h-5" />
+            <MailIcon className="w-4 h-4" />
             <span>{SITE.email}</span>
           </a>
           <a
             href={SITE.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors"
           >
-            <InstagramIcon className="w-5 h-5" />
+            <InstagramIcon className="w-4 h-4" />
             <span>{SITE.instagramHandle}</span>
           </a>
         </div>

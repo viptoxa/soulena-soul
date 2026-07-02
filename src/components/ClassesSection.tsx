@@ -6,21 +6,25 @@ const CLASS_OFFERINGS = [
     title: "Yoga & Mobility",
     description: "Mindful movement to improve flexibility, strength, and body awareness.",
     image: "/images/class-yoga.jpg",
+    position: "object-[center_80%]",
   },
   {
     title: "Strength Training",
     description: "Build functional strength through intentional, guided exercises.",
     image: "/images/class-strength.jpg",
+    position: "object-center",
   },
   {
     title: "Guided Meditation",
     description: "Calm your mind and find stillness through breath and meditation.",
     image: "/images/class-meditation.jpg",
+    position: "object-[center_70%]",
   },
   {
     title: "Sound Healing",
     description: "Immersive sound experiences to restore balance and inner peace.",
     image: "/images/class-sound.jpg",
+    position: "object-[center_20%]",
   },
 ];
 
@@ -49,7 +53,7 @@ export default function ClassesSection() {
                   src={offering.image}
                   alt={offering.title}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${offering.position}`}
                 />
               </div>
               <div className="p-5">

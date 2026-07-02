@@ -90,7 +90,7 @@ export default function Header() {
 
       {/* Mobile navigation dropdown */}
       {menuOpen && (
-        <nav id="mobile-nav" className="md:hidden border-t border-brand-cream-dark bg-brand-cream px-4 py-3">
+        <nav id="mobile-nav" className="md:hidden absolute inset-x-0 top-full z-50 border-t border-brand-cream-dark bg-brand-cream shadow-lg px-[15px] py-3">
           <ul className="flex flex-col gap-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
