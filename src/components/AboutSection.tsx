@@ -3,10 +3,10 @@ import { SECTION_IDS } from "@/lib/constants";
 
 export default function AboutSection() {
   return (
-    <section id={SECTION_IDS.about} className="py-20 px-4 bg-brand-cream">
+    <section id={SECTION_IDS.about} className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal mb-2 uppercase tracking-wider">
+          <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal mb-2 uppercase tracking-wider">
             Move
           </h2>
           <p className="font-serif text-lg text-brand-olive italic mb-6">

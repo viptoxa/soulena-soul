@@ -17,7 +17,7 @@ export default function LocationMap() {
   return (
     <div className="grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider mb-2">
+        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider mb-2">
           Based in Phuket, Thailand
         </h2>
         <p className="text-brand-charcoal/70 mb-8 leading-relaxed">

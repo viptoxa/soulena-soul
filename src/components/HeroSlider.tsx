@@ -40,7 +40,7 @@ export default function HeroSlider() {
   }, [nextSlide]);
 
   return (
-    <section id={SECTION_IDS.hero} className="relative w-full h-[calc(100svh-57px)] min-h-[540px] overflow-hidden">
+    <section id={SECTION_IDS.hero} className="relative w-full h-[calc(100svh-var(--header-h,57px))] min-h-[540px] overflow-hidden">
       {/* Background slides */}
       {HERO_IMAGES.map((image, index) => (
         <div
@@ -55,8 +55,8 @@ export default function HeroSlider() {
             className="object-cover"
             priority={index === 0}
           />
-          {/* Warm overlay */}
-          <div className="absolute inset-0 bg-brand-olive/40" />
+          {/* Warm overlay — stronger on mobile for text legibility */}
+          <div className="absolute inset-0 bg-brand-olive/55 md:bg-brand-olive/40" />
         </div>
       ))}
 

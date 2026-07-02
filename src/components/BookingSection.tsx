@@ -1,13 +1,31 @@
+"use client";
+
+import { useEffect } from "react";
+import Cal, { getCalApi } from "@calcom/embed-react";
 import { SECTION_IDS } from "@/lib/constants";
 
+const CAL_USERNAME = process.env.NEXT_PUBLIC_CAL_USERNAME;
+
 export default function BookingSection() {
-  const calUsername = process.env.NEXT_PUBLIC_CAL_USERNAME;
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi();
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#8b7355" },
+          dark: { "cal-brand": "#8b7355" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
 
   return (
-    <section id={SECTION_IDS.booking} className="py-20 px-4 bg-brand-cream">
+    <section id={SECTION_IDS.booking} className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px]">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider mb-4">
+          <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider mb-4">
             View Available Dates
           </h2>
           <p className="text-brand-charcoal/70 max-w-2xl mx-auto">
@@ -17,23 +35,18 @@ export default function BookingSection() {
           </p>
         </div>
 
-        <div className="rounded-2xl overflow-hidden bg-white/60 min-h-[500px] flex items-center justify-center">
-          {calUsername ? (
-            <iframe
-              src={`https://cal.com/${calUsername}?embed=true&theme=light`}
-              className="w-full h-[600px] border-0"
-              title="Book a class with Soulena Soul"
+        <div className="rounded-2xl overflow-hidden bg-white/60 border border-brand-cream-dark shadow-sm">
+          {CAL_USERNAME ? (
+            <Cal
+              calLink={CAL_USERNAME}
+              style={{ width: "100%", height: "600px", overflow: "scroll" }}
+              config={{ layout: "month_view", theme: "light" }}
             />
           ) : (
-            <div className="text-center p-12">
-              <p className="font-serif text-xl text-brand-olive mb-4">
-                Booking Calendar
-              </p>
-              <p className="text-brand-charcoal/60 text-sm mb-6">
-                Cal.com calendar will appear here once configured.
-              </p>
-              <p className="text-brand-charcoal/40 text-xs">
-                Set <code className="bg-brand-cream-dark px-1 rounded">NEXT_PUBLIC_CAL_USERNAME</code> in .env.local
+            <div className="text-center p-12 min-h-[400px] flex flex-col items-center justify-center">
+              <p className="font-serif text-xl text-brand-olive mb-4">Booking Calendar</p>
+              <p className="text-brand-charcoal/60 text-sm">
+                The booking calendar will appear here once configured.
               </p>
             </div>
           )}

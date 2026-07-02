@@ -51,11 +51,11 @@ export default function PricingSection({ packages }: PricingSectionProps) {
   const privatePackages = packages.filter((p) => p.category === "Private");
 
   return (
-    <section id={SECTION_IDS.pricing} className="py-24 px-4 bg-brand-olive/10">
+    <section id={SECTION_IDS.pricing} className="py-12 md:py-24 px-4 bg-brand-olive/10">
       <div className="mx-auto max-w-[1200px]">
-        <div className="flex flex-col items-center mb-16">
+        <div className="flex flex-col items-center mb-10 md:mb-16">
           <Flower className="w-8 h-8 text-brand-olive/40 mb-4" />
-          <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center">
+          <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center">
             Find the Package That Fits Your Flow
           </h2>
           <p className="text-brand-charcoal/60 text-center mt-3 max-w-xl leading-relaxed">
@@ -64,7 +64,7 @@ export default function PricingSection({ packages }: PricingSectionProps) {
           </p>
         </div>
 
-        <div className="mb-16">
+        <div className="mb-10 md:mb-16">
           <h3 className="font-serif text-xl text-brand-olive uppercase tracking-wider mb-8 text-center">
             Group Yoga Class
           </h3>
@@ -75,7 +75,7 @@ export default function PricingSection({ packages }: PricingSectionProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mb-16" aria-hidden="true">
+        <div className="flex items-center justify-center gap-4 mb-10 md:mb-16" aria-hidden="true">
           <span className="h-px w-16 bg-brand-olive/20" />
           <Flower className="w-5 h-5 text-brand-olive/40" />
           <span className="h-px w-16 bg-brand-olive/20" />

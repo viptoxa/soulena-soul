@@ -11,9 +11,9 @@ const GALLERY_IMAGES = [
 
 export default function GallerySection() {
   return (
-    <section id={SECTION_IDS.gallery} className="py-20 px-4 bg-brand-cream">
+    <section id={SECTION_IDS.gallery} className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px]">
-        <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
+        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
           A Glimpse Into My Working Space
         </h2>
         <GalleryLightbox images={GALLERY_IMAGES} />

@@ -1,15 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SITE, NAV_LINKS } from "@/lib/constants";
 import { WhatsAppIcon, MailIcon, InstagramIcon, ThreadsIcon } from "@/components/icons/SocialIcons";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Publish the header's real height so the hero can fill exactly the rest
+  // of the viewport (adapts across breakpoints — no hard-coded offset).
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const setVar = () =>
+      document.documentElement.style.setProperty("--header-h", `${el.offsetHeight}px`);
+    setVar();
+    const ro = new ResizeObserver(setVar);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-cream-dark">
-      <div className="mx-auto max-w-[1200px] px-4 py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-cream-dark"
+    >
+      <div className="mx-auto max-w-[1200px] px-[15px] py-2.5 md:px-4 md:py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
         {/* Contact info */}
         <div className="flex items-center gap-4">
           <a

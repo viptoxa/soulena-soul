@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@notionhq/client": "^2.3.0",
     "leaflet": "^1.9.4",
     "next": "16.2.6",

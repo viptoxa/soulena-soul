@@ -26,10 +26,10 @@ const CLASS_OFFERINGS = [
 
 export default function ClassesSection() {
   return (
-    <section id={SECTION_IDS.classes} className="py-20 px-4 bg-brand-olive/10">
+    <section id={SECTION_IDS.classes} className="py-14 md:py-20 px-4 bg-brand-olive/10">
       <div className="mx-auto max-w-[1200px]">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider mb-4">
+          <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider mb-4">
             Let&apos;s Practice Together
           </h2>
           <p className="text-brand-charcoal/70 max-w-2xl mx-auto leading-relaxed">
@@ -38,13 +38,13 @@ export default function ClassesSection() {
             and meaningful celebrations.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6">
           {CLASS_OFFERINGS.map((offering) => (
             <div
               key={offering.title}
               className="bg-white/60 backdrop-blur-sm rounded-xl overflow-hidden text-center"
             >
-              <div className="relative aspect-[3/4]">
+              <div className="relative aspect-[4/3] sm:aspect-[3/4]">
                 <Image
                   src={offering.image}
                   alt={offering.title}

@@ -9,9 +9,9 @@ const POLICIES = [
 
 export default function PoliciesSection() {
   return (
-    <section id={SECTION_IDS.policies} className="py-20 px-4 bg-brand-olive/10">
+    <section id={SECTION_IDS.policies} className="py-14 md:py-20 px-4 bg-brand-olive/10">
       <div className="mx-auto max-w-[800px]">
-        <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-4">
+        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-4">
           Pricing + Policies
         </h2>
         <p className="text-center text-brand-charcoal/60 mb-10 leading-relaxed">

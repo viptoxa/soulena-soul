@@ -35,9 +35,9 @@ const PAYMENT_STEPS = [
 
 export default function PaymentSection() {
   return (
-    <section id={SECTION_IDS.payment} className="py-20 px-4 bg-brand-cream">
+    <section id={SECTION_IDS.payment} className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px]">
-        <h2 className="font-serif text-3xl md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
+        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
           Payment
         </h2>
 
@@ -58,7 +58,7 @@ export default function PaymentSection() {
           <div className="grid sm:grid-cols-3 gap-8">
             {PAYMENT_STEPS.map((step, i) => (
               <div key={step.title} className="flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-olive text-white font-serif text-lg leading-none pt-0.5 mb-4">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-olive text-white font-serif text-lg leading-none pb-1 mb-4">
                   {i + 1}
                 </div>
                 <h4 className="font-serif text-base text-brand-charcoal mb-1.5">
@@ -70,7 +70,7 @@ export default function PaymentSection() {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-brand-charcoal/60 mt-8">
+          <p className="text-center text-xs md:text-sm text-brand-charcoal/60 mt-8">
             Paying by QR code? Just send your screenshot via{" "}
             <a
               href={SITE.whatsappUrl}

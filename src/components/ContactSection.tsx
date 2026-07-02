@@ -16,20 +16,20 @@ export default function ContactSection() {
       <div className="absolute inset-0 bg-brand-charcoal/65" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-28 md:py-36 flex flex-col items-center text-center text-white">
-        <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-wider mb-4">
+      <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-16 md:py-36 flex flex-col items-center text-center text-white">
+        <h2 className="font-serif text-[27px] md:text-5xl uppercase tracking-wider mb-4">
           Let&apos;s Stay Connected
         </h2>
         <p className="text-white/75 tracking-wide mb-10">Explore · Follow Along</p>
 
         <a
           href={`#${SECTION_IDS.booking}`}
-          className="inline-block rounded-full bg-brand-cream px-10 py-4 text-sm uppercase tracking-wider text-brand-charcoal hover:bg-white transition-colors shadow-lg mb-12"
+          className="inline-block rounded-full bg-brand-cream px-8 py-3.5 md:px-10 md:py-4 text-sm uppercase tracking-wider text-brand-charcoal hover:bg-white transition-colors shadow-lg mb-12"
         >
           Book a Class
         </a>
 
-        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-start sm:justify-center gap-x-8 gap-y-4 self-stretch sm:self-auto">
           <a
             href={SITE.whatsappUrl}
             target="_blank"
