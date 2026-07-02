@@ -18,7 +18,7 @@ export default function ContactSection() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-28 md:py-36 flex flex-col items-center text-center text-white">
         <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-wider mb-4">
-          Let&apos;s Practice Together
+          Let&apos;s Stay Connected
         </h2>
         <p className="text-white/75 tracking-wide mb-10">Explore · Follow Along</p>
 
