@@ -11,11 +11,20 @@ const HERO_IMAGES = [
   { src: "/images/hero-3.jpg", alt: "Beach yoga group practice at sunrise" },
 ];
 
+const CAL_BASE = "https://cal.com/soulena.soul";
+const inquiry = (topic: string) =>
+  `${SITE.whatsappUrl}?text=${encodeURIComponent(
+    `Hi Soulena! I'd like to inquire about ${topic}.`
+  )}`;
+
+// The first three are bookable in Cal.com; the last two are inquiry-only
+// (Soulena prefers WhatsApp/email for events and Soul & Sound).
 const CLASS_TYPES = [
-  { label: "BEACH YOGA CLASS", type: "beach-yoga" },
-  { label: "PRIVATE CLASS", type: "private" },
-  { label: "PRIVATE EVENT", type: "event" },
-  { label: "SOUL & SOUND", type: "soul-sound" },
+  { label: "BEACH YOGA CLASS", href: `${CAL_BASE}/beach-yoga-class` },
+  { label: "PRIVATE SESSION", href: `${CAL_BASE}/private-session` },
+  { label: "ONLINE SESSION", href: `${CAL_BASE}/online` },
+  { label: "PRIVATE EVENT", href: inquiry("a Private Event / Hotel & Wellness session") },
+  { label: "SOUL & SOUND", href: inquiry("a Soul & Sound experience") },
 ];
 
 export default function HeroSlider() {
@@ -87,8 +96,10 @@ export default function HeroSlider() {
         <div className="flex flex-wrap justify-center gap-3">
           {CLASS_TYPES.map((ct) => (
             <a
-              key={ct.type}
-              href={`#${SECTION_IDS.booking}`}
+              key={ct.label}
+              href={ct.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm tracking-wider uppercase hover:bg-white/20 transition-colors"
             >
               {ct.label}
