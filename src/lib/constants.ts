@@ -26,12 +26,22 @@ export const SECTION_IDS = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Home", href: `#${SECTION_IDS.hero}` },
-  { label: "About", href: `#${SECTION_IDS.about}` },
-  { label: "Classes", href: `#${SECTION_IDS.classes}` },
-  { label: "Booking", href: `#${SECTION_IDS.booking}` },
-  { label: "Contact", href: `#${SECTION_IDS.contact}` },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Classes", href: "/classes" },
+  { label: "Booking", href: "/booking" },
+  { label: "Sanctuary", href: "/sanctuary" },
 ] as const;
+
+// Route paths for the multi-page site
+export const ROUTES = {
+  home: "/",
+  about: "/about",
+  classes: "/classes",
+  booking: "/booking",
+  sanctuary: "/sanctuary",
+  inquiry: "/sanctuary/inquiry",
+} as const;
 
 export const LOCATIONS = [
   { name: "Patong Beach", lat: 7.8966, lng: 98.2963 },

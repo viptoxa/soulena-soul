@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { SITE, NAV_LINKS } from "@/lib/constants";
 import { WhatsAppIcon, MailIcon, InstagramIcon, ThreadsIcon } from "@/components/icons/SocialIcons";
 
@@ -50,13 +51,13 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6 justify-self-center">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-xs font-medium text-brand-charcoal hover:text-brand-olive transition-colors uppercase tracking-wider"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -94,13 +95,13 @@ export default function Header() {
           <ul className="flex flex-col gap-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="block py-1.5 text-sm font-medium text-brand-charcoal hover:text-brand-olive transition-colors uppercase tracking-wider"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

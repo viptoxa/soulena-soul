@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { InstagramIcon, ThreadsIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
 
@@ -8,13 +9,13 @@ export default function Footer() {
         {/* Navigation */}
         <nav className="flex flex-nowrap justify-center gap-x-3 gap-y-2 md:gap-6 mb-6 md:mb-8">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-xs md:text-sm uppercase tracking-wide md:tracking-wider text-white/70 hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

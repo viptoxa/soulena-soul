@@ -27,7 +27,7 @@ export default function AboutSection() {
             where students can breathe, move, explore, and simply be.
           </p>
           <a
-            href={`#${SECTION_IDS.booking}`}
+            href="/booking"
             className="inline-block border-2 border-brand-olive text-brand-olive rounded-full px-8 py-3 text-sm uppercase tracking-wider hover:bg-brand-olive hover:text-white transition-colors"
           >
             Join My Classes
