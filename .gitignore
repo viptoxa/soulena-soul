@@ -40,8 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# raw client photo library (635MB — only processed images in public/images/ are used)
+# raw client photo library (only processed images in public/images/ are used)
 /public/photos/
+/content v2/
 
 # local tooling / dev preview config
 /.claude/

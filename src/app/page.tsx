@@ -8,13 +8,8 @@ import PricingSection from "@/components/PricingSection";
 import PaymentSection from "@/components/PaymentSection";
 import PoliciesSection from "@/components/PoliciesSection";
 import ContactSection from "@/components/ContactSection";
-import { fetchPackages } from "@/lib/notion";
 
-export const revalidate = 3600; // ISR: pricing comes from Notion
-
-export default async function Home() {
-  const packages = await fetchPackages();
-
+export default function Home() {
   return (
     <>
       <HeroSlider />
@@ -23,7 +18,7 @@ export default async function Home() {
       <GallerySection />
       <LocationSection />
       <BookingSection />
-      <PricingSection packages={packages} />
+      <PricingSection />
       <PaymentSection />
       <PoliciesSection />
       <ContactSection />

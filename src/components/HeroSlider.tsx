@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { SITE, SECTION_IDS } from "@/lib/constants";
+import Link from "next/link";
+import { SITE, SECTION_IDS, ROUTES } from "@/lib/constants";
 import { FlowerIcon } from "@/components/icons/SocialIcons";
 
 const HERO_IMAGES = [
@@ -17,14 +18,13 @@ const inquiry = (topic: string) =>
     `Hi Soulena! I'd like to inquire about ${topic}.`
   )}`;
 
-// The first three are bookable in Cal.com; the last two are inquiry-only
-// (Soulena prefers WhatsApp/email for events and Soul & Sound).
+// Hero CTAs mirror Soulena's Canva: two bookable classes (Cal.com), a wellness
+// event inquiry (WhatsApp), and the Soul & Sound Sanctuary (its own page).
 const CLASS_TYPES = [
-  { label: "BEACH YOGA CLASS", href: `${CAL_BASE}/beach-yoga-class` },
-  { label: "PRIVATE SESSION", href: `${CAL_BASE}/private-session` },
-  { label: "ONLINE SESSION", href: `${CAL_BASE}/online` },
-  { label: "PRIVATE EVENT", href: inquiry("a Private Event / Hotel & Wellness session") },
-  { label: "SOUL & SOUND", href: inquiry("a Soul & Sound experience") },
+  { label: "BEACH YOGA CLASS", href: `${CAL_BASE}/beach-yoga-class`, external: true },
+  { label: "PRIVATE CLASS", href: `${CAL_BASE}/private-session`, external: true },
+  { label: "WELLNESS EVENT", href: inquiry("a Hotel & Wellness Event"), external: true },
+  { label: "SOUL & SOUND", href: ROUTES.sanctuary, external: false },
 ];
 
 export default function HeroSlider() {
@@ -94,17 +94,19 @@ export default function HeroSlider() {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-3">
-          {CLASS_TYPES.map((ct) => (
-            <a
-              key={ct.label}
-              href={ct.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm tracking-wider uppercase hover:bg-white/20 transition-colors"
-            >
-              {ct.label}
-            </a>
-          ))}
+          {CLASS_TYPES.map((ct) => {
+            const cls =
+              "border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm tracking-wider uppercase hover:bg-white/20 transition-colors";
+            return ct.external ? (
+              <a key={ct.label} href={ct.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                {ct.label}
+              </a>
+            ) : (
+              <Link key={ct.label} href={ct.href} className={cls}>
+                {ct.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Slide indicators */}
