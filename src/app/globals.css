@@ -17,6 +17,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchored sections start below the sticky header instead of under it */
+section[id] {
+  scroll-margin-top: var(--header-h, 64px);
+}
+
 /* Leaflet map — match the warm brand aesthetic */
 .leaflet-container {
   font-family: var(--font-sans);

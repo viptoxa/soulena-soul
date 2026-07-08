@@ -64,7 +64,7 @@ export default function ClassesSection() {
         </div>
         <div className="text-center mt-10">
           <a
-            href="/about"
+            href="#about"
             className="text-sm text-brand-olive underline underline-offset-4 hover:text-brand-olive-dark transition-colors uppercase tracking-wider"
           >
             Read More About Soulena →

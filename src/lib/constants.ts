@@ -27,18 +27,17 @@ export const SECTION_IDS = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Classes", href: "/classes" },
-  { label: "Booking", href: "/booking" },
+  { label: "About", href: `/#${SECTION_IDS.about}` },
+  { label: "Classes", href: `/#${SECTION_IDS.classes}` },
+  { label: "Booking", href: `/#${SECTION_IDS.booking}` },
   { label: "Sanctuary", href: "/sanctuary" },
 ] as const;
 
-// Route paths for the multi-page site
+// Standalone routes. The main site is a single scrolling page; only the
+// Soul & Sound Sanctuary lives on its own page (deliberately darker, luxury
+// identity + private-inquiry flow).
 export const ROUTES = {
   home: "/",
-  about: "/about",
-  classes: "/classes",
-  booking: "/booking",
   sanctuary: "/sanctuary",
   inquiry: "/sanctuary/inquiry",
 } as const;
