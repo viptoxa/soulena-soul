@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SECTION_IDS, SITE, ROUTES } from "@/lib/constants";
-
-const inquiry = (topic: string) =>
-  `${SITE.whatsappUrl}?text=${encodeURIComponent(`Hi Soulena! I'd like to inquire about ${topic}.`)}`;
+import { SECTION_IDS, ROUTES } from "@/lib/constants";
 
 type ClassCard = {
   title: string;
@@ -11,7 +8,6 @@ type ClassCard = {
   image: string;
   position?: string;
   href: string;
-  kind: "anchor" | "route" | "external";
 };
 
 const CLASS_CARDS: ClassCard[] = [
@@ -20,24 +16,21 @@ const CLASS_CARDS: ClassCard[] = [
     subtitle: "Group classes by the sea",
     image: "/images/card-beach.jpg",
     position: "object-center",
-    href: "#pricing",
-    kind: "anchor",
+    href: ROUTES.classes,
   },
   {
     title: "Private Class",
     subtitle: "Anywhere, anytime — at your favourite place",
     image: "/images/card-private.jpg",
     position: "object-[center_30%]",
-    href: "#pricing",
-    kind: "anchor",
+    href: ROUTES.classes,
   },
   {
     title: "Hotel & Wellness Event",
     subtitle: "Groups, retreats & resorts",
     image: "/images/card-event.jpg",
     position: "object-center",
-    href: inquiry("a Hotel & Wellness Event"),
-    kind: "external",
+    href: ROUTES.classes,
   },
   {
     title: "Soul & Sound Sanctuary",
@@ -45,25 +38,8 @@ const CLASS_CARDS: ClassCard[] = [
     image: "/images/card-sanctuary.jpg",
     position: "object-center",
     href: ROUTES.sanctuary,
-    kind: "route",
   },
 ];
-
-function LearnMore({ card }: { card: ClassCard }) {
-  const label = (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/70 px-4 py-1.5 text-[11px] uppercase tracking-wider text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-brand-charcoal">
-      Learn More
-    </span>
-  );
-  if (card.kind === "route") {
-    return <Link href={card.href}>{label}</Link>;
-  }
-  return (
-    <a href={card.href} {...(card.kind === "external" ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-      {label}
-    </a>
-  );
-}
 
 export default function ClassesSection() {
   return (
@@ -77,9 +53,10 @@ export default function ClassesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {CLASS_CARDS.map((card) => (
-            <article
+            <Link
               key={card.title}
-              className="group relative aspect-[3/4] overflow-hidden rounded-2xl shadow-sm"
+              href={card.href}
+              className="group relative aspect-[3/4] overflow-hidden rounded-2xl shadow-sm block"
             >
               <Image
                 src={card.image}
@@ -99,9 +76,11 @@ export default function ClassesSection() {
                     <p className="text-[13px] text-white/80 mt-1 leading-snug">{card.subtitle}</p>
                   )}
                 </div>
-                <LearnMore card={card} />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/70 px-4 py-1.5 text-[11px] uppercase tracking-wider text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-brand-charcoal">
+                  Learn More
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

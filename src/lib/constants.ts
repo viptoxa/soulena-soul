@@ -27,17 +27,21 @@ export const SECTION_IDS = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: `/#${SECTION_IDS.about}` },
-  { label: "Classes", href: `/#${SECTION_IDS.classes}` },
-  { label: "Booking", href: `/#${SECTION_IDS.booking}` },
-  { label: "Contact", href: `/#${SECTION_IDS.contact}` },
+  { label: "About", href: "/about" },
+  { label: "Classes", href: "/classes" },
+  { label: "Booking", href: "/booking" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
-// Standalone routes. The main site is a single scrolling page; only the
-// Soul & Sound Sanctuary lives on its own page (deliberately darker, luxury
-// identity + private-inquiry flow).
+// Multi-page routes (mirrors Soulena's Canva page structure).
 export const ROUTES = {
   home: "/",
+  about: "/about",
+  classes: "/classes",
+  booking: "/booking",
+  pricing: "/pricing",
+  payment: "/payment",
+  contact: "/contact",
   sanctuary: "/sanctuary",
   inquiry: "/sanctuary/inquiry",
 } as const;
