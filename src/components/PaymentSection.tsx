@@ -1,87 +1,84 @@
-import { SECTION_IDS, SITE } from "@/lib/constants";
+"use client";
 
-const PAYMENT_METHODS = [
-  {
-    icon: "📱",
-    title: "Thai QR Code (PromptPay)",
-    description: "Scan the QR code with any Thai banking app for instant payment.",
-  },
-  {
-    icon: "💵",
-    title: "Cash",
-    description: "Pay cash on arrival at the class location.",
-  },
-  {
-    icon: "🏦",
-    title: "Bank Transfer",
-    description: "Direct transfer to Soulena's Thai bank account.",
-  },
-];
-
-const PAYMENT_STEPS = [
-  {
-    title: "Book your class",
-    description: "Reserve your spot through the booking calendar above.",
-  },
-  {
-    title: "Choose how to pay",
-    description: "Pick Thai QR, cash on arrival, or bank transfer.",
-  },
-  {
-    title: "Confirm via WhatsApp",
-    description: "Send your payment screenshot and your place is secured.",
-  },
-];
+import { useState } from "react";
+import Image from "next/image";
+import { SITE } from "@/lib/constants";
 
 export default function PaymentSection() {
+  const [showQR, setShowQR] = useState(false);
+
   return (
-    <section id={SECTION_IDS.payment} className="py-14 md:py-20 px-4 bg-brand-cream">
-      <div className="mx-auto max-w-[1200px]">
-        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-12">
+    <section className="py-14 md:py-20 px-4 bg-brand-cream">
+      <div className="mx-auto max-w-[1000px]">
+        <h2 className="font-serif text-[27px] md:text-4xl uppercase tracking-wider text-brand-charcoal text-center">
           Payment
         </h2>
+        <p className="text-brand-charcoal/60 text-center mt-3">
+          Choose the payment method that works best for you.
+        </p>
 
-        <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
-          {PAYMENT_METHODS.map((method) => (
-            <div key={method.title} className="bg-white/60 rounded-xl p-6 text-center">
-              <div className="text-3xl mb-3">{method.icon}</div>
-              <h3 className="font-serif text-base text-brand-charcoal mb-2">{method.title}</h3>
-              <p className="text-sm text-brand-charcoal/60">{method.description}</p>
-            </div>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
+          {/* Credit / Debit Card */}
+          <div className="rounded-2xl bg-white border border-brand-olive/15 shadow-sm p-6">
+            <h3 className="font-serif text-xl text-brand-charcoal">Credit / Debit Card</h3>
+            <p className="text-sm text-brand-charcoal/70 mt-2">
+              Secure online card payment via Stripe.{" "}
+              <span className="text-brand-charcoal/40">(Coming soon)</span>
+            </p>
+          </div>
 
-        <div className="bg-brand-olive/5 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
-          <h3 className="font-serif text-lg text-brand-olive uppercase tracking-wider text-center mb-8">
-            How It Works
-          </h3>
-          <div className="grid sm:grid-cols-3 gap-8">
-            {PAYMENT_STEPS.map((step, i) => (
-              <div key={step.title} className="flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-brand-olive text-white font-serif text-lg leading-none pb-1 mb-4">
-                  {i + 1}
-                </div>
-                <h4 className="font-serif text-base text-brand-charcoal mb-1.5">
-                  {step.title}
-                </h4>
-                <p className="text-sm text-brand-charcoal/60 leading-relaxed">
-                  {step.description}
+          {/* Bank Transfer */}
+          <div className="rounded-2xl bg-white border border-brand-olive/15 shadow-sm p-6">
+            <h3 className="font-serif text-xl text-brand-charcoal">Bank Transfer</h3>
+            <p className="text-sm text-brand-charcoal/70 mt-2">
+              Thai bank transfer — account details shared on booking confirmation.
+            </p>
+          </div>
+
+          {/* Thai QR Payment */}
+          <div className="rounded-2xl bg-white border border-brand-olive/15 shadow-sm p-6">
+            <h3 className="font-serif text-xl text-brand-charcoal">Thai QR Payment</h3>
+            <p className="text-sm text-brand-charcoal/70 mt-2">Scan the Thai QR to pay.</p>
+            <button
+              type="button"
+              onClick={() => setShowQR((prev) => !prev)}
+              className="mt-4 rounded-full border border-brand-olive text-brand-olive px-5 py-2 text-xs uppercase tracking-wider hover:bg-brand-olive hover:text-white transition-colors"
+              aria-expanded={showQR}
+            >
+              {showQR ? "Hide QR code" : "Show QR code"}
+            </button>
+            {showQR && (
+              <div>
+                <Image
+                  src="/images/thai-qr.png"
+                  alt="Thai QR payment code"
+                  width={260}
+                  height={260}
+                  className="mx-auto mt-4 rounded-lg"
+                />
+                <p className="text-sm text-brand-charcoal/70 mt-4">
+                  After paying, please send the payment slip to me on{" "}
+                  <a
+                    href={SITE.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-olive underline underline-offset-2 hover:text-brand-olive-dark transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                  .
                 </p>
               </div>
-            ))}
+            )}
           </div>
-          <p className="text-center text-xs md:text-sm text-brand-charcoal/60 mt-8">
-            Paying by QR code? Just send your screenshot via{" "}
-            <a
-              href={SITE.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-olive underline underline-offset-2 hover:text-brand-olive-dark transition-colors"
-            >
-              WhatsApp
-            </a>{" "}
-            and you&apos;re all set.
-          </p>
+
+          {/* Cash on Arrival */}
+          <div className="rounded-2xl bg-white border border-brand-olive/15 shadow-sm p-6">
+            <h3 className="font-serif text-xl text-brand-charcoal">Cash on Arrival</h3>
+            <p className="text-sm text-brand-charcoal/70 mt-2">
+              Simply pay in cash at the class.
+            </p>
+          </div>
         </div>
       </div>
     </section>

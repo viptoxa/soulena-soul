@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import ContactSection from "@/components/ContactSection";
+import ContactMapSection from "@/components/ContactMapSection";
+import LocationSection from "@/components/LocationSection";
 
 export const metadata: Metadata = {
   title: "Contact — Soulena Soul | Phuket, Thailand",
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <ContactSection />
+      <ContactMapSection />
+      <LocationSection />
     </>
   );
 }
