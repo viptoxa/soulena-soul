@@ -30,7 +30,7 @@ export const NAV_LINKS = [
   { label: "About", href: `/#${SECTION_IDS.about}` },
   { label: "Classes", href: `/#${SECTION_IDS.classes}` },
   { label: "Booking", href: `/#${SECTION_IDS.booking}` },
-  { label: "Sanctuary", href: "/sanctuary" },
+  { label: "Contact", href: `/#${SECTION_IDS.contact}` },
 ] as const;
 
 // Standalone routes. The main site is a single scrolling page; only the
