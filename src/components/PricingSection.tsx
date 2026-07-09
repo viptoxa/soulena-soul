@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { SECTION_IDS } from "@/lib/constants";
 import { PRICING, type PricingFamily, type PricingTier } from "@/lib/pricing";
 
@@ -20,36 +17,9 @@ function Flower({ className }: { className?: string }) {
   );
 }
 
-function TierCard({
-  tier,
-  selected,
-  dimmed,
-  onSelect,
-}: {
-  tier: PricingTier;
-  selected: boolean;
-  dimmed: boolean;
-  onSelect: () => void;
-}) {
+function TierCard({ tier }: { tier: PricingTier }) {
   return (
-    <button
-      type="button"
-      onClick={onSelect}
-      aria-pressed={selected}
-      className={`group relative flex flex-col text-left rounded-2xl bg-white p-6 md:p-7 border transition-all duration-300 cursor-pointer
-        ${
-          selected
-            ? "border-brand-olive ring-2 ring-brand-olive shadow-xl -translate-y-1 scale-[1.015]"
-            : "border-brand-olive/15 shadow-sm hover:border-brand-olive/60 hover:shadow-lg hover:-translate-y-1"
-        }`}
-      style={{ opacity: dimmed ? 0.5 : 1 }}
-    >
-      {tier.highlight && (
-        <span className="absolute -top-3 right-5 rounded-full bg-brand-olive px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white shadow-sm">
-          Best value
-        </span>
-      )}
-
+    <div className="flex flex-col rounded-2xl bg-white p-6 md:p-7 border border-brand-olive/15 shadow-sm transition-all duration-300 hover:border-brand-olive/50 hover:shadow-lg hover:-translate-y-1">
       <h4 className="font-medium uppercase tracking-wider text-brand-charcoal text-[15px]">
         {tier.title}
       </h4>
@@ -74,24 +44,15 @@ function TierCard({
         </span>
         <span className="text-xs text-brand-charcoal/45">~ USD {tier.priceUSD}</span>
       </div>
-    </button>
+    </div>
   );
 }
 
-function FamilyBlock({
-  family,
-  selectedId,
-  onSelect,
-}: {
-  family: PricingFamily;
-  selectedId: string | null;
-  onSelect: (id: string) => void;
-}) {
+function FamilyBlock({ family }: { family: PricingFamily }) {
   const cols =
     family.tiers.length >= 3
       ? "sm:grid-cols-2 lg:grid-cols-3 max-w-5xl"
       : "sm:grid-cols-2 max-w-3xl";
-  const familySelected = family.tiers.some((t) => t.id === selectedId);
 
   return (
     <div className="mb-14 last:mb-0">
@@ -100,13 +61,7 @@ function FamilyBlock({
       </h3>
       <div className={`grid gap-5 md:gap-6 mx-auto ${cols}`}>
         {family.tiers.map((tier) => (
-          <TierCard
-            key={tier.id}
-            tier={tier}
-            selected={selectedId === tier.id}
-            dimmed={familySelected && selectedId !== tier.id}
-            onSelect={() => onSelect(tier.id)}
-          />
+          <TierCard key={tier.id} tier={tier} />
         ))}
       </div>
     </div>
@@ -114,8 +69,6 @@ function FamilyBlock({
 }
 
 export default function PricingSection() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-
   return (
     <section
       id={SECTION_IDS.pricing}
@@ -130,17 +83,12 @@ export default function PricingSection() {
           </h2>
           <p className="text-brand-charcoal/60 text-center mt-3 max-w-xl leading-relaxed">
             Choose the rhythm that suits you — drop in whenever the island calls,
-            or commit to a deeper journey. Tap a package to compare.
+            or commit to a deeper journey.
           </p>
         </div>
 
         {PRICING.map((family) => (
-          <FamilyBlock
-            key={family.id}
-            family={family}
-            selectedId={selectedId}
-            onSelect={(id) => setSelectedId((cur) => (cur === id ? null : id))}
-          />
+          <FamilyBlock key={family.id} family={family} />
         ))}
       </div>
     </section>
