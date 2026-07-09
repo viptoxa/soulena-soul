@@ -4,20 +4,35 @@ Source of truth for v2 = Soulena's Canva walkthrough video (`content v2/…​.M
 + her pricing screenshots. `content v2/` and `public/photos/` hold raw assets (gitignored);
 only optimized images in `public/images/` are shipped.
 
-## Structure decision
-Single scrolling home page (client prefers one-page). Only **Soul & Sound Sanctuary**
-is a separate page (`/sanctuary` + `/sanctuary/inquiry`) — deliberately dark/luxury.
-Keep OUR interactive Leaflet map (client prefers it over her static map image).
+## Structure decision (UPDATED after full Canva access via Canva MCP)
+The full Canva (11 pages, design id DAHO4qLkq9E) revealed a genuine **multi-page** site —
+so the site is now multi-page, matching her design. Nav: Home / About / Classes / Booking / Contact.
+Routes: `/` `/about` `/classes` `/booking` `/pricing` `/payment` `/contact` `/sanctuary` `/sanctuary/inquiry`.
+Sanctuary is the dark/luxury exception. We keep OUR interactive Leaflet map (client prefers it).
+Backup of the pre-rebuild layout: git tag `checkpoint-2026-07-09` + branch `backup/pre-multipage-rebuild`.
 
-## Section build status
-- [x] Hero — 4 buttons: BEACH YOGA CLASS, PRIVATE CLASS, WELLNESS EVENT, SOUL & SOUND(→/sanctuary). New sunset photos.
-- [x] Pricing — 4 families exact from Canva (`src/lib/pricing.ts`), click/hover highlight + sibling dim.
-- [x] Classes cards — 4 overlay cards + LEARN MORE + hover-brighten.
-- [ ] About — "MOVE" intro + "MEET YOUR INSTRUCTOR" + full "MORE ABOUT ME" (pharmacist story, 2 quotes) + testimonials + gallery.
-- [ ] Class detail blocks — Weekend Beach + Private Session (session/includes/areas/schedule/price, RESERVE→Cal.com).
-- [ ] Sanctuary page — dark luxury ("LET'S PRACTICE TOGETHER"), her sound-healing photos.
-- [ ] Footer — "LET'S PRACTICE TOGETHER" hands-with-flowers bg + "NEW STUDENT 10%" note.
-- [ ] Payment — Credit card (Stripe links), Bank transfer, Thai QR (click-to-reveal, image in repo), Cash.
+## Section build status — ALL PAGES BUILT ✅
+- [x] Home — Hero (3 slides, 4.5s) → MOVE → Join My Classes (cards→pages) → MEET YOUR INSTRUCTOR → A Glimpse Into My Working Space → footer.
+- [x] Footer — "Let's Practice Together" hands-with-flowers + rotating "NEW STUDENT 10%" badge.
+- [x] /about — MORE ABOUT ME (quotes, pharmacist, Teaching Exp, Certifications, Other Locations) + gallery + "Gentle Words" testimonials.
+- [x] /classes — Class Pricing note + Weekend Beach + Private Session (ClassDetailBlock) + Group Hotel & Wellness + Sanctuary teaser + map.
+- [x] /pricing — 4 families (`src/lib/pricing.ts`) + policies.
+- [x] /booking — Cal.com availability (BookingSection) + inquiry form (BookingInquiry→WhatsApp) + policies.
+- [x] /payment — Card (Stripe, "coming soon") / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
+- [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.
+- [x] /sanctuary — dark luxury: hero + Mind–Body Connection + Creating Space (Curated Yoga/Sound Bath + 2h experience).
+- [x] /sanctuary/inquiry — dark inquiry form (InquiryForm).
+
+## Remaining polish (nice-to-have)
+- Hero 3 nav dots already present; confirm slide transition feel.
+- "A Glimpse" gallery — approximate her curved-text circular collage more closely (currently staggered circles).
+- Map: hover a beach name → highlight its pin (her dev note).
+- Sanctuary: her dev-note immersive auto-gallery for the middle section.
+- Orphaned: old ContactSection.tsx no longer routed (safe to delete later).
+
+## BLOCK BEFORE PROD
+- Testimonials show real names/emails — publish only after Soulena's OK.
+- Bank details + Stripe links are placeholders until she sends them.
 
 ## Pricing (from Canva; confirm final — she said still updating)
 Beach: Drop-in 400฿/$12 · 3× 1,100฿/$33 · 5× 1,800฿/$55
