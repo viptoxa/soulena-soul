@@ -7,8 +7,10 @@ export default function MeetInstructorSection() {
     <section className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
-          <p className="font-serif italic text-brand-olive text-lg mb-1">
-            Simply move with <span className="not-italic">Soulena Soul</span>
+          <p className="font-serif italic text-brand-olive text-lg md:text-xl leading-tight mb-3">
+            Simply move with
+            <br />
+            Soulena Soul
           </p>
           <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider mb-6">
             Meet Your Instructor
@@ -46,7 +48,7 @@ export default function MeetInstructorSection() {
         </div>
         <div className="order-1 md:order-2 relative aspect-[4/5] rounded-2xl overflow-hidden">
           <Image
-            src="/images/about-main.jpg"
+            src="/images/instructor.jpg"
             alt="Soulena Soul, yoga and movement teacher"
             fill
             sizes="(min-width: 768px) 40vw, 100vw"

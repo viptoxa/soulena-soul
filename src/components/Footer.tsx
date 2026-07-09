@@ -44,7 +44,7 @@ export default function Footer() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/85 via-brand-cream/50 to-brand-cream/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/25 to-brand-cream/60" />
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 pt-14 md:pt-20 pb-8">
         {/* Headline + discount badge */}
