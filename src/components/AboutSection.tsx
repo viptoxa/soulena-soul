@@ -26,12 +26,12 @@ export default function AboutSection() {
           </p>
         </div>
         <div className="relative">
-          <div className="relative rounded-2xl overflow-hidden shadow-sm">
+          <div className="relative rounded-3xl overflow-hidden shadow-[0_18px_50px_-24px_rgba(60,52,40,0.4)]">
             <Image
-              src="/images/move-photo.jpg"
+              src="/images/move-v2.jpg"
               alt="Beach yoga & movement class in Phuket"
-              width={556}
-              height={560}
+              width={600}
+              height={600}
               sizes="(min-width: 768px) 45vw, 100vw"
               className="w-full h-auto"
             />

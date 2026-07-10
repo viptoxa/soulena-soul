@@ -1,61 +1,74 @@
 import Image from "next/image";
+import { FlowerIcon } from "@/components/icons/SocialIcons";
 
-const CLUSTER = [
-  { src: "/images/gallery-1.jpg", d: "w-40 h-40 md:w-40 md:h-40 z-10" },
-  { src: "/images/gallery-3.jpg", d: "w-36 h-36 md:w-36 md:h-36 -ml-5 md:-ml-6 mt-10 z-20" },
-  { src: "/images/gallery-4.jpg", d: "w-44 h-44 md:w-52 md:h-52 -ml-5 md:-ml-6 z-10" },
-  { src: "/images/gallery-5.jpg", d: "w-36 h-36 md:w-36 md:h-36 -ml-5 md:-ml-6 mt-10 z-20" },
-  { src: "/images/gallery-6.jpg", d: "w-40 h-40 md:w-40 md:h-40 -ml-5 md:-ml-6 z-10" },
+// "A glimpse into my working space" — the Canva composition weaves four
+// circles into an infinity/wave (low · high · low · high) while the title
+// sweeps over the top and curves back under the bottom.
+const CIRCLES = [
+  { src: "/images/glimpse-a.jpg", left: "5.8%", top: "40.3%" }, // group meditation (lower)
+  { src: "/images/glimpse-b.jpg", left: "27.2%", top: "16.1%" }, // reclining stretch (upper)
+  { src: "/images/glimpse-c.jpg", left: "48.7%", top: "40.3%" }, // backbend by the sea (lower)
+  { src: "/images/glimpse-d.jpg", left: "70.1%", top: "16.1%" }, // beach class (upper)
 ];
 
-function Circle({ src, d }: { src: string; d: string }) {
-  return (
-    <div className={`relative shrink-0 rounded-full overflow-hidden ring-4 ring-[#98906f] shadow-xl ${d}`}>
-      <Image src={src} alt="" fill sizes="240px" className="object-cover" />
-    </div>
-  );
-}
+const CREAM = "#e9dcb4";
+const arcText = {
+  fontFamily: "var(--font-serif)",
+  fontSize: "50px",
+  letterSpacing: "9px",
+} as const;
 
 export default function GlimpseGallery() {
   return (
-    <section className="bg-[#7d7550] text-brand-cream py-16 md:py-24 px-4 overflow-hidden">
-      {/* Desktop — title curves around the photo cluster */}
-      <div className="relative mx-auto w-full max-w-[680px] aspect-square hidden md:block">
-        <svg viewBox="0 0 500 500" className="absolute inset-0 w-full h-full" aria-hidden="true">
+    <section className="bg-[#7d7550] py-16 md:py-24 px-4 overflow-hidden">
+      {/* Desktop — circles woven into an infinity, title sweeping around */}
+      <div
+        className="relative mx-auto hidden md:block w-full max-w-[1120px]"
+        style={{ aspectRatio: "1120 / 620" }}
+      >
+        <svg viewBox="0 0 1120 620" className="absolute inset-0 h-full w-full" aria-hidden="true">
           <defs>
-            <path id="gTop" d="M 45 250 A 205 205 0 0 1 455 250" fill="none" />
-            <path id="gBot" d="M 45 250 A 205 205 0 0 0 455 250" fill="none" />
+            <path id="gTop" d="M 110 340 A 400 400 0 0 1 810 210" fill="none" />
+            <path id="gBot" d="M 250 500 A 1100 1100 0 0 0 1050 500" fill="none" />
           </defs>
-          <text
-            className="fill-[#e7d8ac]"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "40px", letterSpacing: "7px" }}
-          >
-            <textPath href="#gTop" startOffset="50%" textAnchor="middle">A&nbsp;GLIMPSE&nbsp;INTO</textPath>
+          <text fill={CREAM} style={arcText}>
+            <textPath href="#gTop" startOffset="50%" textAnchor="middle">
+              A GLIMPSE INTO
+            </textPath>
           </text>
-          <text
-            className="fill-[#e7d8ac]"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "40px", letterSpacing: "7px" }}
-          >
-            <textPath href="#gBot" startOffset="50%" textAnchor="middle">MY&nbsp;WORKING&nbsp;SPACE</textPath>
+          <text fill={CREAM} style={arcText}>
+            <textPath href="#gBot" startOffset="50%" textAnchor="middle">
+              MY WORKING SPACE
+            </textPath>
           </text>
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          {CLUSTER.map((c) => (
-            <Circle key={c.src} src={c.src} d={c.d} />
-          ))}
-        </div>
+
+        {CIRCLES.map((c) => (
+          <div
+            key={c.src}
+            className="absolute overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-[0_14px_36px_rgba(0,0,0,0.22)]"
+            style={{ left: c.left, top: c.top, width: "25.5%", aspectRatio: "1 / 1" }}
+          >
+            <Image src={c.src} alt="" fill sizes="280px" className="object-cover" />
+          </div>
+        ))}
+
+        <FlowerIcon className="absolute -bottom-1 right-3 h-8 w-8 text-[#e9dcb4]" />
       </div>
 
-      {/* Mobile — stacked title + wrapped circles */}
+      {/* Mobile — stacked title + woven circles */}
       <div className="md:hidden text-center">
-        <p className="uppercase tracking-[0.35em] text-brand-cream/60 text-xs mb-2">A Glimpse Into</p>
-        <h2 className="font-serif text-3xl text-[#e7d8ac] mb-8">My Working Space</h2>
-        <div className="flex flex-wrap justify-center items-center gap-y-4">
-          {CLUSTER.map((c, i) => (
+        <h2 className="font-serif text-3xl leading-tight text-[#e9dcb4] mb-8">
+          A Glimpse Into
+          <br />
+          My Working Space
+        </h2>
+        <div className="flex flex-wrap items-center justify-center gap-y-3">
+          {CIRCLES.map((c, i) => (
             <div
               key={c.src}
-              className={`relative shrink-0 rounded-full overflow-hidden ring-4 ring-[#98906f] shadow-lg -mx-2 ${
-                i % 2 ? "w-28 h-28" : "w-32 h-32"
+              className={`relative -mx-2 shrink-0 overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-lg ${
+                i % 2 ? "w-28 h-28 -mt-4" : "w-32 h-32 mt-4"
               }`}
             >
               <Image src={c.src} alt="" fill sizes="160px" className="object-cover" />

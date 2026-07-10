@@ -45,9 +45,9 @@ export default function MeetInstructorSection() {
             Read More About Soulena <span aria-hidden>→</span>
           </Link>
         </div>
-        <div className="order-1 md:order-2 relative aspect-[4/5] rounded-2xl overflow-hidden">
+        <div className="order-1 md:order-2 relative aspect-[4/5] rounded-3xl overflow-hidden">
           <Image
-            src="/images/instructor.jpg"
+            src="/images/instructor-v2.jpg"
             alt="Soulena Soul, yoga and movement teacher"
             fill
             sizes="(min-width: 768px) 40vw, 100vw"
