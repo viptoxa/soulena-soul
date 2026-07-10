@@ -1,44 +1,48 @@
 import Image from "next/image";
 import { SECTION_IDS } from "@/lib/constants";
 
+// Canva uses a desaturated slate blue-grey for the Home headings/body.
+const SLATE = "#3f4c54";
+
 export default function AboutSection() {
   return (
     <section id={SECTION_IDS.about} className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div>
-          <h2 className="font-serif text-4xl md:text-6xl text-brand-charcoal mb-3 uppercase">
-            Move
-          </h2>
-          <p className="font-serif text-2xl md:text-[32px] text-brand-charcoal/90 leading-snug mb-7">
-            where island breeze and ocean calm meet
+        <div style={{ color: SLATE }}>
+          <h2 className="font-serif text-5xl md:text-7xl mb-4 uppercase leading-none">Move</h2>
+          <p className="font-serif text-3xl md:text-[38px] leading-[1.15] mb-8">
+            where island breeze
+            <br />
+            and ocean calm meet
           </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+          <p className="leading-relaxed mb-5 opacity-90">
             Are you looking for a way to reconnect with yourself through movement, breath,
             fresh air, and the rhythm of nature?
           </p>
-          <p className="text-brand-charcoal/80 leading-relaxed">
-            I&apos;m Soulena Soul, a yoga and movement teacher based in Phuket, Thailand,
-            helping people build strength, mobility, and deeper body awareness through
-            mindful movement.
+          <p className="leading-relaxed opacity-90">
+            I&apos;m Soulena Soul, a yoga and movement teacher based in{" "}
+            <strong className="font-semibold">Phuket, Thailand,</strong> helping people build
+            strength, mobility, and deeper body awareness through mindful movement.
           </p>
         </div>
         <div className="relative">
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden shadow-sm">
             <Image
-              src="/images/gallery-2.jpg"
-              alt="Movement practice by the sea in Phuket"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover grayscale"
+              src="/images/move-photo.jpg"
+              alt="Beach yoga & movement class in Phuket"
+              width={556}
+              height={560}
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="w-full h-auto"
             />
           </div>
-          {/* Palm icon accent, overlapping the lower-left corner */}
+          {/* Palm icon overlapping the lower-left corner */}
           <Image
-            src="/images/palm-icon.png"
+            src="/images/palm-circle.png"
             alt=""
-            width={80}
-            height={80}
-            className="absolute bottom-6 -left-5 md:-left-7 w-16 h-16 md:w-20 md:h-20 drop-shadow-md"
+            width={96}
+            height={96}
+            className="absolute -bottom-4 -left-4 md:-bottom-5 md:-left-6 w-16 h-16 md:w-24 md:h-24"
           />
         </div>
       </div>

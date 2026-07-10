@@ -7,10 +7,9 @@ export default function MeetInstructorSection() {
     <section className="py-14 md:py-20 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1200px] grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
-          <p className="font-serif italic text-brand-olive text-lg md:text-xl leading-tight mb-3">
-            Simply move with
-            <br />
-            Soulena Soul
+          <p className="font-serif italic text-brand-olive mb-4 leading-tight">
+            <span className="block text-base md:text-lg">Simply move with</span>
+            <span className="block text-2xl md:text-4xl">Soulena Soul</span>
           </p>
           <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider mb-6">
             Meet Your Instructor

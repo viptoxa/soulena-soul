@@ -5,7 +5,7 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 
 function DiscountBadge() {
   return (
-    <div className="relative w-28 h-28 md:w-40 md:h-40 shrink-0 text-brand-charcoal">
+    <div className="relative w-28 h-28 md:w-40 md:h-40 shrink-0 text-white">
       <svg
         viewBox="0 0 100 100"
         className="w-full h-full [animation:spin_26s_linear_infinite]"
@@ -23,7 +23,7 @@ function DiscountBadge() {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
         <span className="text-[9px] md:text-[10px] uppercase tracking-wider">New Student</span>
         <span className="font-serif italic text-2xl md:text-3xl my-0.5">10%</span>
-        <span className="text-[6px] md:text-[7px] text-brand-charcoal/60 leading-tight">
+        <span className="text-[6px] md:text-[7px] text-white/70 leading-tight">
           *For Weekend
           <br />
           Beach Classes only
@@ -35,7 +35,7 @@ function DiscountBadge() {
 
 export default function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden">
+    <footer className="relative isolate overflow-hidden text-white">
       {/* Hands-with-flowers background */}
       <Image
         src="/images/footer-hands.jpg"
@@ -44,18 +44,19 @@ export default function Footer() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/70 via-brand-cream/25 to-brand-cream/60" />
+      {/* Warm overlay so the light photo reads as a mid-tone under white text */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#7c7463]/55 via-[#7c7463]/35 to-[#7c7463]/55" />
 
-      <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 pt-14 md:pt-20 pb-8">
+      <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-8 pt-16 md:pt-24 pb-8">
         {/* Headline + discount badge */}
         <div className="flex items-start justify-between gap-6">
           <div>
-            <h2 className="font-serif text-[34px] leading-[1.05] md:text-6xl text-brand-charcoal">
+            <h2 className="font-serif text-[38px] leading-[1.02] md:text-6xl text-white [text-shadow:0_1px_10px_rgba(60,52,40,0.35)]">
               Let&apos;s Practice
               <br />
               Together
             </h2>
-            <p className="mt-3 md:mt-4 italic tracking-[0.15em] text-brand-charcoal/55 text-sm md:text-lg">
+            <p className="mt-4 md:mt-5 tracking-[0.18em] text-white/80 text-sm md:text-lg">
               EXPLORE . FOLLOW ALONG
             </p>
           </div>
@@ -63,12 +64,12 @@ export default function Footer() {
         </div>
 
         {/* Navigation */}
-        <nav className="mt-12 md:mt-20 flex flex-wrap gap-x-6 md:gap-x-10 gap-y-2">
+        <nav className="mt-16 md:mt-28 flex flex-wrap gap-x-8 md:gap-x-14 gap-y-2">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm md:text-base uppercase tracking-wider text-brand-charcoal/80 underline-offset-8 hover:underline hover:text-brand-charcoal transition-colors"
+              className="text-sm md:text-base uppercase tracking-wider text-white/90 underline underline-offset-8 decoration-white/50 hover:text-white hover:decoration-white transition-colors"
             >
               {link.label}
             </Link>
@@ -77,15 +78,15 @@ export default function Footer() {
 
         {/* Tagline rule */}
         <div className="mt-8 flex items-center gap-4">
-          <FlowerIcon className="w-5 h-5 text-brand-olive/70 shrink-0" />
-          <span className="h-px flex-1 bg-brand-charcoal/20" />
-          <span className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-brand-charcoal/55 whitespace-nowrap">
+          <FlowerIcon className="w-5 h-5 text-white/85 shrink-0" />
+          <span className="h-px flex-1 bg-white/35" />
+          <span className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-white/75 whitespace-nowrap">
             Practice with Soulena Soul
           </span>
         </div>
 
         {/* Fine print */}
-        <div className="mt-5 flex flex-col sm:flex-row justify-between gap-1 text-[11px] text-brand-charcoal/45">
+        <div className="mt-5 flex flex-col sm:flex-row justify-between gap-1 text-[11px] text-white/55">
           <span>© {new Date().getFullYear()} Soulena Soul. All rights reserved.</span>
           <span>
             Made in{" "}
@@ -93,7 +94,7 @@ export default function Footer() {
               href="https://craftive.dev/?utm_source=soulenasoul&utm_medium=referral&utm_campaign=footer"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-brand-charcoal transition-colors"
+              className="underline underline-offset-2 hover:text-white transition-colors"
             >
               Craftive
             </a>

@@ -1,50 +1,64 @@
 import Image from "next/image";
 
-type Size = "md" | "lg" | "xl";
-
-const SIZES: Record<Size, string> = {
-  md: "w-28 h-28 md:w-36 md:h-36",
-  lg: "w-32 h-32 md:w-44 md:h-44",
-  xl: "w-36 h-36 md:w-56 md:h-56",
-};
-
-const GLIMPSE: { src: string; size: Size; offset: string }[] = [
-  { src: "/images/gallery-1.jpg", size: "lg", offset: "md:mt-2" },
-  { src: "/images/gallery-3.jpg", size: "md", offset: "md:mt-9" },
-  { src: "/images/gallery-4.jpg", size: "xl", offset: "md:mt-16" },
-  { src: "/images/gallery-5.jpg", size: "md", offset: "md:mt-9" },
-  { src: "/images/gallery-6.jpg", size: "lg", offset: "md:mt-2" },
+const CLUSTER = [
+  { src: "/images/gallery-1.jpg", d: "w-40 h-40 md:w-40 md:h-40 z-10" },
+  { src: "/images/gallery-3.jpg", d: "w-36 h-36 md:w-36 md:h-36 -ml-5 md:-ml-6 mt-10 z-20" },
+  { src: "/images/gallery-4.jpg", d: "w-44 h-44 md:w-52 md:h-52 -ml-5 md:-ml-6 z-10" },
+  { src: "/images/gallery-5.jpg", d: "w-36 h-36 md:w-36 md:h-36 -ml-5 md:-ml-6 mt-10 z-20" },
+  { src: "/images/gallery-6.jpg", d: "w-40 h-40 md:w-40 md:h-40 -ml-5 md:-ml-6 z-10" },
 ];
+
+function Circle({ src, d }: { src: string; d: string }) {
+  return (
+    <div className={`relative shrink-0 rounded-full overflow-hidden ring-4 ring-[#98906f] shadow-xl ${d}`}>
+      <Image src={src} alt="" fill sizes="240px" className="object-cover" />
+    </div>
+  );
+}
 
 export default function GlimpseGallery() {
   return (
-    <section className="bg-[#8b8168] text-brand-cream py-16 md:py-24 px-4 overflow-hidden">
-      <div className="mx-auto max-w-[1080px]">
-        {/* Curved title */}
-        <svg viewBox="0 0 1000 180" className="w-full h-auto mb-4 md:mb-8" aria-hidden="true">
+    <section className="bg-[#7d7550] text-brand-cream py-16 md:py-24 px-4 overflow-hidden">
+      {/* Desktop — title curves around the photo cluster */}
+      <div className="relative mx-auto w-full max-w-[680px] aspect-square hidden md:block">
+        <svg viewBox="0 0 500 500" className="absolute inset-0 w-full h-full" aria-hidden="true">
           <defs>
-            <path id="glimpseArc" d="M 50 160 Q 500 10 950 160" fill="none" />
+            <path id="gTop" d="M 45 250 A 205 205 0 0 1 455 250" fill="none" />
+            <path id="gBot" d="M 45 250 A 205 205 0 0 0 455 250" fill="none" />
           </defs>
           <text
             className="fill-[#e7d8ac]"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "52px", letterSpacing: "1px" }}
+            style={{ fontFamily: "var(--font-serif)", fontSize: "40px", letterSpacing: "7px" }}
           >
-            <textPath href="#glimpseArc" startOffset="50%" textAnchor="middle">
-              A Glimpse Into My Working Space
-            </textPath>
+            <textPath href="#gTop" startOffset="50%" textAnchor="middle">A&nbsp;GLIMPSE&nbsp;INTO</textPath>
+          </text>
+          <text
+            className="fill-[#e7d8ac]"
+            style={{ fontFamily: "var(--font-serif)", fontSize: "40px", letterSpacing: "7px" }}
+          >
+            <textPath href="#gBot" startOffset="50%" textAnchor="middle">MY&nbsp;WORKING&nbsp;SPACE</textPath>
           </text>
         </svg>
-        <h2 className="sr-only">A Glimpse Into My Working Space</h2>
+        <div className="absolute inset-0 flex items-center justify-center">
+          {CLUSTER.map((c) => (
+            <Circle key={c.src} src={c.src} d={c.d} />
+          ))}
+        </div>
+      </div>
 
-        {/* Overlapping circular cluster */}
-        <div className="flex flex-wrap justify-center items-center gap-y-5">
-          {GLIMPSE.map((g, i) => (
+      {/* Mobile — stacked title + wrapped circles */}
+      <div className="md:hidden text-center">
+        <p className="uppercase tracking-[0.35em] text-brand-cream/60 text-xs mb-2">A Glimpse Into</p>
+        <h2 className="font-serif text-3xl text-[#e7d8ac] mb-8">My Working Space</h2>
+        <div className="flex flex-wrap justify-center items-center gap-y-4">
+          {CLUSTER.map((c, i) => (
             <div
-              key={g.src}
-              className={`relative shrink-0 rounded-full overflow-hidden ring-4 ring-[#a89a78] shadow-xl -mx-2 md:-mx-4 ${SIZES[g.size]} ${g.offset}`}
-              style={{ zIndex: i % 2 ? 20 : 10 }}
+              key={c.src}
+              className={`relative shrink-0 rounded-full overflow-hidden ring-4 ring-[#98906f] shadow-lg -mx-2 ${
+                i % 2 ? "w-28 h-28" : "w-32 h-32"
+              }`}
             >
-              <Image src={g.src} alt="" fill sizes="240px" className="object-cover" />
+              <Image src={c.src} alt="" fill sizes="160px" className="object-cover" />
             </div>
           ))}
         </div>
