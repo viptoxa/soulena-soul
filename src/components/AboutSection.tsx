@@ -28,7 +28,7 @@ export default function AboutSection() {
         <div className="relative">
           <div className="relative rounded-3xl overflow-hidden shadow-[0_18px_50px_-24px_rgba(60,52,40,0.4)]">
             <Image
-              src="/images/move-color.jpg"
+              src="/images/move-warrior.jpg"
               alt="Beach yoga & movement class in Phuket"
               width={600}
               height={600}

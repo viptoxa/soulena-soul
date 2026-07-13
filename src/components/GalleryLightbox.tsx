@@ -44,9 +44,7 @@ export default function GalleryLightbox({ images }: { images: GalleryImage[] }) 
             type="button"
             onClick={() => setOpenIndex(index)}
             aria-label={`View ${image.alt}`}
-            className={`group relative overflow-hidden rounded-xl cursor-pointer ${
-              index === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
-            }`}
+            className="group relative overflow-hidden rounded-xl cursor-pointer aspect-square"
           >
             <Image
               src={image.src}
