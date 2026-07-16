@@ -36,17 +36,14 @@ export function MailIcon(props: IconProps) {
 }
 
 export function FlowerIcon(props: IconProps) {
+  // Eight teardrop petals radiating from the centre — rounded on the outer
+  // edge, tapering to a point in the middle (matches Soulena's Canva mark).
+  const petal = "M20 20 C 14.3 12 14.3 3.4 20 3 C 25.7 3.4 25.7 12 20 20 Z";
   return (
     <svg viewBox="0 0 40 40" fill="currentColor" {...props}>
-      <circle cx="20" cy="20" r="4" />
-      <ellipse cx="20" cy="10" rx="4" ry="7" />
-      <ellipse cx="20" cy="30" rx="4" ry="7" />
-      <ellipse cx="10" cy="20" rx="7" ry="4" />
-      <ellipse cx="30" cy="20" rx="7" ry="4" />
-      <ellipse cx="12.93" cy="12.93" rx="4" ry="7" transform="rotate(45 12.93 12.93)" />
-      <ellipse cx="27.07" cy="27.07" rx="4" ry="7" transform="rotate(45 27.07 27.07)" />
-      <ellipse cx="27.07" cy="12.93" rx="4" ry="7" transform="rotate(-45 27.07 12.93)" />
-      <ellipse cx="12.93" cy="27.07" rx="4" ry="7" transform="rotate(-45 12.93 27.07)" />
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+        <path key={angle} d={petal} transform={`rotate(${angle} 20 20)`} />
+      ))}
     </svg>
   );
 }

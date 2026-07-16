@@ -18,9 +18,9 @@ function Quote({ children, className = "" }: { children: ReactNode; className?: 
 function Credential({ title, icon, children }: { title: string; icon?: boolean; children: ReactNode }) {
   return (
     <div>
-      <h3 className="flex items-center font-serif text-2xl md:text-[30px] uppercase tracking-wide mb-3" style={{ color: SLATE }}>
+      <h3 className="flex items-center font-sans font-bold text-2xl md:text-[28px] uppercase tracking-wide mb-3" style={{ color: SLATE }}>
         {title}
-        {icon && <FlowerIcon className="ml-5 w-7 h-7 shrink-0" style={{ color: GOLD }} />}
+        {icon && <FlowerIcon className="ml-5 w-8 h-8 shrink-0" style={{ color: GOLD }} />}
       </h3>
       <ul className="space-y-1.5 text-brand-charcoal/75 text-[15px] leading-relaxed">{children}</ul>
     </div>
@@ -50,7 +50,7 @@ export default function MoreAboutMeSection() {
             More About Me
           </h1>
           <span
-            className="block leading-[0.9] -mt-4 md:-mt-8 ml-8 md:ml-28 text-5xl md:text-7xl"
+            className="block leading-[0.9] -mt-1 md:-mt-3 ml-8 md:ml-28 text-5xl md:text-7xl"
             style={{ fontFamily: "var(--font-script)", color: MAUVE }}
           >
             Soulena Soul
