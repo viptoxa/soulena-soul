@@ -18,7 +18,7 @@ function Quote({ children, className = "" }: { children: ReactNode; className?: 
 function Credential({ title, icon, children }: { title: string; icon?: boolean; children: ReactNode }) {
   return (
     <div>
-      <h3 className="flex items-center font-serif text-[26px] md:text-[34px] uppercase tracking-wide mb-3" style={{ color: SLATE }}>
+      <h3 className="flex items-center font-serif text-[24px] md:text-[28px] uppercase tracking-wide mb-3" style={{ color: SLATE }}>
         {title}
         {icon && <FlowerIcon className="ml-5 w-8 h-8 shrink-0" style={{ color: GOLD }} />}
       </h3>
