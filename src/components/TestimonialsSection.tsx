@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
   return (
     <section className="py-14 md:py-24 px-4 bg-brand-cream">
       <div className="mx-auto max-w-[1100px]">
-        <h2 className="font-serif text-4xl md:text-6xl uppercase tracking-wide text-brand-charcoal leading-[1.05] mb-8 md:mb-10 max-w-[15ch]">
+        <h2 className="font-serif text-4xl md:text-6xl uppercase tracking-wide text-brand-charcoal leading-[1.05] mb-8 md:mb-10 max-w-[19ch]">
           Gentle Words from the Community
         </h2>
 
