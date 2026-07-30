@@ -86,7 +86,7 @@ export default function ClassesPage() {
       <ClassDetailBlock data={PRIVATE_SESSION} className="bg-brand-olive/5" />
       <GroupWellnessSection />
       <SanctuaryTeaser />
-      <LocationSection />
+      <LocationSection tone="olive" />
     </>
   );
 }
