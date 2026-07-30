@@ -51,8 +51,7 @@ export default function GroupWellnessSection() {
               href={inquiryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-full border-2 px-8 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors hover:bg-[#7d2b52] hover:text-white"
-              style={{ borderColor: "#7d2b52", color: "#7d2b52" }}
+              className="inline-block rounded-full bg-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
             >
               Get in Touch
             </a>

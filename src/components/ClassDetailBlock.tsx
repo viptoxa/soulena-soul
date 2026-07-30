@@ -15,9 +15,9 @@ export type ClassDetailData = {
   secondaryCta?: { label: string; href: string };
 };
 
-// Canva palette for this page: slate headings, deep plum outline buttons.
+// Canva palette for this page: slate headings, gold flower mark. Buttons stay
+// on the site's brand-olive style used everywhere else.
 const SLATE = "#3f4c54";
-const PLUM = "#7d2b52";
 const GOLD = "#8b8459";
 
 function InfoHead({ children }: { children: ReactNode }) {
@@ -28,12 +28,22 @@ function InfoHead({ children }: { children: ReactNode }) {
   );
 }
 
-function OutlineButton({ href, children }: { href: string; children: ReactNode }) {
+function PrimaryButton({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
       href={href}
-      className="block rounded-full border-2 px-6 py-3.5 text-center text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors hover:bg-[#7d2b52] hover:text-white"
-      style={{ borderColor: PLUM, color: PLUM }}
+      className="block rounded-full bg-brand-olive px-6 py-3 text-center text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function SecondaryButton({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="block rounded-full border-2 border-brand-olive px-6 py-3 text-center text-xs uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
     >
       {children}
     </Link>
@@ -114,10 +124,12 @@ export default function ClassDetailBlock({
               ))}
             </div>
 
-            <div className="mt-8 md:mt-auto md:pt-10 flex flex-col gap-3 w-full max-w-[420px]">
-              <OutlineButton href={data.primaryCta.href}>{data.primaryCta.label}</OutlineButton>
+            <div className="mt-8 md:mt-auto md:pt-10 flex flex-col gap-3 w-full max-w-[380px]">
+              <PrimaryButton href={data.primaryCta.href}>{data.primaryCta.label}</PrimaryButton>
               {data.secondaryCta && (
-                <OutlineButton href={data.secondaryCta.href}>{data.secondaryCta.label}</OutlineButton>
+                <SecondaryButton href={data.secondaryCta.href}>
+                  {data.secondaryCta.label}
+                </SecondaryButton>
               )}
             </div>
           </div>
