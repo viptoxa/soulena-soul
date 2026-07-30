@@ -1,89 +1,102 @@
 import { SECTION_IDS, SITE } from "@/lib/constants";
+import { FlowerIcon, MailIcon } from "@/components/icons/SocialIcons";
 
-function Bullet() {
-  return <span className="w-1.5 h-1.5 rounded-full bg-brand-sage mt-2 flex-shrink-0" />;
+// Canva styles this block with a slate display heading and plum body copy.
+const SLATE = "#3f4c54";
+const PLUM = "#7d2b52";
+const GOLD = "#8b8459";
+
+function Group({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3
+        className="mb-2 text-[15px] md:text-base font-bold italic uppercase tracking-wide"
+        style={{ color: PLUM }}
+      >
+        {title}
+      </h3>
+      <ul
+        className="list-disc space-y-1.5 pl-6 text-[15px] md:text-base leading-relaxed marker:text-[#7d2b52]"
+        style={{ color: PLUM }}
+      >
+        {children}
+      </ul>
+    </div>
+  );
 }
 
 export default function PoliciesSection() {
   return (
-    <section id={SECTION_IDS.policies} className="py-14 md:py-20 px-4 bg-brand-olive/10">
-      <div className="mx-auto max-w-[800px]">
-        <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider text-center mb-4">
-          Pricing + Policies
-        </h2>
-        <p className="text-center text-brand-charcoal/60 mb-10 leading-relaxed">
-          To help sustain this outdoor wellness space in a place where the weather can
-          often be unpredictable, I kindly ask for your understanding of the following policies.
-          Thank you for helping to sustain what I love to share and create with you.
-        </p>
-
-        <div className="space-y-8">
-          <div>
-            <h3 className="font-serif text-lg text-brand-olive uppercase tracking-wider mb-4">
-              Bookings &amp; Payments
-            </h3>
-            <ul className="space-y-3 text-brand-charcoal/80 text-sm leading-relaxed">
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>All purchases are <strong>final and non-refundable</strong>.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>
-                  If you purchase a <em>beach yoga &amp; movement class</em> and are{" "}
-                  <strong>unable to attend that day</strong>, I&apos;m happy to offer you a{" "}
-                  <strong>one-time courtesy rebooking</strong> to another session.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>
-                  If a <em>beach yoga &amp; movement class</em> needs to be canceled due to{" "}
-                  <strong>weather conditions</strong>, your class credit can be used anytime{" "}
-                  <strong>within one year</strong> of the original class date.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>
-                  <em>Package sessions</em> are <strong>non-transferable and non-refundable</strong>.
-                  If an unexpected circumstance arises, please don&apos;t hesitate to reach out, and
-                  I will do my best to support you.
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-serif text-lg text-brand-olive uppercase tracking-wider mb-4">
-              Safety &amp; Respectful Space
-            </h3>
-            <ul className="space-y-3 text-brand-charcoal/80 text-sm leading-relaxed">
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>Please inform me in advance of any <strong>injuries or medical conditions</strong>.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>
-                  Please note that <strong>late arrivals of more than 15 minutes</strong> may not be
-                  able to join the class.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Bullet />
-                <span>
-                  I reserve the right to refuse participation in case of{" "}
-                  <strong>disrespectful or inappropriate behavior</strong>.
-                </span>
-              </li>
-            </ul>
-          </div>
+    <section id={SECTION_IDS.policies} className="bg-[#fdfaf2] px-4 py-14 md:py-20">
+      <div className="mx-auto max-w-[1100px]">
+        <div className="mb-5 flex items-start justify-between gap-6">
+          <h2
+            className="font-serif text-[34px] md:text-[52px] uppercase tracking-[0.04em] leading-none"
+            style={{ color: SLATE }}
+          >
+            Pricing + Policies
+          </h2>
+          <FlowerIcon className="mt-2 h-8 w-8 shrink-0" style={{ color: GOLD }} />
         </div>
 
-        <p className="text-center text-sm text-brand-charcoal/50 mt-10">
-          For any questions, feel free to contact me at{" "}
-          <a href={`mailto:${SITE.email}`} className="text-brand-olive underline">
+        <p
+          className="mb-7 max-w-[980px] text-[15px] md:text-base leading-relaxed"
+          style={{ color: PLUM }}
+        >
+          To help sustain this outdoor wellness space in a place where the weather can often be
+          unpredictable, I kindly ask for your understanding of the following policies. Thank you for
+          helping to sustain what I love to share and create with you.
+        </p>
+
+        <div className="space-y-6">
+          <Group title="Bookings &amp; Payments">
+            <li>
+              All purchases are <strong className="font-semibold">final and non-refundable</strong>.
+            </li>
+            <li>
+              If you purchase a <em className="underline">beach yoga &amp; movement class</em> and are{" "}
+              <strong className="font-semibold">unable to attend that day</strong>, I&apos;m happy to
+              offer you <strong className="font-semibold">a one-time courtesy rebooking</strong> to
+              another session.
+            </li>
+            <li>
+              If a <em className="underline">beach yoga &amp; movement class</em> needs to be canceled
+              due to <strong className="font-semibold">weather conditions</strong>, your class credit
+              can be used anytime <strong className="font-semibold">within one year</strong> of the
+              original class date.
+            </li>
+            <li>
+              <em className="underline">Package sessions</em>{" "}
+              <strong className="font-semibold">are non-transferable and non-refundable</strong>. If an
+              unexpected circumstance arises, please don&apos;t hesitate to reach out, and I will do my
+              best to support you.
+            </li>
+          </Group>
+
+          <Group title="Safety &amp; Respectful Space">
+            <li>
+              Please inform me in advance of any{" "}
+              <strong className="font-semibold">injuries or medical conditions</strong>.
+            </li>
+            <li>
+              Please note that{" "}
+              <strong className="font-semibold">late arrivals of more than 15 minutes</strong> may not
+              be able to join the class.
+            </li>
+            <li>
+              I reserve the right to refuse participation in case of{" "}
+              <strong className="font-semibold">disrespectful or inappropriate behavior</strong>.
+            </li>
+          </Group>
+        </div>
+
+        <p
+          className="mt-7 flex flex-wrap items-center gap-2 text-[15px] md:text-base"
+          style={{ color: PLUM }}
+        >
+          For any questions, feel free to contact me at:
+          <MailIcon className="h-5 w-5" style={{ color: PLUM }} />
+          <a href={`mailto:${SITE.email}`} className="underline underline-offset-4 hover:opacity-80">
             {SITE.email}
           </a>
         </p>
