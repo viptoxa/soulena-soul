@@ -1,41 +1,58 @@
-import Image from "next/image";
+import GalleryLightbox from "./GalleryLightbox";
 import { SITE } from "@/lib/constants";
 
 const inquiryHref = `${SITE.whatsappUrl}?text=${encodeURIComponent(
   "Hi Soulena! I'd like to inquire about a group class for a hotel / wellness event."
 )}`;
 
+// Muted sage-grey heading, exactly as in the Canva.
+const SAGE = "#8d8f82";
+
+const PHOTOS = [
+  { src: "/images/group-clinic.jpg", alt: "Yoga soft opening at Napatchar Clinic, Phuket" },
+  { src: "/images/group-studio.jpg", alt: "Group wellness class in a Phuket studio" },
+];
+
 export default function GroupWellnessSection() {
   return (
-    <section className="bg-brand-cream px-4 py-12 md:py-16">
-      <div className="mx-auto max-w-[1080px]">
-        <h2 className="font-serif text-3xl md:text-[40px] text-brand-charcoal leading-[1.1] mb-8">
-          Group Yoga for Hotel &amp; Wellness Event Classes
+    <section className="bg-brand-cream px-4 py-12 md:py-20">
+      <div className="mx-auto max-w-[1100px]">
+        <h2
+          className="font-serif text-[34px] md:text-[52px] leading-[1.12] mb-10 md:mb-12"
+          style={{ color: SAGE }}
+        >
+          Group Yoga for Hotel &amp;
+          <br />
+          Wellness Event Classes
         </h2>
-        <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative aspect-[3/4] rounded-xl overflow-hidden">
-              <Image src="/images/card-event.jpg" alt="Group wellness class" fill sizes="(min-width:768px) 25vw, 45vw" className="object-cover" />
-            </div>
-            <div className="relative aspect-[3/4] rounded-xl overflow-hidden mt-6">
-              <Image src="/images/gallery-4.jpg" alt="Group practice by the sea" fill sizes="(min-width:768px) 25vw, 45vw" className="object-cover" />
-            </div>
+
+        <div className="grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] gap-10 md:gap-16 items-start">
+          <div className="[&_.grid]:grid-cols-2 [&_.grid]:md:grid-cols-2 [&_button]:aspect-[4/5]">
+            <GalleryLightbox images={PHOTOS} />
           </div>
-          <div>
-            <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-              I also offer group classes for <strong className="font-medium text-brand-charcoal">hotels, wellness events, and private gatherings</strong>, all available upon request.
+
+          <div className="md:pt-2">
+            <p className="text-brand-charcoal/80 leading-relaxed mb-4 text-[16px] md:text-[17px]">
+              Bring the practice to your guests. I run{" "}
+              <strong className="font-medium text-brand-charcoal">
+                group yoga for hotels, wellness events, retreats, and private gatherings
+              </strong>{" "}
+              across Phuket — from a sunrise session on the sand to a soft opening in your studio.
             </p>
-            <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-              Each session can be thoughtfully tailored to the atmosphere and needs of your space.
+            <p className="text-brand-charcoal/80 leading-relaxed mb-4 text-[16px] md:text-[17px]">
+              Every session is shaped around your space, your schedule, and the mood you want your
+              guests to leave with — grounded, unhurried, and cared for. All levels welcome, mats and
+              props included.
             </p>
-            <p className="text-brand-charcoal/80 leading-relaxed mb-7">
-              Feel free to reach out for collaborations or more details.
+            <p className="text-brand-charcoal/80 leading-relaxed mb-8 text-[16px] md:text-[17px]">
+              Tell me about your event and I&apos;ll put together a plan for it.
             </p>
             <a
               href={inquiryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-full bg-brand-olive text-white px-8 py-3 text-xs uppercase tracking-wider hover:bg-brand-olive-dark transition-colors"
+              className="inline-block rounded-full border-2 px-8 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors hover:bg-[#7d2b52] hover:text-white"
+              style={{ borderColor: "#7d2b52", color: "#7d2b52" }}
             >
               Get in Touch
             </a>

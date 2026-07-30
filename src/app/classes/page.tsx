@@ -11,7 +11,13 @@ export const metadata: Metadata = {
 };
 
 const WEEKEND_BEACH: ClassDetailData = {
-  title: "Weekend Beach Yoga & Movement",
+  title: (
+    <>
+      Weekend Beach
+      <br />
+      Yoga &amp; Movement
+    </>
+  ),
   session: "60 minutes group session",
   includes: ["Yoga mat", "Yoga block", "1 bottle of water", "Session photos included"],
   about: [
