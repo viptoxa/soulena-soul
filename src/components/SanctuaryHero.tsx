@@ -36,15 +36,16 @@ export default function SanctuaryHero() {
           />
         </div>
 
-        {/* Gold ribbon line-art, left */}
+        {/* Gold ribbon line-art, left — full uncropped artwork (0.841 aspect,
+            matching the 364x513 box Canva gives it) */}
         <div className="pointer-events-none absolute left-[1.25%] top-[15.6%] hidden h-[76%] w-[30.3%] sm:block">
           <Image
-            src="/images/sss-loop-a.png"
+            src="/images/sss-line-ribbon.png"
             alt=""
             aria-hidden
             fill
             sizes="31vw"
-            className="-scale-x-100 select-none object-contain object-left"
+            className="select-none object-contain"
           />
         </div>
 

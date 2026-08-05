@@ -15,12 +15,12 @@ export default function SanctuaryMindBody() {
     >
       {/* Gold loop line-art sweeping in from the right */}
       <Image
-        src="/images/sss-loop-c.png"
+        src="/images/sss-line-curl.png"
         alt=""
         aria-hidden
-        width={700}
-        height={259}
-        className="pointer-events-none absolute -right-[3%] top-[54%] hidden w-[24%] max-w-[300px] select-none md:block"
+        width={980}
+        height={1031}
+        className="pointer-events-none absolute -right-[6%] top-[42%] hidden w-[26%] max-w-[330px] -scale-x-100 select-none md:block"
       />
 
       <div className="relative mx-auto grid max-w-[1200px] items-start gap-12 px-4 pb-16 pt-10 sm:px-8 md:grid-cols-[1.06fr_1fr] md:gap-10 md:pb-24 md:pt-14">

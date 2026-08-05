@@ -81,12 +81,12 @@ export default function SanctuaryExperiences() {
 
       {/* Gold loop line-art, bottom left */}
       <Image
-        src="/images/sss-loop-b.png"
+        src="/images/sss-line-curl.png"
         alt=""
         aria-hidden
-        width={800}
-        height={715}
-        className="pointer-events-none absolute bottom-[2%] left-0 hidden w-[19%] max-w-[230px] -scale-x-100 select-none sm:block"
+        width={980}
+        height={1031}
+        className="pointer-events-none absolute -left-[4%] bottom-[1%] hidden w-[21%] max-w-[260px] select-none sm:block"
       />
 
       <div className="relative mx-auto max-w-[1200px] px-4 pb-14 pt-12 sm:px-8 md:pb-20 md:pt-16">
