@@ -29,7 +29,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-[1200px] px-[15px] py-2.5 md:px-4 md:py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
         {/* Contact info */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 md:pr-6">
           <a
             href={SITE.whatsappUrl}
             target="_blank"
@@ -44,12 +44,18 @@ export default function Header() {
             className="flex items-center gap-1.5 text-sm text-brand-charcoal hover:text-brand-olive transition-colors"
           >
             <MailIcon className="w-4 h-4" />
-            <span className="hidden sm:inline">{SITE.email}</span>
+            {/*
+             * The row is capped at 1200px, so with six nav items there is no
+             * width at which both addresses fit beside the nav. The phone
+             * stays; e-mail is icon-only on desktop (it is in the footer, on
+             * /contact and one click away here).
+             */}
+            <span className="hidden sm:inline md:hidden">{SITE.email}</span>
           </a>
         </div>
 
         {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-6 justify-self-center">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 justify-self-center whitespace-nowrap">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
