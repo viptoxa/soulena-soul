@@ -7,13 +7,9 @@ import {
   ThreadsIcon,
 } from "@/components/icons/SocialIcons";
 
-// Canva page 9 keeps this page deliberately minimal: two large Playfair
-// headings ("CONTACT" and "MAP", no extra letter-spacing) in the desaturated
-// slate blue-grey used across the site, over a row of plain icon links.
+// Canva page 9 keeps this page deliberately minimal: a large Playfair heading
+// in the desaturated slate blue-grey used across the site, over plain links.
 const SLATE = "#3f4c54";
-
-const HEADING =
-  "text-center font-serif uppercase leading-none text-[32px] md:text-[44px]";
 
 const CHANNELS = [
   {
@@ -46,43 +42,40 @@ const CHANNELS = [
   },
 ];
 
-/** Contact channels and the Phuket map, as one continuous band. */
+/** Contact channels sit inside the map block, so the page stays compact. */
 export default function ContactMapSection() {
   return (
     <section
       id={SECTION_IDS.contact}
-      className="bg-brand-cream px-4 pt-16 pb-16 md:pt-24 md:pb-24"
+      className="bg-brand-cream px-4 pt-14 pb-16 md:pt-20 md:pb-24"
       style={{ color: SLATE }}
     >
       <div className="mx-auto max-w-[1200px]">
-        <h1 className={HEADING}>Contact</h1>
-
-        <ul className="mt-12 flex flex-wrap items-start justify-center gap-x-12 gap-y-8 md:mt-16 md:gap-x-20">
-          {CHANNELS.map(({ label, href, display, external, Icon }) => (
-            <li key={label}>
-              <a
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                className="group flex flex-col items-center gap-3.5 text-brand-charcoal transition-colors hover:text-brand-olive"
-              >
-                <Icon
-                  className="h-11 w-11 md:h-[58px] md:w-[58px]"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">{label}: </span>
-                <span className="text-[12px] tracking-[0.04em] opacity-70 transition-opacity group-hover:opacity-100 md:text-[13px]">
-                  {display}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <h2 className={`${HEADING} mt-20 md:mt-28`}>Map</h2>
+        <h1 className="text-center font-serif text-[32px] uppercase leading-none md:text-[44px]">
+          Contact
+        </h1>
 
         <div id={SECTION_IDS.location} className="mt-12 md:mt-16">
-          <LocationMap />
+          <LocationMap>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-4 border-t border-brand-cream-dark pt-6">
+              {CHANNELS.map(({ label, href, display, external, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    className="group flex items-center gap-2.5 text-brand-charcoal transition-colors hover:text-brand-olive"
+                  >
+                    <Icon className="h-[22px] w-[22px] shrink-0" aria-hidden="true" />
+                    <span className="sr-only">{label}: </span>
+                    <span className="text-[13px] opacity-75 transition-opacity group-hover:opacity-100">
+                      {display}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </LocationMap>
         </div>
       </div>
     </section>
