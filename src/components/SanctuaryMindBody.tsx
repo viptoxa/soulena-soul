@@ -20,7 +20,7 @@ export default function SanctuaryMindBody() {
         aria-hidden
         width={700}
         height={259}
-        className="pointer-events-none absolute -bottom-[4%] right-0 hidden w-[26%] max-w-[320px] rotate-180 select-none md:block"
+        className="pointer-events-none absolute -right-[3%] top-[54%] hidden w-[24%] max-w-[300px] select-none md:block"
       />
 
       <div className="relative mx-auto grid max-w-[1200px] items-start gap-12 px-4 pb-16 pt-10 sm:px-8 md:grid-cols-[1.06fr_1fr] md:gap-10 md:pb-24 md:pt-14">
@@ -28,7 +28,7 @@ export default function SanctuaryMindBody() {
 
         <div className="md:pt-1">
           <h2
-            className="font-serif text-[clamp(2.1rem,5.2vw,3.4rem)] leading-[0.98]"
+            className="font-serif text-[clamp(2.2rem,5.7vw,4rem)] leading-[0.98]"
             style={{ color: SANCTUARY_CREAM }}
           >
             The <em className="italic">Mind</em>&#8211;Body

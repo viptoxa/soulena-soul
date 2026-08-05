@@ -28,7 +28,7 @@ const EXPERIENCES: Experience[] = [
 function ExperienceOrb({ image, imageAlt, title, points }: Experience) {
   return (
     <div
-      className="relative aspect-square w-[248px] shrink-0 rounded-full sm:w-[270px] lg:w-[300px]"
+      className="relative aspect-square w-[260px] shrink-0 rounded-full sm:w-[290px] lg:w-[326px]"
       style={{ backgroundImage: SANCTUARY_ORB }}
     >
       <div className="flex h-full w-full flex-col items-center justify-center px-[13%] text-center">
@@ -99,7 +99,7 @@ export default function SanctuaryExperiences() {
         </h2>
 
         <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[minmax(0,1fr)_290px] md:gap-0">
-          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-2 lg:gap-3">
+          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-5 lg:gap-7">
             {EXPERIENCES.map((experience) => (
               <ExperienceOrb key={experience.title.join(" ")} {...experience} />
             ))}

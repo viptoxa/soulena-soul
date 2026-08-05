@@ -130,14 +130,9 @@ export default function SanctuaryCollage() {
           <Frame slides={FRAME_C} index={index} sizes="(min-width: 768px) 27vw, 50vw" priority />
         </div>
 
-        {/* Framed print, lower left */}
-        <div
-          className="absolute left-[-1%] top-[37.5%] z-20 h-[35.05%] w-[32.1%] p-[5.5%] shadow-[0_16px_36px_rgba(0,0,0,0.5)]"
-          style={{ backgroundColor: "#e3ded5" }}
-        >
-          <div className="relative h-full w-full overflow-hidden">
-            <Frame slides={FRAME_B} index={index} sizes="(min-width: 768px) 17vw, 30vw" />
-          </div>
+        {/* Lower-left print — no mat, the photo is the frame */}
+        <div className="absolute left-[-1%] top-[37.5%] z-20 h-[35.05%] w-[32.1%] overflow-hidden shadow-[0_16px_36px_rgba(0,0,0,0.5)]">
+          <Frame slides={FRAME_B} index={index} sizes="(min-width: 768px) 17vw, 30vw" />
         </div>
       </div>
 

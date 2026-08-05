@@ -19,8 +19,8 @@ export default function SanctuaryHero() {
       style={{ backgroundColor: SANCTUARY_INK }}
     >
       <div className="relative mx-auto h-[420px] w-full max-w-[1400px] sm:h-[540px] md:h-[600px] lg:h-[700px] xl:h-[740px]">
-        {/* Bowls photo — right-hand panel; the orb overlaps its left edge */}
-        <div className="absolute right-0 top-[6%] h-[84%] w-[46%] sm:w-[38%] md:w-[32%]">
+        {/* Bowls photo — inset right-hand panel; the orb overlaps its left edge */}
+        <div className="absolute right-0 top-[6%] h-[84%] w-[46%] sm:w-[38%] md:right-[3%] md:w-[33%]">
           <Image
             src="/images/sss-hero-bowls.jpg"
             alt="Brass singing bowls, crystal bowls and mallets laid out on a striped rug for a sound healing ceremony"
@@ -38,7 +38,7 @@ export default function SanctuaryHero() {
           aria-hidden
           width={700}
           height={770}
-          className="pointer-events-none absolute left-[1%] top-[9%] hidden w-[27%] max-w-[300px] -scale-x-100 select-none sm:block"
+          className="pointer-events-none absolute left-[4%] top-[7%] hidden w-[31%] max-w-[420px] -scale-x-100 select-none sm:block"
         />
 
         {/* Navy orb */}
