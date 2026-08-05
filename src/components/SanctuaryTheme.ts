@@ -12,9 +12,15 @@ export const SANCTUARY_INK = "#1d1913";
 /** Cream used for headings and body copy on the dark canvas. */
 export const SANCTUARY_CREAM = "#e9e3d7";
 
-/** Deep navy orb — the hero medallion and the two experience circles. */
+/**
+ * Deep navy orb — the hero medallion and the two experience circles.
+ * Lifted verbatim from the Canva radialGradient (r=181.019 in a 256 box, so
+ * its stops land at 0 / 70.7% / 141.4% of the circle's own radius). Darkest
+ * just inside the rim, then lifting to a pale blue edge — that rim glow is
+ * what reads as the orb's shadow.
+ */
 export const SANCTUARY_ORB =
-  "radial-gradient(circle at 50% 46%, #1e1e28 0%, #23242f 46%, #2c303e 82%, #383e4f 100%)";
+  "radial-gradient(circle closest-side at 50% 50%, #131e38 0%, #04091c 70.7%, #475f86 141.4%)";
 
 /** Gold display type, clipped to the text like the Canva gradient fill. */
 export const SANCTUARY_GOLD_TEXT: CSSProperties = {

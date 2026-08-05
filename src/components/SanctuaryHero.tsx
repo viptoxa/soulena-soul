@@ -8,53 +8,60 @@ import {
 } from "@/components/SanctuaryTheme";
 
 /**
- * Canva page 6 hero: warm near-black canvas, gold loop line-art on the left,
- * the singing-bowls photo panel on the right, and a deep navy orb centred on
- * top of both carrying the gold display type.
+ * Canva page 6 hero, rebuilt from measurements taken off the live design
+ * (page 1200x675, i.e. 16:9). Everything below is expressed as a share of that
+ * frame so it holds at any width:
+ *
+ *   orb        626 wide, centred, top 48px      -> 52.2% W, left 23.9%, top 7.1% H
+ *   bowls photo 447x671 at x=731, y=44          -> 37.25% W, left 60.9%, top 6.5% H
+ *   line art   364x513 at x=15,  y=105          -> 30.3%  W, left 1.25%, top 15.6% H
+ *   "SANCTUARY" 42.67px                         -> 3.56% W
  */
 export default function SanctuaryHero() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ backgroundColor: SANCTUARY_INK }}
-    >
-      <div className="relative mx-auto h-[420px] w-full max-w-[1400px] sm:h-[540px] md:h-[600px] lg:h-[700px] xl:h-[740px]">
-        {/* Bowls photo — inset right-hand panel; the orb overlaps its left edge */}
-        <div className="absolute right-0 top-[6%] h-[84%] w-[46%] sm:w-[38%] md:right-[3%] md:w-[33%]">
+    <section className="relative overflow-hidden" style={{ backgroundColor: SANCTUARY_INK }}>
+      <div
+        className="relative mx-auto aspect-[4/5] w-full max-w-[1400px] sm:aspect-[16/9]"
+        style={{ containerType: "inline-size" }}
+      >
+        {/* Bowls photo — inset panel on the right */}
+        <div className="absolute right-0 top-[6%] h-[84%] w-[46%] sm:left-[60.9%] sm:right-auto sm:top-[6.5%] sm:h-[99.4%] sm:w-[37.25%]">
           <Image
             src="/images/sss-hero-bowls.jpg"
             alt="Brass singing bowls, crystal bowls and mallets laid out on a striped rug for a sound healing ceremony"
             fill
-            sizes="(min-width: 768px) 32vw, 46vw"
+            sizes="(min-width: 640px) 38vw, 46vw"
             className="object-cover"
             priority
           />
         </div>
 
-        {/* Gold loop line-art, left */}
-        <Image
-          src="/images/sss-loop-a.png"
-          alt=""
-          aria-hidden
-          width={700}
-          height={770}
-          className="pointer-events-none absolute left-[4%] top-[7%] hidden w-[31%] max-w-[420px] -scale-x-100 select-none sm:block"
-        />
+        {/* Gold ribbon line-art, left */}
+        <div className="pointer-events-none absolute left-[1.25%] top-[15.6%] hidden h-[76%] w-[30.3%] sm:block">
+          <Image
+            src="/images/sss-loop-a.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="31vw"
+            className="-scale-x-100 select-none object-contain object-left"
+          />
+        </div>
 
         {/* Navy orb */}
         <div
-          className="absolute left-[46%] top-1/2 aspect-square w-[78vw] max-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full sm:left-1/2 sm:max-w-[400px] md:max-w-[500px] lg:max-w-[580px] xl:max-w-[640px]"
+          className="absolute left-1/2 top-[46%] aspect-square w-[80cqw] -translate-x-1/2 -translate-y-1/2 rounded-full sm:left-[23.9%] sm:top-[7.1%] sm:w-[52.2cqw] sm:translate-x-0 sm:translate-y-0"
           style={{ backgroundImage: SANCTUARY_ORB }}
         >
-          <div className="flex h-full w-full -translate-y-[5%] flex-col items-center justify-center px-6 text-center">
+          <div className="flex h-full w-full flex-col items-center justify-center px-[8%] pb-[3%] text-center">
             <FlowerIcon
-              className="mb-[7%] aspect-square w-[7%] min-w-[22px]"
+              className="mb-[6.5%] aspect-square w-[5.2cqw] sm:w-[3.3cqw]"
               style={{ color: SANCTUARY_CREAM }}
               aria-hidden
             />
 
             <p
-              className="text-[9px] uppercase leading-[1.55] tracking-[0.22em] sm:text-[11px] md:text-[13px]"
+              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.22em] sm:text-[1.17cqw]"
               style={{ color: SANCTUARY_CREAM }}
             >
               Curated Private
@@ -62,9 +69,9 @@ export default function SanctuaryHero() {
               Wellness Experience
             </p>
 
-            <h1 className="mb-[8%] mt-[6%] font-serif uppercase">
+            <h1 className="mb-[7%] mt-[6.5%] font-serif uppercase">
               <span
-                className="block text-[clamp(2.1rem,8.2vw,4.5rem)] leading-[0.87]"
+                className="block text-[11.5cqw] leading-[0.87] sm:text-[7.5cqw]"
                 style={SANCTUARY_GOLD_TEXT}
               >
                 Soul &amp;
@@ -72,7 +79,7 @@ export default function SanctuaryHero() {
                 Sound
               </span>
               <span
-                className="mt-[0.25em] block text-[clamp(1rem,3.9vw,2.2rem)] leading-none tracking-[0.14em]"
+                className="mt-[0.22em] block text-[5.4cqw] leading-none tracking-[0.14em] sm:text-[3.56cqw]"
                 style={SANCTUARY_GOLD_TEXT}
               >
                 Sanctuary
@@ -80,7 +87,7 @@ export default function SanctuaryHero() {
             </h1>
 
             <p
-              className="text-[9px] uppercase leading-[1.55] tracking-[0.22em] sm:text-[11px] md:text-[13px]"
+              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.22em] sm:text-[1.17cqw]"
               style={{ color: SANCTUARY_CREAM }}
             >
               For Your Special Day
