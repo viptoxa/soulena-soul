@@ -90,14 +90,18 @@ export default function PoliciesSection() {
           </Group>
         </div>
 
-        <p
-          className="mt-7 flex flex-wrap items-center gap-2 text-[15px] md:text-base"
-          style={{ color: PLUM }}
-        >
-          For any questions, feel free to contact me at:
-          <MailIcon className="h-5 w-5" style={{ color: PLUM }} />
-          <a href={`mailto:${SITE.email}`} className="underline underline-offset-4 hover:opacity-80">
-            {SITE.email}
+        <p className="mt-7 text-[15px] md:text-base" style={{ color: PLUM }}>
+          For any questions, feel free to contact me at:{" "}
+          <a
+            href={`mailto:${SITE.email}`}
+            className="ml-1 inline-flex items-baseline gap-2 hover:opacity-80"
+          >
+            <MailIcon
+              className="h-[1em] w-[1em] shrink-0 translate-y-[0.1em] self-center"
+              strokeWidth={1.6}
+              aria-hidden
+            />
+            <span className="underline underline-offset-4">{SITE.email}</span>
           </a>
         </p>
       </div>

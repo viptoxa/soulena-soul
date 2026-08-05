@@ -45,10 +45,16 @@ export default function BookingSection() {
           priority
           sizes="100vw"
           className="object-cover object-center"
+          style={{ filter: "saturate(0.78) contrast(0.74)" }}
         />
-        {/* Keep the heading legible over the "Soulena" sand sign in the photo */}
-        <div className="absolute inset-0 bg-brand-charcoal/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-charcoal/35 via-transparent to-transparent" />
+        {/*
+         * Canva gives this photo a soft warm wash rather than a grey scrim.
+         * Measured off the export: its shadows sit at rgb(85,77,62) and the
+         * sand median at rgb(134,112,87) — so the teal "Soulena" sign reads
+         * olive-brown and white type stays legible over the whole frame.
+         * The contrast/saturate pair plus this overlay reproduce both points.
+         */}
+        <div className="absolute inset-0 bg-[#6f6346]/60" />
 
         <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-16 md:py-28 flex flex-col items-center text-center text-white">
           <FlowerIcon className="w-8 h-8 md:w-10 md:h-10 text-white mb-5 md:mb-7" />
