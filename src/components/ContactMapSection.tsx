@@ -1,8 +1,10 @@
 import { SITE, SECTION_IDS } from "@/lib/constants";
+import LocationMap from "@/components/LocationMap";
 import {
   WhatsAppIcon,
   MailIcon,
   InstagramIcon,
+  ThreadsIcon,
 } from "@/components/icons/SocialIcons";
 
 // Canva page 9 keeps this page deliberately minimal: two large Playfair
@@ -35,13 +37,21 @@ const CHANNELS = [
     external: true,
     Icon: InstagramIcon,
   },
+  {
+    label: "Threads",
+    href: SITE.threads,
+    display: SITE.instagramHandle,
+    external: true,
+    Icon: ThreadsIcon,
+  },
 ];
 
+/** Contact channels and the Phuket map, as one continuous band. */
 export default function ContactMapSection() {
   return (
     <section
       id={SECTION_IDS.contact}
-      className="bg-brand-cream px-4 pt-16 pb-0 md:pt-24"
+      className="bg-brand-cream px-4 pt-16 pb-16 md:pt-24 md:pb-24"
       style={{ color: SLATE }}
     >
       <div className="mx-auto max-w-[1200px]">
@@ -69,9 +79,11 @@ export default function ContactMapSection() {
           ))}
         </ul>
 
-        {/* Canva pairs "CONTACT" with a "MAP" heading over the Phuket map —
-            LocationSection renders that map directly below this band. */}
         <h2 className={`${HEADING} mt-20 md:mt-28`}>Map</h2>
+
+        <div id={SECTION_IDS.location} className="mt-12 md:mt-16">
+          <LocationMap />
+        </div>
       </div>
     </section>
   );
