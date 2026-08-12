@@ -7,10 +7,16 @@ const SHADOW = "shadow-[0_16px_40px_-16px_rgba(60,52,40,0.45)]";
 // Real student notes — shown in full (never cropped), overlapping like the Canva.
 // The e-mail screenshots sit on white cards; Tina's note is the photo itself,
 // so it gets no white frame.
+//
+// The "-r" files are redacted: surnames, the sender handle and one real
+// profile photo are burned out of the pixels, not merely covered with CSS —
+// a CSS mask would leave the unredacted original fetchable at its own URL.
+// Soulena is asking each student for permission; until she has it, only first
+// names are published. The originals live outside the repo.
 const CARDS = [
-  { src: "/images/about-testi-1.jpg", w: 1000, h: 565, framed: true, alt: "Thank-you note from Paul & Sarah after a morning class", pos: "left-0 top-[16%] w-[36%] rotate-[-4deg] z-10" },
-  { src: "/images/about-testi-2.jpg", w: 1000, h: 754, framed: true, alt: "Message from Elisa and Felix after a private class", pos: "left-[39%] top-[8%] w-[31%] rotate-[-2deg] z-20" },
-  { src: "/images/about-testi-3.jpg", w: 1000, h: 760, framed: true, alt: "Kind words from Jana after a wonderful class", pos: "left-[19%] top-[48%] w-[35%] rotate-[-1deg] z-30" },
+  { src: "/images/about-testi-1-r.jpg", w: 1000, h: 565, framed: true, alt: "Thank-you note from Paul & Sarah after a morning class", pos: "left-0 top-[16%] w-[36%] rotate-[-4deg] z-10" },
+  { src: "/images/about-testi-2-r.jpg", w: 1000, h: 754, framed: true, alt: "Message from Elisa and Felix after a private class", pos: "left-[39%] top-[8%] w-[31%] rotate-[-2deg] z-20" },
+  { src: "/images/about-testi-3-r.jpg", w: 1000, h: 760, framed: true, alt: "Kind words from Jana after a wonderful class", pos: "left-[19%] top-[48%] w-[35%] rotate-[-1deg] z-30" },
   { src: "/images/about-testi-4.jpg", w: 694, h: 999, framed: false, alt: "Handwritten thank-you card from Tina at Mandarava Resort", pos: "left-[69%] top-0 w-[27%] rotate-[7deg] z-40" },
 ] as const;
 
