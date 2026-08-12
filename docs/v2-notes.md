@@ -18,7 +18,7 @@ Backup of the pre-rebuild layout: git tag `checkpoint-2026-07-09` + branch `back
 - [x] /classes — Class Pricing note + Weekend Beach + Private Session (ClassDetailBlock) + Group Hotel & Wellness + Sanctuary teaser + map.
 - [x] /pricing — 4 families (`src/lib/pricing.ts`) + policies.
 - [x] /booking — Cal.com availability (BookingSection) + inquiry form (BookingInquiry→WhatsApp) + policies.
-- [x] /payment — Card (Stripe, "coming soon") / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
+- [x] /payment — Card (Stripe, per-package links) / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
 - [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.
 - [x] /sanctuary — dark luxury: hero + Mind–Body Connection + Creating Space (Curated Yoga/Sound Bath + 2h experience).
 - [x] /sanctuary/inquiry — dark inquiry form (InquiryForm).
@@ -30,27 +30,45 @@ Backup of the pre-rebuild layout: git tag `checkpoint-2026-07-09` + branch `back
 - Sanctuary: her dev-note immersive auto-gallery for the middle section.
 - Orphaned: old ContactSection.tsx no longer routed (safe to delete later).
 
-## BLOCK BEFORE PROD
-- Testimonials show real names/emails — publish only after Soulena's OK.
-- Bank details + Stripe links are placeholders until she sends them.
+## Client sign-off (2026-08-13)
+Soulena reviewed the whole live site and approved it. She tested both forms herself
+(booking + Sanctuary inquiry) and confirmed the WhatsApp hand-off carries every field.
 
-## Pricing (from Canva; confirm final — she said still updating)
-Beach: Drop-in 400฿/$12 · 3× 1,100฿/$33 · 5× 1,800฿/$55
-Private: 5× 5,500฿/$168 · 10× 10,000฿/$306
-Duo: 5× 9,000฿/$275 · 10× 17,000฿/$520
-Online 1:1: Single 1,200฿/$35.8 · 5× 5,200฿/$155 · 10× 9,500฿/$284
+- **Testimonials — permission still PENDING.** She is e-mailing each student first.
+  Until she confirms, `/about` uses `about-testi-{1,2,3}-r.jpg`: surnames, the
+  `schuth.elisa` sender handle and Jana's profile photo are burned out of the JPEG
+  pixels, and the originals were deleted from `public/`. The redaction is baked into
+  the files on purpose — a CSS mask would have left the original fetchable at its own
+  URL. To restore once she says yes: `git show 30501f3^:public/images/about-testi-1.jpg`
+  (etc.) and drop the `-r` suffix in `TestimonialsSection.tsx`.
+- **Prices are final** and now show **THB only** — she asked to drop the USD
+  approximations, so `priceUSD` is gone from `PricingTier`. Stripe converts to the
+  visitor's own currency at checkout anyway.
+- **Stripe**: she creates one Payment Link per package in her dashboard and sends each
+  over. Wire them into `PRICING[].tiers[].stripeUrl`; a tier without a link simply
+  renders no card button. Live so far: Beach drop-in (400 THB).
+- **Bank details are live on `/payment`**: KBANK 043-186-9241, Miss Jitpisut
+  Ponsumritchok; PromptPay 085-035-0848.
+- **Cal.com**: she is checking her availability and deleting the default 15/30-min
+  event types herself.
+
+## Pricing (confirmed final 2026-08-13 — THB only)
+Beach: Drop-in 400฿ · 3× 1,100฿ · 5× 1,800฿
+Private: 5× 5,500฿ · 10× 10,000฿
+Duo: 5× 9,000฿ · 10× 17,000฿
+Online 1:1: Single 1,200฿ · 5× 5,200฿ · 10× 9,500฿
 
 ## Image asset map (public/images/, curated by workflow wf_04701cd5)
 hero-1/2/3, about-main, instructor-a/b, card-beach(Photo_014), card-private, card-event,
 card-sanctuary, gallery-1..6, testimonial-1..4, sanctuary-hero, sanctuary-1..4, sea-pearl.png,
 footer-hands.jpg, contact-bg.jpg, booking-bg.jpg.
 
-## NEEDED FROM SOULENA (for the message)
-1. Avatar — a proper front-facing round headshot (none usable in the drive).
-2. Stripe Payment Links (URL per package) once prices are final.
-3. Bank-transfer details (account name + number / PromptPay).
-4. Cal.com — confirm event slugs (beach-yoga-class, private-session); delete default 30/15-min events.
-5. Testimonials — OK to publish the "Compliment-*" screenshots? names to keep/remove?
-6. Confirm final prices are locked, then set up Notion self-editing + teach her.
-7. (optional) Sanctuary photos are bright daytime — a candlelit/darker set would match the luxury tone; else we regrade.
-8. (optional) One more true sunset/beach landscape for the 3rd hero slide.
+## STILL OPEN
+1. **Mobile layout has never been reviewed** — every round was desktop-only. Next job.
+2. Testimonials — waiting on her students' permission before un-redacting the names.
+3. Remaining Stripe Payment Links, one per package, as she creates them.
+4. Avatar — she has no front-facing headshot yet and will shoot one.
+5. Sanctuary photos are daytime only; she is happy for us to colour-grade them to
+   match the dark page.
+6. Notion self-editing for prices + a short walkthrough for her (prices are locked now).
+7. (optional) One more true sunset/beach landscape for the 3rd hero slide.
