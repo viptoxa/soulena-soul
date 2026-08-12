@@ -1,17 +1,23 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { FlowerIcon } from "@/components/icons/SocialIcons";
-import { SECTION_IDS, SITE } from "@/lib/constants";
+import { ROUTES, SECTION_IDS, SITE } from "@/lib/constants";
+import { HAS_STRIPE_LINKS } from "@/lib/pricing";
 
 // Canva page 10 palette: slate heading, gold flower mark on cream.
 // Buttons stay on the site's brand-olive style used everywhere else.
 const SLATE = "#3f4c54";
 const GOLD = "#c7b96e";
 
-// Stripe is applied for but not live yet — the client has not supplied a
-// payment link. Keep this null until a real URL arrives; the card then
-// renders a "coming soon" note instead of a button.
-const STRIPE_PAYMENT_LINK: string | null = null;
+// Soulena's Thai bank details, sent 2026-08-13. Card payment is per-package,
+// so it lives on the Package page next to each price rather than here.
+const BANK = {
+  name: "Kasikornbank (KBANK)",
+  account: "043-186-9241",
+  holder: "Miss Jitpisut Ponsumritchok",
+  promptPay: "085-035-0848",
+};
 
 function MethodCard({
   step,
@@ -114,20 +120,19 @@ export default function PaymentSection() {
         <div className="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6 md:mt-8">
           <MethodCard step="Option 02" title="Credit Card Payment">
             <p>
-              Secure online card payment via Stripe.
-              {STRIPE_PAYMENT_LINK ? null : (
+              Secure online card payment via Stripe. Open the package you booked and
+              pay by card right there — you will be charged in your own currency.
+              {HAS_STRIPE_LINKS ? null : (
                 <span className="text-brand-charcoal/45"> Coming soon.</span>
               )}
             </p>
-            {STRIPE_PAYMENT_LINK ? (
-              <a
-                href={STRIPE_PAYMENT_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+            {HAS_STRIPE_LINKS ? (
+              <Link
+                href={ROUTES.pricing}
                 className="mt-2 inline-block rounded-full border-2 border-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
               >
-                Pay by card
-              </a>
+                Go to packages
+              </Link>
             ) : null}
           </MethodCard>
 
@@ -139,9 +144,27 @@ export default function PaymentSection() {
           </MethodCard>
 
           <MethodCard step="Option 04" title="Bank Transfer">
-            <p>
-              Thai bank transfer — account details are shared with your booking
-              confirmation.
+            <p>Thai bank transfer, or PromptPay from any Thai banking app.</p>
+            <dl className="space-y-1.5 text-[15px]">
+              <div>
+                <dt className="text-brand-charcoal/50">{BANK.name}</dt>
+                <dd className="font-medium tracking-wide text-brand-charcoal">
+                  {BANK.account}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-brand-charcoal/50">Account name</dt>
+                <dd className="text-brand-charcoal">{BANK.holder}</dd>
+              </div>
+              <div>
+                <dt className="text-brand-charcoal/50">PromptPay</dt>
+                <dd className="font-medium tracking-wide text-brand-charcoal">
+                  {BANK.promptPay}
+                </dd>
+              </div>
+            </dl>
+            <p className="text-brand-charcoal/60">
+              Please send the transfer slip on WhatsApp so I can confirm your place.
             </p>
           </MethodCard>
         </div>
