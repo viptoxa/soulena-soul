@@ -9,9 +9,10 @@ const SLATE = "#3f4c54";
 const MAROON = "#661414";
 const RULE = "#d9d9d9";
 
-// Canva prints the price as one bold line, e.g. "1,200 THB (~ USD 35.8)".
+// Canva prints the price as one bold line. The USD approximation Canva carried
+// was dropped at Soulena's request — Stripe converts at checkout anyway.
 function priceLine(tier: PricingTier) {
-  return `${tier.priceTHB.toLocaleString("en-US")} THB (~ USD ${tier.priceUSD})`;
+  return `${tier.priceTHB.toLocaleString("en-US")} THB`;
 }
 
 function TierCard({ tier }: { tier: PricingTier }) {
@@ -40,9 +41,23 @@ function TierCard({ tier }: { tier: PricingTier }) {
         </ul>
       </div>
 
-      <p className="px-5 py-5 text-[18px] font-bold text-brand-charcoal md:px-6 md:py-6 md:text-[22px]">
-        {priceLine(tier)}
-      </p>
+      <div className="px-5 py-5 md:px-6 md:py-6">
+        <p className="text-[18px] font-bold text-brand-charcoal md:text-[22px]">
+          {priceLine(tier)}
+        </p>
+        {/* Only packages Soulena has already created a Stripe link for can be
+            paid by card here; the rest still go through the Payment page. */}
+        {tier.stripeUrl ? (
+          <a
+            href={tier.stripeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block rounded-full bg-brand-olive px-7 py-2.5 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+          >
+            Pay by card
+          </a>
+        ) : null}
+      </div>
     </div>
   );
 }

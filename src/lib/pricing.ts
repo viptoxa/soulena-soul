@@ -1,7 +1,11 @@
 // v2 pricing — sourced from Soulena's finalized Canva ("FIND THE PACKAGE THAT FITS YOUR FLOW").
 // Kept as a typed local structure for now so the section matches the design exactly.
-// The shape mirrors a future Notion schema (Family / Tier / features / THB / USD / validity)
+// The shape mirrors a future Notion schema (Family / Tier / features / THB / validity)
 // so pricing can migrate to Notion for self-service editing once numbers are locked.
+//
+// Prices are THB only: Soulena asked to drop the USD approximations (2026-08-13) —
+// they cluttered the card and a hard-coded rate drifts. Stripe already shows each
+// visitor the converted amount in their own currency at checkout.
 
 export interface PricingTier {
   id: string;
@@ -9,8 +13,13 @@ export interface PricingTier {
   subtitle: string;
   features: string[];
   priceTHB: number;
-  priceUSD: string; // string keeps values like "35.8" exact
   highlight?: boolean; // gentle default emphasis (best value)
+  /**
+   * Stripe Payment Link for this exact package. Soulena creates them one at a
+   * time in her Stripe dashboard and sends each over; a tier without a link
+   * simply shows no card button (the other payment options still apply).
+   */
+  stripeUrl?: string;
 }
 
 export interface PricingFamily {
@@ -31,7 +40,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Perfect for first-time visitors and mindful island stays",
         features: ["Mat included", "Suitable for all levels"],
         priceTHB: 400,
-        priceUSD: "12",
+        stripeUrl: "https://buy.stripe.com/aFa5kwga05bX6Vuffx6Na00",
       },
       {
         id: "beach-3",
@@ -39,7 +48,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "A mini journey to move, breath, and reconnect",
         features: ["Ideal for short stays", "Valid for 30 days"],
         priceTHB: 1100,
-        priceUSD: "33",
       },
       {
         id: "beach-5",
@@ -47,7 +55,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Build consistency and deepen your practice",
         features: ["10% off regular price!", "Valid for 60 days"],
         priceTHB: 1800,
-        priceUSD: "55",
         highlight: true,
       },
     ],
@@ -62,7 +69,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Stay consistent and build your practice",
         features: ["Personalized private sessions", "Flexible time & location", "Valid for 60 days"],
         priceTHB: 5500,
-        priceUSD: "168",
       },
       {
         id: "private-10",
@@ -70,7 +76,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "For dedicated souls who want it all!",
         features: ["Designed for deeper transformation", "Build a consistent practice", "Valid for 90 days"],
         priceTHB: 10000,
-        priceUSD: "306",
         highlight: true,
       },
     ],
@@ -85,7 +90,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "A supportive practice for two",
         features: ["Shared private sessions", "Flexible time & location", "Valid for 60 days"],
         priceTHB: 9000,
-        priceUSD: "275",
       },
       {
         id: "duo-10",
@@ -93,7 +97,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Grow together through practice",
         features: ["Designed for consistency & growth", "Personalized guidance for two", "Valid for 90 days"],
         priceTHB: 17000,
-        priceUSD: "520",
         highlight: true,
       },
     ],
@@ -108,7 +111,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "A great place to start",
         features: ["Personalized guidance", "Yoga, mobility & strength", "Connect via Google Meet"],
         priceTHB: 1200,
-        priceUSD: "35.8",
       },
       {
         id: "online-5",
@@ -116,7 +118,6 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Build consistency at your own pace",
         features: ["Personalized coaching", "Flexible scheduling", "Valid for 45 days"],
         priceTHB: 5200,
-        priceUSD: "155",
       },
       {
         id: "online-10",
@@ -124,9 +125,11 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Deepen your practice and progress",
         features: ["Long-term guidance", "Tailored to your goals", "Valid for 75 days"],
         priceTHB: 9500,
-        priceUSD: "284",
         highlight: true,
       },
     ],
   },
 ];
+
+/** True once at least one package has a live Stripe Payment Link. */
+export const HAS_STRIPE_LINKS = PRICING.some((f) => f.tiers.some((t) => t.stripeUrl));
