@@ -24,15 +24,23 @@ export default function SanctuaryHero() {
         className="relative mx-auto aspect-[4/5] w-full max-w-[1400px] sm:aspect-[16/9]"
         style={{ containerType: "inline-size" }}
       >
-        {/* Bowls photo — inset panel on the right */}
-        <div className="absolute right-0 top-[6%] h-[84%] w-[46%] sm:left-[60.9%] sm:right-auto sm:top-[6.5%] sm:h-[99.4%] sm:w-[37.25%]">
+        {/* Bowls photo. Canva's side-by-side composition has no room on a
+            phone — the orb is 80% of the width and left only a 37px sliver of
+            the photo showing — so below sm the photo becomes the full-bleed
+            backdrop the orb sits on, and the Canva panel returns from sm up. */}
+        <div className="absolute inset-0 sm:left-[60.9%] sm:right-auto sm:top-[6.5%] sm:bottom-auto sm:h-[99.4%] sm:w-[37.25%]">
           <Image
             src="/images/sss-hero-bowls.jpg"
             alt="Brass singing bowls, crystal bowls and mallets laid out on a striped rug for a sound healing ceremony"
             fill
-            sizes="(min-width: 640px) 38vw, 46vw"
+            sizes="(min-width: 640px) 38vw, 100vw"
             className="object-cover"
             priority
+          />
+          {/* Keeps the gold type legible over the photo on phones only */}
+          <div
+            className="absolute inset-0 sm:hidden"
+            style={{ backgroundColor: `${SANCTUARY_INK}b3` }}
           />
         </div>
 
@@ -51,7 +59,7 @@ export default function SanctuaryHero() {
 
         {/* Navy orb */}
         <div
-          className="absolute left-1/2 top-[46%] aspect-square w-[80cqw] -translate-x-1/2 -translate-y-1/2 rounded-full sm:left-[23.9%] sm:top-[7.1%] sm:w-[52.2cqw] sm:translate-x-0 sm:translate-y-0"
+          className="absolute left-1/2 top-1/2 aspect-square w-[78cqw] -translate-x-1/2 -translate-y-1/2 rounded-full sm:left-[23.9%] sm:top-[7.1%] sm:w-[52.2cqw] sm:translate-x-0 sm:translate-y-0"
           style={{ backgroundImage: SANCTUARY_ORB }}
         >
           <div className="flex h-full w-full flex-col items-center justify-center px-[8%] pb-[3%] text-center">
