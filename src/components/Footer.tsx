@@ -14,14 +14,29 @@ function DiscountBadge() {
         <defs>
           <path id="badgeCircle" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" />
         </defs>
-        <text className="fill-current" style={{ fontSize: "8px", letterSpacing: "0.22em" }}>
-          <textPath href="#badgeCircle" startOffset="0">
-            DISCOUNT · DISCOUNT · DISCOUNT · DISCOUNT ·
+        {/*
+         * textLength pins the ring text to the circle's exact circumference
+         * (2πr, r=37). Without it the four repeats ran ~25% longer than the
+         * path and the tail overlapped the head — it read as "DISCDISCOUNT".
+         */}
+        <text className="fill-current" style={{ fontSize: "8px" }}>
+          <textPath
+            href="#badgeCircle"
+            startOffset="0"
+            textLength="232.5"
+            lengthAdjust="spacing"
+          >
+            DISCOUNT · DISCOUNT · DISCOUNT ·
           </textPath>
         </text>
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
-        <span className="text-[9px] md:text-[10px] uppercase tracking-wider">New Student</span>
+        {/* On a phone the badge is 112px, leaving ~68px of clear width inside
+            the ring at this line's height — "New Student" at 9px/wider was
+            71px and collided with the ring letters. */}
+        <span className="text-[8px] tracking-wide md:text-[10px] md:tracking-wider uppercase">
+          New Student
+        </span>
         <span className="font-serif italic text-2xl md:text-3xl my-0.5">10%</span>
         <span className="text-[6px] md:text-[7px] text-white/70 leading-tight">
           *For Weekend

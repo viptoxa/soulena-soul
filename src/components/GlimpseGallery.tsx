@@ -56,19 +56,21 @@ export default function GlimpseGallery() {
         <FlowerIcon className="absolute -bottom-1 right-3 h-8 w-8 text-[#e9dcb4]" />
       </div>
 
-      {/* Mobile — stacked title + woven circles */}
+      {/* Mobile — stacked title + a 2×2 grid. Four circles in one row only fit
+          at ~110px each on a phone, which is too small to read the photos, so
+          the wave is carried by offsetting the right-hand column instead. */}
       <div className="md:hidden text-center">
         <h2 className="font-serif text-3xl leading-tight text-[#e9dcb4] mb-8">
           A Glimpse Into
           <br />
           My Working Space
         </h2>
-        <div className="flex flex-wrap items-center justify-center gap-y-3">
+        <div className="mx-auto grid max-w-[330px] grid-cols-2 gap-4">
           {CIRCLES.map((c, i) => (
             <div
               key={c.src}
-              className={`relative -mx-2 shrink-0 overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-lg ${
-                i % 2 ? "w-28 h-28 -mt-4" : "w-32 h-32 mt-4"
+              className={`relative aspect-square overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-lg ${
+                i % 2 ? "mt-7" : ""
               }`}
             >
               <Image src={c.src} alt="" fill sizes="160px" className="object-cover" />

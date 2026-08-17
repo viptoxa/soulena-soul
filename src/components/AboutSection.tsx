@@ -42,7 +42,7 @@ export default function AboutSection() {
             alt=""
             width={96}
             height={96}
-            className="absolute -bottom-4 -left-4 md:-bottom-5 md:-left-6 w-16 h-16 md:w-24 md:h-24"
+            className="absolute -bottom-4 -left-1 md:-bottom-5 md:-left-6 w-16 h-16 md:w-24 md:h-24"
           />
         </div>
       </div>
