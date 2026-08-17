@@ -59,10 +59,13 @@ export default function InquiryPage() {
           <h1 className="font-serif text-4xl md:text-6xl leading-tight text-white">Inquiry page</h1>
           <GoldRule />
           <p className="mx-auto max-w-[720px] text-[13px] md:text-sm italic leading-relaxed text-white/85">
+            {/* The spaces have to be explicit: JSX drops the newline before a
+                <br>, so with the breaks hidden on phones the words ran together
+                ("healing,—", "experiences,wellness"). */}
             We create calming and immersive wellness experiences blending yoga, meditation, and sound
-            healing,
+            healing,{" "}
             <br className="hidden md:block" />— thoughtfully curated for weddings, bridal wellness
-            gatherings, couples retreats &amp; honeymoon experiences,
+            gatherings, couples retreats &amp; honeymoon experiences,{" "}
             <br className="hidden md:block" />
             wellness content with professional photography, curated styling &amp; props, birthdays, and
             meaningful celebrations.

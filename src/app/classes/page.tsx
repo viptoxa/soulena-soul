@@ -31,7 +31,7 @@ const WEEKEND_BEACH: ClassDetailData = {
       heading: "Class Schedules",
       items: ["Saturday sunset yoga | 17:00 — 18:00", "Sunday morning yoga | 07:00 — 08:00"],
     },
-    { heading: "Price", items: ["400 THB (~ $12) per person"] },
+    { heading: "Price", items: ["400 THB per person"] },
   ],
   note: (
     <>
@@ -67,9 +67,9 @@ const PRIVATE_SESSION: ClassDetailData = {
     {
       heading: "Price",
       items: [
-        "1 person — 1,400 THB (~ $43)",
-        "2 people — 2,200 THB (~ $67)",
-        "3 people — 3,000 THB (~ $92)",
+        "1 person — 1,400 THB",
+        "2 people — 2,200 THB",
+        "3 people — 3,000 THB",
       ],
       footnote: "*Maximum 3 people",
     },

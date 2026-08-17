@@ -66,7 +66,9 @@ export default function SanctuaryTeaser() {
             className="mt-10 max-w-[640px] text-[16px] leading-relaxed lg:text-[19px]"
             style={{ color: GOLD }}
           >
-            A calming and immersive wellness experience blending yoga, meditation, and sound healing,
+            {/* The space has to be explicit: JSX drops the newline before the
+                <br>, so with the break hidden on phones it read "healing,—". */}
+            A calming and immersive wellness experience blending yoga, meditation, and sound healing,{" "}
             <br className="hidden sm:block" />— thoughtfully curated for{" "}
             <strong className="font-semibold">
               weddings, birthdays, retreats, and meaningful celebrations.

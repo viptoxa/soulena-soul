@@ -17,12 +17,15 @@ export default function GroupWellnessSection() {
   return (
     <section className="bg-brand-cream px-4 py-12 md:py-20">
       <div className="mx-auto max-w-[1100px]">
+        {/* Canva's line break is a desktop composition; on a phone it left the
+            "&" stranded alone on its own line, so the break only applies from
+            md up and the ampersand is glued to "Hotel". */}
         <h2
-          className="font-serif text-[34px] md:text-[52px] leading-[1.12] mb-10 md:mb-12"
+          className="font-serif text-[30px] md:text-[52px] leading-[1.12] mb-10 md:mb-12"
           style={{ color: SAGE }}
         >
-          Group Yoga for Hotel &amp;
-          <br />
+          Group Yoga for Hotel&nbsp;&amp;
+          <br className="hidden md:block" />{" "}
           Wellness Event Classes
         </h2>
 
