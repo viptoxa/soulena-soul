@@ -57,7 +57,11 @@ export default function ContactMapSection() {
 
         <div id={SECTION_IDS.location} className="mt-12 md:mt-16">
           <LocationMap>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-4 border-t border-brand-cream-dark pt-6">
+            {/* The e-mail address is far wider than the other three, so letting
+                the row wrap on a phone left it ragged (1 / 2 / 1). One per line
+                below sm reads as a deliberate list and keeps the tap targets
+                full-width. */}
+            <ul className="mt-8 flex flex-col gap-4 border-t border-brand-cream-dark pt-6 sm:flex-row sm:flex-wrap sm:gap-x-6">
               {CHANNELS.map(({ label, href, display, external, Icon }) => (
                 <li key={label}>
                   <a

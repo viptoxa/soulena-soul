@@ -73,8 +73,9 @@ export default function BookingSection() {
           </p>
 
           <p className="mt-5 md:mt-6 max-w-[860px] text-[15px] md:text-[19px] leading-relaxed text-white/95">
-            Simply fill out the booking form with a few details about the class you&apos;re interested in,
-            <br className="hidden md:inline" /> and I&apos;ll get back to you as soon as possible.
+            Simply fill out the booking form with a few details about the class you&apos;re interested in,{" "}
+            <br className="hidden md:inline" />
+            and I&apos;ll get back to you as soon as possible.
           </p>
 
           <p className="mt-7 md:mt-9 text-[15px] md:text-[19px] leading-relaxed text-white/95">

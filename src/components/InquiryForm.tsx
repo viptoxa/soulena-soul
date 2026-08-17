@@ -31,10 +31,12 @@ function Chip({
   label,
   selected,
   onClick,
+  className = "",
 }: {
   label: string;
   selected: boolean;
   onClick: () => void;
+  className?: string;
 }) {
   return (
     <button
@@ -45,7 +47,7 @@ function Chip({
         selected
           ? "bg-brand-olive text-white"
           : "bg-transparent text-brand-charcoal/70 hover:text-brand-charcoal"
-      }`}
+      } ${className}`}
     >
       • {label}
     </button>
@@ -79,13 +81,17 @@ export default function InquiryForm() {
         <legend className="mb-3 text-[15px] md:text-base font-semibold text-white">
           What are you interested in?
         </legend>
-        <div className="flex flex-wrap gap-x-1 gap-y-1 rounded-[28px] bg-[#f0ece3] px-4 py-3">
+        {/* These labels are long enough to wrap inside their own chip on a
+            phone, which left the row ragged and centre-aligned. One per line
+            below sm reads as an option list; the Canva chip row returns at sm. */}
+        <div className="flex flex-col gap-y-1 rounded-[28px] bg-[#f0ece3] px-4 py-3 sm:flex-row sm:flex-wrap sm:gap-x-1">
           {INTERESTS.map((item) => (
             <Chip
               key={item}
               label={item}
               selected={interest === item}
               onClick={() => setInterest(interest === item ? "" : item)}
+              className="w-full text-left sm:w-auto sm:text-center"
             />
           ))}
         </div>
