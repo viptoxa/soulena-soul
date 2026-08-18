@@ -45,9 +45,10 @@ export const PRICING: PricingFamily[] = [
       {
         id: "beach-3",
         title: "3 Times Pack",
-        subtitle: "A mini journey to move, breath, and reconnect",
+        subtitle: "A mini journey to move, breathe, and reconnect",
         features: ["Ideal for short stays", "Valid for 30 days"],
         priceTHB: 1100,
+        stripeUrl: "https://buy.stripe.com/14A7sEcXOawh0x6ffx6Na02",
       },
       {
         id: "beach-5",
@@ -55,6 +56,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Build consistency and deepen your practice",
         features: ["10% off regular price!", "Valid for 60 days"],
         priceTHB: 1800,
+        stripeUrl: "https://buy.stripe.com/3cIeV6cXOfQB7Zy5EX6Na03",
         highlight: true,
       },
     ],
@@ -69,6 +71,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Stay consistent and build your practice",
         features: ["Personalized private sessions", "Flexible time & location", "Valid for 60 days"],
         priceTHB: 5500,
+        stripeUrl: "https://buy.stripe.com/cNi9AMe1SfQB3Ji9Vd6Na04",
       },
       {
         id: "private-10",
@@ -76,6 +79,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "For dedicated souls who want it all!",
         features: ["Designed for deeper transformation", "Build a consistent practice", "Valid for 90 days"],
         priceTHB: 10000,
+        stripeUrl: "https://buy.stripe.com/7sY3co6zq6g10x60kD6Na05",
         highlight: true,
       },
     ],
@@ -90,6 +94,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "A supportive practice for two",
         features: ["Shared private sessions", "Flexible time & location", "Valid for 60 days"],
         priceTHB: 9000,
+        stripeUrl: "https://buy.stripe.com/fZufZa9LCcEp0x69Vd6Na06",
       },
       {
         id: "duo-10",
@@ -97,6 +102,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Grow together through practice",
         features: ["Designed for consistency & growth", "Personalized guidance for two", "Valid for 90 days"],
         priceTHB: 17000,
+        stripeUrl: "https://buy.stripe.com/6oU7sEe1S5bXdjSffx6Na07",
         highlight: true,
       },
     ],
@@ -111,6 +117,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "A great place to start",
         features: ["Personalized guidance", "Yoga, mobility & strength", "Connect via Google Meet"],
         priceTHB: 1200,
+        stripeUrl: "https://buy.stripe.com/7sY28k4rigUF0x6c3l6Na08",
       },
       {
         id: "online-5",
@@ -118,6 +125,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Build consistency at your own pace",
         features: ["Personalized coaching", "Flexible scheduling", "Valid for 45 days"],
         priceTHB: 5200,
+        stripeUrl: "https://buy.stripe.com/00weV6cXO5bXenW9Vd6Na09",
       },
       {
         id: "online-10",
@@ -125,6 +133,7 @@ export const PRICING: PricingFamily[] = [
         subtitle: "Deepen your practice and progress",
         features: ["Long-term guidance", "Tailored to your goals", "Valid for 75 days"],
         priceTHB: 9500,
+        stripeUrl: "https://buy.stripe.com/00w9AM5vmfQBfs00kD6Na0a",
         highlight: true,
       },
     ],

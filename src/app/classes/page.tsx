@@ -10,6 +10,32 @@ export const metadata: Metadata = {
   title: "Classes — Weekend Beach, Private & Wellness Events | Soulena Soul",
 };
 
+// Stripe Payment Links for the single-session prices quoted on this page. The
+// packages have their own buttons on /pricing; these three plus the drop-in are
+// only sold here, so the link sits on the price line itself.
+const PAY_LINKS = {
+  beachDropIn: "https://buy.stripe.com/aFa5kwga05bX6Vuffx6Na00",
+  private1: "https://buy.stripe.com/4gM5kwga07k53Ji2sL6Na0b",
+  private2: "https://buy.stripe.com/bJe28k4ridItcfO0kD6Na0c",
+  private3: "https://buy.stripe.com/00w28k4rieMxfs04AT6Na0d",
+};
+
+function Price({ children, href }: { children: React.ReactNode; href: string }) {
+  return (
+    <>
+      {children}{" "}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="ml-1 whitespace-nowrap rounded-full bg-brand-olive px-3 py-1 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+      >
+        Pay by card
+      </a>
+    </>
+  );
+}
+
 const WEEKEND_BEACH: ClassDetailData = {
   title: (
     <>
@@ -31,7 +57,10 @@ const WEEKEND_BEACH: ClassDetailData = {
       heading: "Class Schedules",
       items: ["Saturday sunset yoga | 17:00 — 18:00", "Sunday morning yoga | 07:00 — 08:00"],
     },
-    { heading: "Price", items: ["400 THB per person"] },
+    {
+      heading: "Price",
+      items: [<Price key="dropin" href={PAY_LINKS.beachDropIn}>400 THB per person</Price>],
+    },
   ],
   note: (
     <>
@@ -67,9 +96,9 @@ const PRIVATE_SESSION: ClassDetailData = {
     {
       heading: "Price",
       items: [
-        "1 person — 1,400 THB",
-        "2 people — 2,200 THB",
-        "3 people — 3,000 THB",
+        <Price key="p1" href={PAY_LINKS.private1}>1 person — 1,400 THB</Price>,
+        <Price key="p2" href={PAY_LINKS.private2}>2 people — 2,200 THB</Price>,
+        <Price key="p3" href={PAY_LINKS.private3}>3 people — 3,000 THB</Price>,
       ],
       footnote: "*Maximum 3 people",
     },
