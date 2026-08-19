@@ -4,6 +4,12 @@ Source of truth for v2 = Soulena's Canva walkthrough video (`content v2/…​.M
 + her pricing screenshots. `content v2/` and `public/photos/` hold raw assets (gitignored);
 only optimized images in `public/images/` are shipped.
 
+## ⚠️ Which Canva file is live
+Two designs are titled "Soulena's Website Draft". `DAHO4qLkq9E` is the one v2 was built
+from and is now **stale**; Soulena edits **`DAHJujTryBo`**. Always run `search-designs`
+sorted by `modified_descending` and work from the freshest file — the Package redesign
+(2026-08-19) exists only in `DAHJujTryBo`.
+
 ## Structure decision (UPDATED after full Canva access via Canva MCP)
 The full Canva (11 pages, design id DAHO4qLkq9E) revealed a genuine **multi-page** site —
 so the site is now multi-page, matching her design. Nav: Home / About / Classes / Booking / Contact.
@@ -21,7 +27,11 @@ returns stale frames after a JS scroll, so audit with a hidden iframe + DOM meas
 - [x] Footer — "Let's Practice Together" hands-with-flowers + rotating "NEW STUDENT 10%" badge.
 - [x] /about — MORE ABOUT ME (quotes, pharmacist, Teaching Exp, Certifications, Other Locations) + gallery + "Gentle Words" testimonials.
 - [x] /classes — Class Pricing note + Weekend Beach + Private Session (ClassDetailBlock) + Group Hotel & Wellness + Sanctuary teaser + map.
-- [x] /pricing — 4 families (`src/lib/pricing.ts`) + policies.
+- [x] /pricing — 4 families (`src/lib/pricing.ts`) + policies. **Rebuilt 2026-08-19** on her
+      redesigned Canva page 8: cream paper, botanical branches, gold lotus, outlined cards
+      with family icon badges. Feature bullets became a single validity line; families gained
+      a blurb + icon; online tiers renamed Class -> Session. Assets `pkg-lotus.png`,
+      `pkg-leaf-{a,b,c}.png` were keyed out of the Canva export.
 - [x] /booking — Cal.com availability (BookingSection) + inquiry form (BookingInquiry→WhatsApp) + policies.
 - [x] /payment — Card (Stripe, per-package links) / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
 - [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.
