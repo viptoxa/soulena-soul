@@ -11,6 +11,12 @@
 
 export type FamilyIcon = "wave" | "person" | "duo" | "laptop";
 
+/**
+ * Badge colour. Soulena asked for the families to alternate green-yellow down
+ * the page; the yellow is the exact gold of her lotus mark (#d69e30).
+ */
+export type IconTone = "green" | "gold";
+
 export interface PricingTier {
   id: string;
   title: string;
@@ -20,6 +26,8 @@ export interface PricingTier {
   /** Rendered inside parentheses under the subtitle. */
   validity?: string;
   priceTHB: number;
+  /** Line-art illustration sitting under the subtitle, inside the card. */
+  illustration?: { src: string; alt: string };
   /**
    * Stripe Payment Link for this exact package. A tier without one simply shows
    * no card button; the other payment options on /payment still apply.
@@ -32,6 +40,7 @@ export interface PricingFamily {
   name: string;
   blurb: string;
   icon: FamilyIcon;
+  iconTone: IconTone;
   tiers: PricingTier[];
 }
 
@@ -41,6 +50,7 @@ export const PRICING: PricingFamily[] = [
     name: "Beach Yoga & Movement Class",
     blurb: "Breathe in the ocean air | Move with ease | Suitable for all levels",
     icon: "wave",
+    iconTone: "green",
     tiers: [
       {
         id: "beach-dropin",
@@ -73,6 +83,7 @@ export const PRICING: PricingFamily[] = [
     name: "Private Session Pack",
     blurb: "Personalized guidance | Deeper transformation | Flexible time & location",
     icon: "person",
+    iconTone: "gold",
     tiers: [
       {
         id: "private-5",
@@ -97,6 +108,7 @@ export const PRICING: PricingFamily[] = [
     name: "Private Duo Pack",
     blurb: "Share the experience | Inspire each other | Flexible time & location",
     icon: "duo",
+    iconTone: "green",
     tiers: [
       {
         id: "duo-5",
@@ -121,11 +133,16 @@ export const PRICING: PricingFamily[] = [
     name: "1:1 Online Yoga & Movement",
     blurb: "Personalized practice from anywhere in the world!",
     icon: "laptop",
+    iconTone: "gold",
     tiers: [
       {
         id: "online-single",
         title: "Single Session",
         subtitle: "A great place to start",
+        illustration: {
+          src: "/images/pkg-online-illustration.png",
+          alt: "Line drawing of a laptop showing someone seated in meditation, with a botanical sprig beside it",
+        },
         priceTHB: 1200,
         stripeUrl: "https://buy.stripe.com/7sY28k4rigUF0x6c3l6Na08",
       },

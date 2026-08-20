@@ -1,5 +1,12 @@
+import { Fragment } from "react";
 import { SECTION_IDS } from "@/lib/constants";
-import { PRICING, type PricingFamily, type PricingTier, type FamilyIcon } from "@/lib/pricing";
+import {
+  PRICING,
+  type PricingFamily,
+  type PricingTier,
+  type FamilyIcon,
+  type IconTone,
+} from "@/lib/pricing";
 
 // Canva page 8, redesigned by Soulena on 2026-08-19 — the bright sand panel is
 // gone. Palette and geometry were sampled straight off the export:
@@ -14,9 +21,12 @@ const GOLD = "#cba449";
 const SLATE = "#3a4e5d";
 const OLIVE = "#635f46";
 const RULE = "#d9d9d9";
-const BADGE = "#807b5d";
+const BADGE_GREEN = "#807b5d";
+// Her lotus mark and the "yellow" badges are the same ink — she asked for it
+// explicitly ("same yellow as this lotus logo").
+const BADGE_GOLD = "#d69e30";
 
-function FamilyBadge({ icon }: { icon: FamilyIcon }) {
+function FamilyBadge({ icon, tone }: { icon: FamilyIcon; tone: IconTone }) {
   const paths = {
     // three rolling lines — beach
     wave: (
@@ -57,7 +67,7 @@ function FamilyBadge({ icon }: { icon: FamilyIcon }) {
     <span
       aria-hidden
       className="absolute left-1/2 top-0 flex h-[46px] w-[46px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white shadow-[0_4px_10px_rgba(90,80,50,0.25)]"
-      style={{ backgroundColor: BADGE }}
+      style={{ backgroundColor: tone === "gold" ? BADGE_GOLD : BADGE_GREEN }}
     >
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-[26px] w-[26px]">
         {paths[icon]}
@@ -66,13 +76,13 @@ function FamilyBadge({ icon }: { icon: FamilyIcon }) {
   );
 }
 
-function TierCard({ tier, icon }: { tier: PricingTier; icon: FamilyIcon }) {
+function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; tone: IconTone }) {
   return (
     <div
       className="group relative mt-[23px] flex w-full flex-col rounded-[10px] border shadow-[6px_8px_18px_rgba(120,110,70,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[8px_12px_26px_rgba(120,110,70,0.28)] sm:w-[47%] lg:w-[32%]"
       style={{ backgroundColor: CARD, borderColor: GOLD }}
     >
-      <FamilyBadge icon={icon} />
+      <FamilyBadge icon={icon} tone={tone} />
 
       <h4
         className="px-5 pb-4 pt-7 text-center font-serif text-[21px] uppercase leading-tight md:text-[24px]"
@@ -85,6 +95,20 @@ function TierCard({ tier, icon }: { tier: PricingTier; icon: FamilyIcon }) {
         <p className="text-balance text-[15px] uppercase leading-[1.45] text-brand-charcoal md:text-[16px]">
           {tier.subtitle}
         </p>
+        {tier.illustration ? (
+          /* The artwork is not symmetrical — the botanical sprig hangs off its
+             right side — so centring the file would push the laptop left. Her
+             note asks for the laptop screen to line up with the middle of the
+             card, and the laptop sits 9.5% of the image width left of centre,
+             so the image is nudged back by exactly that. */
+          <img
+            src={tier.illustration.src}
+            alt={tier.illustration.alt}
+            width={310}
+            height={186}
+            className="mx-auto mt-4 h-auto w-[62%] max-w-[190px] translate-x-[9.5%] select-none"
+          />
+        ) : null}
         {tier.note ? (
           <p className="mt-4 text-[14px] italic text-brand-charcoal md:text-[15px]">{tier.note}</p>
         ) : null}
@@ -130,13 +154,26 @@ function FamilyBlock({ family }: { family: PricingFamily }) {
           className="mx-auto mt-1.5 max-w-[760px] text-center text-[14px] leading-snug md:text-[16px]"
           style={{ color: OLIVE }}
         >
-          {family.blurb}
+          {/* The blurb is pipe-separated, so it should wrap at the separators
+              rather than mid-phrase — on a phone it was breaking "Suitable for /
+              all levels". Each segment keeps its trailing bar and never breaks
+              inside itself; the space between segments is the only break point. */}
+          {family.blurb.split(" | ").map((part, i, all) => (
+            <Fragment key={part}>
+              <span className="whitespace-nowrap">
+                {part}
+                {i < all.length - 1 ? " |" : ""}
+              </span>
+              {/* the breakable space must sit OUTSIDE the nowrap span */}
+              {i < all.length - 1 ? " " : ""}
+            </Fragment>
+          ))}
         </p>
       ) : null}
 
       <div className="mt-8 flex flex-wrap justify-center gap-x-[2%] gap-y-6 md:mt-10">
         {family.tiers.map((tier) => (
-          <TierCard key={tier.id} tier={tier} icon={family.icon} />
+          <TierCard key={tier.id} tier={tier} icon={family.icon} tone={family.iconTone} />
         ))}
       </div>
     </div>
