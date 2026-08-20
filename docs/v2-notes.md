@@ -31,7 +31,9 @@ returns stale frames after a JS scroll, so audit with a hidden iframe + DOM meas
       redesigned Canva page 8: cream paper, botanical branches, gold lotus, outlined cards
       with family icon badges. Feature bullets became a single validity line; families gained
       a blurb + icon; online tiers renamed Class -> Session. Assets `pkg-lotus.png`,
-      `pkg-leaf-{a,b,c}.png` were keyed out of the Canva export.
+      `pkg-leaf-{a,b,c}.png`, `pkg-online-illustration.png` were keyed out of the Canva
+      export. **Approved 2026-08-20**, with badges alternating green `#807b5d` / gold
+      `#d69e30` per family and her laptop drawing in the Single Session card.
 - [x] /booking — Cal.com availability (BookingSection) + inquiry form (BookingInquiry→WhatsApp) + policies.
 - [x] /payment — Card (Stripe, per-package links) / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
 - [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.
