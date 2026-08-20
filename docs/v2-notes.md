@@ -30,10 +30,26 @@ returns stale frames after a JS scroll, so audit with a hidden iframe + DOM meas
 - [x] /pricing — 4 families (`src/lib/pricing.ts`) + policies. **Rebuilt 2026-08-19** on her
       redesigned Canva page 8: cream paper, botanical branches, gold lotus, outlined cards
       with family icon badges. Feature bullets became a single validity line; families gained
-      a blurb + icon; online tiers renamed Class -> Session. Assets `pkg-lotus.png`,
-      `pkg-leaf-{a,b,c}.png`, `pkg-online-illustration.png` were keyed out of the Canva
-      export. **Approved 2026-08-20**, with badges alternating green `#807b5d` / gold
-      `#d69e30` per family and her laptop drawing in the Single Session card.
+      a blurb + icon; online tiers renamed Class -> Session. Assets `pkg-lotus.png`
+      and `pkg-leaf-{a,b,c}.png` were keyed out of the Canva export. **Approved
+      2026-08-20**, with badges alternating green `#807b5d` / gold `#d69e30` per
+      family and her laptop drawing in the Single Session card.
+      **Sharpness fix 2026-08-20** — she said the laptop drawing looked blurry.
+      Canva now refuses PNG/JPG exports of this design at any width ("Not allowed
+      to access design"), but **PDF export still works**, and a Canva PDF embeds
+      each placed image as its own object. So `pdfimages -all -png` on a page-8
+      PDF gives her drawing at its own resolution with a real alpha smask — no
+      keying, no page-render upscale. That is now `pkg-online-laptop.png`
+      (183x120 of true detail, padded on the left to 227x120 so the *laptop*
+      sits at the canvas centre, then a premultiplied 2x LANCZOS upscale to
+      454x240 — the PDF stores black under transparent pixels, so a straight
+      RGBA resize fringes the strokes). The retired `pkg-online-illustration.png`
+      also carried a stray full-width rule across its bottom two rows, keyed in
+      from the card divider. The CSS lost its `translate-x-[9.5%]` (a fractional
+      composited offset that resampled the image) and is now `w-[39%]
+      max-w-[130px]`, reproducing the 27.29% of card width she drew. Verified:
+      laptop-to-card-centre delta <= 0.004px at 375/768/1024/1280/1440, and the
+      file now downscales (0.45-0.57x at DPR 2) instead of upscaling.
 - [x] /booking — Cal.com availability (BookingSection) + inquiry form (BookingInquiry→WhatsApp) + policies.
 - [x] /payment — Card (Stripe, per-package links) / Bank transfer / Thai QR (click-reveal + WhatsApp slip) / Cash.
 - [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.

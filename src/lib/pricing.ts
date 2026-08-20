@@ -140,7 +140,7 @@ export const PRICING: PricingFamily[] = [
         title: "Single Session",
         subtitle: "A great place to start",
         illustration: {
-          src: "/images/pkg-online-illustration.png",
+          src: "/images/pkg-online-laptop.png",
           alt: "Line drawing of a laptop showing someone seated in meditation, with a botanical sprig beside it",
         },
         priceTHB: 1200,

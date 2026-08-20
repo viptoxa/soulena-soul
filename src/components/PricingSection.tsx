@@ -96,17 +96,21 @@ function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; t
           {tier.subtitle}
         </p>
         {tier.illustration ? (
-          /* The artwork is not symmetrical — the botanical sprig hangs off its
-             right side — so centring the file would push the laptop left. Her
-             note asks for the laptop screen to line up with the middle of the
-             card, and the laptop sits 9.5% of the image width left of centre,
-             so the image is nudged back by exactly that. */
+          /* Her drawing, pulled out of the Canva PDF where it is stored at its
+             own resolution — the first copy was keyed off a page render and came
+             out soft. The sprig hangs off the right, so the file carries
+             transparent padding down its left edge that puts the laptop, not the
+             artwork, at the centre of the canvas; `mx-auto` on its own then
+             satisfies her note about the laptop screen lining up with the middle
+             of the card, with no fractional transform to blur the edges. The
+             39% width reproduces the proportion she drew: the artwork is 27.3%
+             of the card, and it fills 80.6% of the padded canvas. */
           <img
             src={tier.illustration.src}
             alt={tier.illustration.alt}
-            width={310}
-            height={186}
-            className="mx-auto mt-4 h-auto w-[62%] max-w-[190px] translate-x-[9.5%] select-none"
+            width={454}
+            height={240}
+            className="mx-auto mt-4 h-auto w-[39%] max-w-[130px] select-none"
           />
         ) : null}
         {tier.note ? (
