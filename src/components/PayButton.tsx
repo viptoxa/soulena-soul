@@ -14,6 +14,15 @@ import { BANK, QR_IMAGE } from "@/lib/payment";
  * Uses a native <dialog> so Escape, the backdrop and focus handling come from
  * the platform instead of being re-implemented.
  */
+/*
+ * There is a PayButton per price — two on /classes, ten on /pricing — and each
+ * one writes the same document.body.style.overflow. If two are ever open at
+ * once, whichever closes first would unlock the page while the other is still
+ * covering it. Counting the open ones means the lock lifts only when the last
+ * dialog closes.
+ */
+let openDialogs = 0;
+
 export default function PayButton({
   cardUrl,
   cardOptions,
@@ -46,6 +55,7 @@ export default function PayButton({
     const el = ref.current;
     if (!el || !open) return;
     if (!el.open) el.showModal();
+    openDialogs += 1;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -56,7 +66,8 @@ export default function PayButton({
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      openDialogs = Math.max(0, openDialogs - 1);
+      if (openDialogs === 0) document.body.style.overflow = "";
       if (el.open) el.close();
       setCopied(null);
     };

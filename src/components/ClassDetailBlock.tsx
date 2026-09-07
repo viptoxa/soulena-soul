@@ -45,6 +45,19 @@ const BROWN = "#78584d";
 const SLATE = "#3a4e5d";
 const GOLD = "#c9a34a";
 
+/*
+ * What the photos really measure, so the browser picks the right file. The
+ * right column is 39% of a container that is min(1180px, viewport - 32px), so
+ * it settles at a flat 460px from 1212px up and is full-width below lg; the
+ * two-up photos are (column - 12px gap) / 2. The old single string claimed
+ * 22vw at lg+, which is 281px at a 1280px viewport where the photo is really
+ * 460px — Next then served a file too small and the photo rendered soft.
+ */
+const PHOTO_SIZES = {
+  single: "(min-width: 1212px) 460px, (min-width: 1024px) 39vw, calc(100vw - 32px)",
+  pair: "(min-width: 1212px) 224px, (min-width: 1024px) 19vw, calc(50vw - 22px)",
+};
+
 /** Hairline rule with a centred four-point sparkle, as under both titles. */
 function GoldRule() {
   return (
@@ -169,6 +182,7 @@ function SecondaryButton({ href, children }: { href: string; children: ReactNode
 
 export default function ClassDetailBlock({ data }: { data: ClassDetailData }) {
   const pair = data.sideLayout === "pair";
+  const paired2Up = data.photos.length > 1;
   const [stacked, paired] = pair
     ? [data.sideBlocks.slice(0, -2), data.sideBlocks.slice(-2)]
     : [data.sideBlocks, []];
@@ -223,19 +237,19 @@ export default function ClassDetailBlock({ data }: { data: ClassDetailData }) {
 
         {/* ───────── Right: photos, detail cards, buttons ───────── */}
         <div className="flex flex-col gap-4">
-          <div className={`grid gap-3 ${data.photos.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+          <div className={`grid gap-3 ${paired2Up ? "grid-cols-2" : "grid-cols-1"}`}>
             {data.photos.map((photo, i) => (
               <div
                 key={photo.src}
                 className={`relative overflow-hidden rounded-[10px] ${
-                  data.photos.length > 1 ? "aspect-[4/5]" : "aspect-[3/2]"
+                  paired2Up ? "aspect-[4/5]" : "aspect-[3/2]"
                 }`}
               >
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
+                  sizes={paired2Up ? PHOTO_SIZES.pair : PHOTO_SIZES.single}
                   className="object-cover"
                   priority={i === 0}
                 />
