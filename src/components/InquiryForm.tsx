@@ -27,30 +27,61 @@ function Label({ children, htmlFor }: { children: React.ReactNode; htmlFor?: str
   );
 }
 
-function Chip({
+/**
+ * A free-text field with the old fixed options offered underneath as
+ * suggestions. Soulena asked for exactly this (2026-09-07): "for these
+ * sections, I'd prefer the items to be shown as suggestions rather than fixed
+ * choices to select from" — tapping one fills the field, but anything can be
+ * typed over it.
+ */
+function SuggestField({
+  id,
   label,
-  selected,
-  onClick,
-  className = "",
+  value,
+  onChange,
+  suggestions,
+  placeholder,
 }: {
+  id: string;
   label: string;
-  selected: boolean;
-  onClick: () => void;
-  className?: string;
+  value: string;
+  onChange: (value: string) => void;
+  suggestions: string[];
+  placeholder?: string;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={selected}
-      className={`rounded-full px-4 py-2 font-serif italic text-sm transition-colors ${
-        selected
-          ? "bg-brand-olive text-white"
-          : "bg-transparent text-brand-charcoal/70 hover:text-brand-charcoal"
-      } ${className}`}
-    >
-      • {label}
-    </button>
+    <div>
+      <Label htmlFor={id}>{label}</Label>
+      <input
+        id={id}
+        type="text"
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        className={FIELD}
+      />
+      <ul className="mt-3 flex flex-wrap gap-2">
+        {suggestions.map((item) => {
+          const chosen = value === item;
+          return (
+            <li key={item}>
+              <button
+                type="button"
+                onClick={() => onChange(chosen ? "" : item)}
+                aria-pressed={chosen}
+                className={`rounded-full px-3.5 py-1.5 font-serif text-[13px] italic transition-colors md:text-sm ${
+                  chosen
+                    ? "bg-brand-olive text-white"
+                    : "bg-[#f0ece3]/85 text-brand-charcoal/75 hover:bg-[#f0ece3] hover:text-brand-charcoal"
+                }`}
+              >
+                {item}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
@@ -77,52 +108,40 @@ export default function InquiryForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 text-left">
-      <fieldset>
-        <legend className="mb-3 text-[15px] md:text-base font-semibold text-white">
-          What are you interested in?
-        </legend>
-        {/* These labels are long enough to wrap inside their own chip on a
-            phone, which left the row ragged and centre-aligned. One per line
-            below sm reads as an option list; the Canva chip row returns at sm. */}
-        <div className="flex flex-col gap-y-1 rounded-[28px] bg-[#f0ece3] px-4 py-3 sm:flex-row sm:flex-wrap sm:gap-x-1">
-          {INTERESTS.map((item) => (
-            <Chip
-              key={item}
-              label={item}
-              selected={interest === item}
-              onClick={() => setInterest(interest === item ? "" : item)}
-              className="w-full text-left sm:w-auto sm:text-center"
-            />
-          ))}
-        </div>
-      </fieldset>
+      <SuggestField
+        id="interest"
+        label="What are you interested in?"
+        value={interest}
+        onChange={setInterest}
+        suggestions={INTERESTS}
+        placeholder="Tell me what you have in mind"
+      />
 
       <div>
         <Label htmlFor="participants">Number of participants</Label>
+        {/* Digits only — she asked for the field to refuse letters entirely
+            (2026-09-07). type="number" still lets "e", "+" and "-" through in
+            some browsers, so the value is stripped on the way in as well. */}
         <input
           id="participants"
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          autoComplete="off"
           value={participants}
-          onChange={(e) => setParticipants(e.target.value)}
+          onChange={(e) => setParticipants(e.target.value.replace(/[^0-9]/g, ""))}
           className={FIELD}
         />
       </div>
 
-      <fieldset>
-        <legend className="mb-3 text-[15px] md:text-base font-semibold text-white">
-          Preferred location
-        </legend>
-        <div className="flex flex-wrap gap-x-1 gap-y-1 rounded-[28px] bg-[#f0ece3] px-4 py-3">
-          {LOCATIONS.map((loc) => (
-            <Chip
-              key={loc}
-              label={loc}
-              selected={location === loc}
-              onClick={() => setLocation(location === loc ? "" : loc)}
-            />
-          ))}
-        </div>
-      </fieldset>
+      <SuggestField
+        id="location"
+        label="Preferred location"
+        value={location}
+        onChange={setLocation}
+        suggestions={LOCATIONS}
+        placeholder="Villa, resort, beach — or somewhere else"
+      />
 
       <div>
         <Label htmlFor="vision">

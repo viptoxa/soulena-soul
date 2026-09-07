@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { SECTION_IDS } from "@/lib/constants";
+import PayButton from "@/components/PayButton";
 import {
   PRICING,
   type PricingFamily,
@@ -127,17 +128,15 @@ function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; t
         <p className="font-serif text-[21px] text-brand-charcoal md:text-[24px]">
           {tier.priceTHB.toLocaleString("en-US")} THB
         </p>
-        {/* Not in the Canva, but every package is payable by card — kept in the
-            site's own button style rather than the design's. */}
+        {/* Not in the Canva, but every package is payable — the popup offers
+            card, PromptPay QR, bank transfer and cash, the same four options
+            she asked for on the class prices (2026-09-07). */}
         {tier.stripeUrl ? (
-          <a
-            href={tier.stripeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block rounded-full bg-brand-olive px-7 py-2.5 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
-          >
-            Pay by card
-          </a>
+          <PayButton
+            variant="block"
+            cardUrl={tier.stripeUrl}
+            label={`${tier.title} — ${tier.priceTHB.toLocaleString("en-US")} THB`}
+          />
         ) : null}
       </div>
     </div>

@@ -5,45 +5,53 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 
 function DiscountBadge() {
   return (
-    <div className="relative w-28 h-28 md:w-40 md:h-40 shrink-0 text-white">
-      <svg
-        viewBox="0 0 100 100"
-        className="w-full h-full [animation:spin_26s_linear_infinite]"
-        aria-hidden="true"
-      >
-        <defs>
-          <path id="badgeCircle" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" />
-        </defs>
-        {/*
-         * textLength pins the ring text to the circle's exact circumference
-         * (2πr, r=37). Without it the four repeats ran ~25% longer than the
-         * path and the tail overlapped the head — it read as "DISCDISCOUNT".
-         */}
-        <text className="fill-current" style={{ fontSize: "8px" }}>
-          <textPath
-            href="#badgeCircle"
-            startOffset="0"
-            textLength="232.5"
-            lengthAdjust="spacing"
-          >
-            DISCOUNT · DISCOUNT · DISCOUNT ·
-          </textPath>
-        </text>
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
-        {/* On a phone the badge is 112px, leaving ~68px of clear width inside
-            the ring at this line's height — "New Student" at 9px/wider was
-            71px and collided with the ring letters. */}
-        <span className="text-[8px] tracking-wide md:text-[10px] md:tracking-wider uppercase">
-          New Student
-        </span>
-        <span className="font-serif italic text-2xl md:text-3xl my-0.5">10%</span>
-        <span className="text-[6px] md:text-[7px] text-white/70 leading-tight">
-          *For Weekend
-          <br />
-          Beach Classes only
-        </span>
+    // Re-cut to her reference (2026-09-07): two widely-spaced repeats instead
+    // of three cramped ones, a bigger "NEW STUDENT*" and 10%, and the asterisk
+    // note lifted out of the ring altogether — inside it there was never room.
+    <div className="shrink-0">
+      <div className="relative mx-auto h-28 w-28 text-white md:h-40 md:w-40">
+        <svg
+          viewBox="0 0 100 100"
+          className="h-full w-full [animation:spin_26s_linear_infinite]"
+          aria-hidden="true"
+        >
+          <defs>
+            <path id="badgeCircle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+          </defs>
+          {/*
+           * textLength pins the ring text to the circle's exact circumference
+           * (2πr, r=38). Without it the repeats ran longer than the path and
+           * the tail overlapped the head — it read as "DISCDISCOUNT". Two
+           * repeats leave the spare length to letter-spacing, which is the
+           * airy look she drew. The gaps are non-breaking spaces because SVG
+           * collapses ordinary runs of whitespace, and without a wider gap the
+           * two words ran together as "…UNTDISCOUNT".
+           */}
+          <text className="fill-current" style={{ fontSize: "11px", letterSpacing: "0.04em" }}>
+            <textPath
+              href="#badgeCircle"
+              startOffset="0"
+              textLength="238.8"
+              lengthAdjust="spacing"
+            >
+              {"DISCOUNT\u00a0\u00a0\u00a0\u00a0DISCOUNT\u00a0\u00a0\u00a0\u00a0"}
+            </textPath>
+          </text>
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
+          <span className="text-[9px] uppercase leading-[1.25] tracking-wide md:text-[12px] md:tracking-wider">
+            New
+            <br />
+            Student*
+          </span>
+          <span className="mt-1 font-serif text-[26px] italic md:text-[38px]">10%</span>
+        </div>
       </div>
+      <p className="mx-auto mt-2 w-28 text-center text-[8px] italic leading-tight text-white/75 md:mt-3 md:w-44 md:text-[11px]">
+        *For Weekend
+        <br />
+        Beach Classes only
+      </p>
     </div>
   );
 }
@@ -71,7 +79,7 @@ export default function Footer() {
               <br />
               Together
             </h2>
-            <p className="mt-4 md:mt-5 tracking-[0.18em] text-white/80 text-sm md:text-lg">
+            <p className="mt-4 md:mt-5 italic tracking-[0.18em] text-white/80 text-sm md:text-lg">
               EXPLORE . FOLLOW ALONG
             </p>
           </div>

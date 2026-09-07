@@ -46,7 +46,9 @@ export default function ClassesSection() {
     <section id={SECTION_IDS.classes} className="py-14 md:py-20 px-4 bg-brand-olive/10">
       <div className="mx-auto max-w-[1200px]">
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="font-serif text-[27px] md:text-4xl text-brand-charcoal uppercase tracking-wider">
+          {/* A step up from the 27px the other mobile section headings use —
+              she asked for this one specifically to read larger on a phone. */}
+          <h2 className="font-serif text-[31px] md:text-4xl text-brand-charcoal uppercase tracking-wider">
             Join My Classes
           </h2>
         </div>

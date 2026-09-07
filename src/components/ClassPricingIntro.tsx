@@ -17,7 +17,7 @@ export default function ClassPricingIntro() {
 
       <div className="relative mx-auto max-w-[760px]">
         <FlowerIcon className="w-8 h-8 mx-auto mb-5 text-brand-cream/80" />
-        <h1 className="font-serif text-4xl md:text-6xl uppercase tracking-[0.06em]">Class Pricing</h1>
+        <h1 className="font-serif text-[32px] md:text-6xl uppercase tracking-[0.06em]">Class Pricing</h1>
         <div className="w-px h-10 bg-brand-cream/50 mx-auto my-6" />
         <p className="uppercase tracking-[0.08em] text-sm md:text-base text-brand-cream mb-6 leading-relaxed">
           A note on my classes pricing
@@ -35,7 +35,9 @@ export default function ClassPricingIntro() {
         <p className="text-brand-cream text-[15px] md:text-[17px] leading-relaxed">
           With love,
           <br />
-          <span className="font-serif italic text-lg md:text-xl">Soulena Soul</span>
+          {/* Sans italic, matching the signature on /booking — she prefers that
+              one and asked for both to use it (2026-09-07). */}
+          <em className="text-lg md:text-xl">Soulena Soul</em>
         </p>
       </div>
     </section>

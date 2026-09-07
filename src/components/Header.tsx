@@ -28,31 +28,13 @@ export default function Header() {
       className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-cream-dark"
     >
       <div className="mx-auto max-w-[1200px] px-[15px] py-2.5 md:px-4 md:py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
-        {/* Contact info */}
-        <div className="flex items-center gap-4 md:pr-6">
-          <a
-            href={SITE.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-brand-charcoal hover:text-brand-olive transition-colors"
-          >
-            <WhatsAppIcon className="w-4 h-4" />
-            <span className="hidden sm:inline">{SITE.phoneDisplay}</span>
-          </a>
-          <a
-            href={`mailto:${SITE.email}`}
-            className="flex items-center gap-1.5 text-sm text-brand-charcoal hover:text-brand-olive transition-colors"
-          >
-            <MailIcon className="w-4 h-4" />
-            {/*
-             * The row is capped at 1200px, so with six nav items there is no
-             * width at which both addresses fit beside the nav. The phone
-             * stays; e-mail is icon-only on desktop (it is in the footer, on
-             * /contact and one click away here).
-             */}
-            <span className="hidden sm:inline md:hidden">{SITE.email}</span>
-          </a>
-        </div>
+        {/*
+         * Top-left is deliberately empty: Soulena is designing a logo for this
+         * corner, which is why she asked for all four icons to move to the
+         * right (2026-09-07). The span keeps the flex/grid row balanced until
+         * the logo lands.
+         */}
+        <div aria-hidden className="md:pr-6" />
 
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-6 justify-self-center whitespace-nowrap">
@@ -67,8 +49,26 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Social icons + mobile toggle */}
+        {/* Contact + social icons + mobile toggle — all four icons share one
+            size (w-5 h-5); WhatsApp and Mail used to be a step smaller. */}
         <div className="flex items-center gap-3 justify-self-end">
+          <a
+            href={SITE.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`WhatsApp ${SITE.phoneDisplay}`}
+            className="flex items-center gap-1.5 text-sm text-brand-charcoal hover:text-brand-olive transition-colors"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            <span className="hidden lg:inline">{SITE.phoneDisplay}</span>
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            aria-label={`Email ${SITE.email}`}
+            className="text-brand-charcoal hover:text-brand-olive transition-colors"
+          >
+            <MailIcon className="w-5 h-5" />
+          </a>
           <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-brand-charcoal hover:text-brand-olive transition-colors">
             <InstagramIcon className="w-5 h-5" />
           </a>

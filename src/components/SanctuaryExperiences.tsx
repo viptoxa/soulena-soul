@@ -31,13 +31,20 @@ function ExperienceOrb({ image, imageAlt, title, points }: Experience) {
       className="relative aspect-square w-[260px] shrink-0 rounded-full sm:w-[290px] lg:w-[326px]"
       style={{ backgroundImage: SANCTUARY_ORB }}
     >
-      <div className="flex h-full w-full flex-col items-center justify-center px-[13%] text-center">
-        <div className="relative aspect-square w-[38%] overflow-hidden rounded-full">
+      {/*
+       * Below sm the orb is a fixed 260px and the bullets were breaking out of
+       * the disc — measured 4.7px past the rim on the Sound Bath one, which is
+       * what Soulena spotted (2026-09-07). The phone sizes are pulled in: more
+       * side padding, a smaller portrait and one step down in type. From sm up
+       * there was always 11-18px of clearance, so those sizes are unchanged.
+       */}
+      <div className="flex h-full w-full flex-col items-center justify-center px-[16%] text-center sm:px-[13%]">
+        <div className="relative aspect-square w-[34%] overflow-hidden rounded-full sm:w-[38%]">
           <Image src={image} alt={imageAlt} fill sizes="130px" className="object-cover" />
         </div>
 
         <h3
-          className="mt-[7%] font-serif text-[19px] uppercase leading-[1.2] tracking-[0.05em] lg:text-[22px]"
+          className="mt-[6%] font-serif text-[17px] uppercase leading-[1.2] tracking-[0.05em] sm:text-[19px] lg:text-[22px]"
           style={{ color: SANCTUARY_CREAM }}
         >
           {title[0]}
@@ -46,7 +53,7 @@ function ExperienceOrb({ image, imageAlt, title, points }: Experience) {
         </h3>
 
         <ul
-          className="mt-[5%] space-y-1 text-left text-[11.5px] italic leading-snug lg:text-[12.5px]"
+          className="mt-[5%] space-y-1 text-left text-[10.5px] italic leading-snug sm:text-[11.5px] lg:text-[12.5px]"
           style={{ color: SANCTUARY_CREAM }}
         >
           {points.map((point) => (

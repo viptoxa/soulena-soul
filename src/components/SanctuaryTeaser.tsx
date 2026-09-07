@@ -9,22 +9,24 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 const INK = "#2f2822";
 const GOLD = "#cdbc6d";
 
-/** Thin rule with a centred diamond and small flourishes, as in the Canva. */
+/**
+ * Thin rule with a centred diamond. The six little chevrons this used to carry
+ * read as a fish skeleton to Soulena (2026-09-07), so it is now the same clean
+ * two-strokes-and-a-diamond rule as the Sanctuary inquiry page — which is the
+ * reference she pointed at. `preserveAspectRatio` is back to the default too:
+ * stretching the viewBox was squashing the diamond out of shape.
+ */
 function GoldRule() {
   return (
     <svg
-      viewBox="0 0 1000 24"
+      viewBox="0 0 800 24"
       fill="none"
-      preserveAspectRatio="none"
       aria-hidden="true"
       className="my-6 h-5 w-full max-w-[900px]"
     >
-      <path d="M2 12h466" stroke={GOLD} strokeWidth="1.6" />
-      <path d="M532 12h466" stroke={GOLD} strokeWidth="1.6" />
-      <path d="M500 2l16 10-16 10-16-10 16-10z" fill={GOLD} />
-      {[120, 240, 360, 640, 760, 880].map((x) => (
-        <path key={x} d={`M${x - 5} 8l5 4-5 4`} stroke={GOLD} strokeWidth="1.2" opacity="0.75" />
-      ))}
+      <path d="M8 12h360" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M432 12h360" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M400 3l14 9-14 9-14-9 14-9z" fill={GOLD} />
     </svg>
   );
 }

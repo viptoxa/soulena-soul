@@ -25,12 +25,15 @@ export const SECTION_IDS = {
   contact: "contact",
 } as const;
 
+// Order and contents are Soulena's (2026-09-07 feedback deck): Packages was
+// missing from the nav even though /pricing has been live for weeks.
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Classes", href: "/classes" },
-  { label: "Sanctuary", href: "/sanctuary" },
+  { label: "Packages", href: "/pricing" },
   { label: "Booking", href: "/booking" },
+  { label: "Sanctuary", href: "/sanctuary" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

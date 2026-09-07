@@ -5,10 +5,12 @@ Source of truth for v2 = Soulena's Canva walkthrough video (`content v2/…​.M
 only optimized images in `public/images/` are shipped.
 
 ## ⚠️ Which Canva file is live
-Two designs are titled "Soulena's Website Draft". `DAHO4qLkq9E` is the one v2 was built
-from and is now **stale**; Soulena edits **`DAHJujTryBo`**. Always run `search-designs`
-sorted by `modified_descending` and work from the freshest file — the Package redesign
-(2026-08-19) exists only in `DAHJujTryBo`.
+**Current: `DAHUiNdgrB4`** — "Soulena's Website Draft – 7/09", the copy Anton took into
+his own account on 2026-09-07 (share link https://canva.link/h3jx2w37t232hoi). Two older
+designs share the title "Soulena's Website Draft": `DAHO4qLkq9E` (what v2 was built from)
+and `DAHJujTryBo` (the 2026-08-19 Package redesign). Both are **stale**. Always run
+`search-designs` sorted by `modified_descending`, or `resolve-shortlink` on whatever link
+she sends, rather than trusting an id written down here.
 
 ## Structure decision (UPDATED after full Canva access via Canva MCP)
 The full Canva (11 pages, design id DAHO4qLkq9E) revealed a genuine **multi-page** site —
@@ -55,6 +57,63 @@ returns stale frames after a JS scroll, so audit with a hidden iframe + DOM meas
 - [x] /contact — Contact (WhatsApp/email/Instagram) + interactive map.
 - [x] /sanctuary — dark luxury: hero + Mind–Body Connection + Creating Space (Curated Yoga/Sound Bath + 2h experience).
 - [x] /sanctuary/inquiry — dark inquiry form (InquiryForm).
+
+## Her detail pass — 2026-09-07 ("My little details to disturbing your peaceful night")
+An 8-page annotated PDF plus a redesigned Classes page in `DAHUiNdgrB4`. All of it is
+implemented except the hero photo, which needs a file only she has:
+
+- **Header** — the four icons were two sizes (w-4 / w-5); all are w-5 now. WhatsApp and
+  Mail moved to the right-hand cluster so the top-left corner is free for the logo she is
+  drawing; that corner is an empty spacer until it arrives.
+- **Nav** — reordered to Home / About / Classes / Packages / Booking / Sanctuary /
+  Contact, and **Packages** added: `/pricing` had been live for weeks with no nav entry.
+- **Home** — "Join My Classes" is 31px on a phone (the other section headings are still
+  27px; she only asked about this one). "Simply move with Soulena Soul" is sans italic.
+- **Footer** — "Explore . Follow Along" italic. The discount badge is re-cut to her
+  reference: two widely spaced ring repeats instead of three cramped ones, a bigger NEW
+  STUDENT* / 10%, and the asterisk note lifted out of the ring. The word gaps are
+  non-breaking spaces — SVG collapses ordinary whitespace and the two words ran together.
+- **/about** — "Soulena Soul" now overlaps "MORE ABOUT ME", tilted 2.5° and at 80%
+  opacity. The rotated span is `inline-block` on purpose: rotating the full-width block
+  pivots an 1100px box and throws the line right off. The photo grid became a stepped
+  collage in the style of the Sanctuary one (`AboutGallery`), which is what she asked for;
+  photos are dealt round-robin into three frames so any number of them works.
+- **/classes — rebuilt** on her new page 5: centred title with a gold rule, a two-line
+  tagline, three chips, and outlined cards with sand icon discs (`ClassIcons`). Weekend
+  Beach keeps one photo and three stacked cards; Private Session has two photos and pairs
+  the areas and price cards. That pair stacks again between lg and xl, where each card
+  narrows to ~185px and every price line broke in two.
+- **Payment popup** — the price buttons no longer jump straight to Stripe. `PayButton`
+  opens a dialog offering card, PromptPay QR, bank transfer and cash, which is what she
+  asked for; it is used on both /classes and /pricing, and `src/lib/payment.ts` is now the
+  single source for the bank details /payment also renders. **Do not drive that dialog
+  from the element's own `close` event** — it does not fire on `close()` in every engine,
+  which left `document.body` locked at `overflow:hidden` and froze the page behind it.
+  React state drives it, and Escape is handled by hand.
+- **Buttons** — the filled button now carries a transparent 2px border so it is exactly
+  the height of the outlined one; the outline had been adding 4px.
+- **/booking** — "Booking the Class" matches "Class Pricing" (32px / 6xl), and both
+  signatures use the sans italic she prefers.
+- **/sanctuary** — the teaser rule lost its six chevrons ("this looks like a fishbone")
+  and is the clean rule from the inquiry page. The orb bullets were measured 4.7px outside
+  the disc at phone width; phone padding, portrait size and type are a step down, and
+  every orb now clears the rim by at least 10px at 320–1280.
+- **/contact** — the channel list moved from inside the map block to directly under the
+  heading.
+- **Sanctuary inquiry** — participants is digits-only (stripped on input, since
+  `type="number"` still lets "e" and "+" through), and interests / preferred location are
+  free-text fields with the old options offered underneath as suggestions.
+
+### ⏳ Still needs something from her
+- **Hero slide 1** — she wants the rocks-by-the-sea photo from page 3 of her Canva ("one
+  of my favorite photos"). The copy embedded in the PDF is 648×800, nowhere near enough
+  for a full-bleed hero, so this waits for the original off her Drive.
+- **Class photos** are placeholders pulled from the Canva PDF (`class-beach-sunset.jpg`
+  640×427, `class-private-1/2.jpg` 320×400). Swap them for the originals.
+- **"Movement-inspired sessions blending yoga, mobility & flow"** — the live Canva drops
+  "mindful", her screenshots still have it. Following the Canva; worth confirming.
+- **Nai Harn +200 THB travel fee** — her redesigned areas box drops it. Kept as a footnote
+  on that card rather than silently losing a charge.
 
 ## Remaining polish (nice-to-have)
 - Hero 3 nav dots already present; confirm slide transition feel.

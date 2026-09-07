@@ -42,7 +42,7 @@ const CHANNELS = [
   },
 ];
 
-/** Contact channels sit inside the map block, so the page stays compact. */
+/** Contact page: heading, then the channels, then the map. */
 export default function ContactMapSection() {
   return (
     <section
@@ -55,31 +55,32 @@ export default function ContactMapSection() {
           Contact
         </h1>
 
+        {/* These used to sit under the beach list inside the map block; Soulena
+            asked for them directly under the heading (2026-09-07), which is
+            also where a visitor looks first for a way to reach her. The e-mail
+            address is far wider than the other three, so one per line below sm
+            keeps the row from breaking 1 / 2 / 1. */}
+        <ul className="mx-auto mt-8 flex max-w-[900px] flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 md:mt-10">
+          {CHANNELS.map(({ label, href, display, external, Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="group flex items-center gap-2.5 text-brand-charcoal transition-colors hover:text-brand-olive"
+              >
+                <Icon className="h-[22px] w-[22px] shrink-0" aria-hidden="true" />
+                <span className="sr-only">{label}: </span>
+                <span className="text-[13px] opacity-75 transition-opacity group-hover:opacity-100">
+                  {display}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
         <div id={SECTION_IDS.location} className="mt-12 md:mt-16">
-          <LocationMap>
-            {/* The e-mail address is far wider than the other three, so letting
-                the row wrap on a phone left it ragged (1 / 2 / 1). One per line
-                below sm reads as a deliberate list and keeps the tap targets
-                full-width. */}
-            <ul className="mt-8 flex flex-col gap-4 border-t border-brand-cream-dark pt-6 sm:flex-row sm:flex-wrap sm:gap-x-6">
-              {CHANNELS.map(({ label, href, display, external, Icon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-2.5 text-brand-charcoal transition-colors hover:text-brand-olive"
-                  >
-                    <Icon className="h-[22px] w-[22px] shrink-0" aria-hidden="true" />
-                    <span className="sr-only">{label}: </span>
-                    <span className="text-[13px] opacity-75 transition-opacity group-hover:opacity-100">
-                      {display}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </LocationMap>
+          <LocationMap />
         </div>
       </div>
     </section>

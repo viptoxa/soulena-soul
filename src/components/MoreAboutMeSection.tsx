@@ -44,16 +44,24 @@ export default function MoreAboutMeSection() {
           <FlowerIcon className="absolute -left-7 top-8 w-7 h-7" style={{ color: GOLD }} />
         </div>
 
-        {/* Heading */}
-        <div className="relative mb-3 md:mb-4">
+        {/* Heading — the script line rides up into the serif one, tilted and
+            slightly transparent, the way she marked it up (2026-09-07). The
+            negative margin is what creates the overlap; the rotation pivots on
+            the left so the tail lifts rather than the whole line sliding. */}
+        <div className="relative mb-6 md:mb-10">
           <h1 className="font-serif text-4xl md:text-6xl uppercase tracking-wide leading-none" style={{ color: SLATE }}>
             More About Me
           </h1>
-          <span
-            className="block leading-[0.9] -mt-1 md:-mt-3 ml-8 md:ml-28 text-5xl md:text-7xl"
-            style={{ fontFamily: "var(--font-script)", color: MAUVE }}
-          >
-            Soulena Soul
+          {/* The inner span is inline-block on purpose: rotating the full-width
+              block pivots a 1100px box and throws the line far off. Hugging the
+              text keeps the tilt to the words themselves. */}
+          <span className="relative -mt-4 ml-5 block md:-mt-7 md:ml-12">
+            <span
+              className="inline-block origin-left -rotate-[2.5deg] leading-[0.9] text-[52px] opacity-80 md:text-[80px]"
+              style={{ fontFamily: "var(--font-script)", color: MAUVE }}
+            >
+              Soulena Soul
+            </span>
           </span>
         </div>
 

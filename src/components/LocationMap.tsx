@@ -11,14 +11,7 @@ const PhuketMap = dynamic(() => import("./PhuketMap"), {
 
 export type MapTone = "cream" | "olive";
 
-export default function LocationMap({
-  tone = "cream",
-  children,
-}: {
-  tone?: MapTone;
-  /** Optional extra content under the beach list — /contact puts its channels here. */
-  children?: React.ReactNode;
-}) {
+export default function LocationMap({ tone = "cream" }: { tone?: MapTone }) {
   const [active, setActive] = useState(0);
   const olive = tone === "olive";
 
@@ -73,8 +66,6 @@ export default function LocationMap({
             </li>
           ))}
         </ul>
-
-        {children}
       </div>
 
       <div

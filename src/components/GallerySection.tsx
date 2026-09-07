@@ -1,5 +1,5 @@
 import { SECTION_IDS } from "@/lib/constants";
-import GalleryLightbox from "./GalleryLightbox";
+import AboutGallery from "./AboutGallery";
 
 const GALLERY_IMAGES = [
   { src: "/images/about-gallery-1.jpg", alt: "Sunset beach yoga class group photo" },
@@ -14,9 +14,9 @@ const GALLERY_IMAGES = [
 
 export default function GallerySection() {
   return (
-    <section id={SECTION_IDS.gallery} className="pb-6 md:pb-10 px-4 bg-brand-cream">
+    <section id={SECTION_IDS.gallery} className="px-4 pb-10 pt-2 md:pb-16 bg-brand-cream">
       <div className="mx-auto max-w-[1120px]">
-        <GalleryLightbox images={GALLERY_IMAGES} />
+        <AboutGallery images={GALLERY_IMAGES} />
       </div>
     </section>
   );

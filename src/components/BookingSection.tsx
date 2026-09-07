@@ -59,7 +59,9 @@ export default function BookingSection() {
         <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-16 md:py-28 flex flex-col items-center text-center text-white">
           <FlowerIcon className="w-8 h-8 md:w-10 md:h-10 text-white mb-5 md:mb-7" />
 
-          <h1 className="font-serif text-[28px] md:text-5xl uppercase tracking-[0.08em]">
+          {/* Same scale and tracking as CLASS PRICING on /classes — she asked
+              for the two page titles to match (2026-09-07). */}
+          <h1 className="font-serif text-[32px] md:text-6xl uppercase tracking-[0.06em] text-balance">
             Booking the Class
           </h1>
 

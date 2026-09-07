@@ -4,20 +4,14 @@ import type { ReactNode } from "react";
 import { FlowerIcon } from "@/components/icons/SocialIcons";
 import { ROUTES, SECTION_IDS, SITE } from "@/lib/constants";
 import { HAS_STRIPE_LINKS } from "@/lib/pricing";
+// Shared with the "Pay now" popup on the class and package prices.
+import { BANK, QR_IMAGE } from "@/lib/payment";
 
 // Canva page 10 palette: slate heading, gold flower mark on cream.
 // Buttons stay on the site's brand-olive style used everywhere else.
 const SLATE = "#3f4c54";
 const GOLD = "#c7b96e";
 
-// Soulena's Thai bank details, sent 2026-08-13. Card payment is per-package,
-// so it lives on the Package page next to each price rather than here.
-const BANK = {
-  name: "Kasikornbank (KBANK)",
-  account: "043-186-9241",
-  holder: "Miss Jitpisut Ponsumritchok",
-  promptPay: "085-035-0848",
-};
 
 function MethodCard({
   step,
@@ -74,7 +68,7 @@ export default function PaymentSection() {
           <div className="grid md:grid-cols-[minmax(0,360px)_1fr] gap-8 md:gap-12 items-center">
             <div className="relative mx-auto w-full max-w-[360px] aspect-square overflow-hidden rounded-2xl shadow-md">
               <Image
-                src="/images/payment-thai-qr-v2.jpg"
+                src={QR_IMAGE}
                 alt="Soulena Soul Thai PromptPay QR code — scan with your banking app to pay"
                 fill
                 sizes="(min-width: 768px) 360px, 90vw"
