@@ -109,7 +109,12 @@ implemented except the hero photo, which needs a file only she has:
   of my favorite photos"). The copy embedded in the PDF is 648×800, nowhere near enough
   for a full-bleed hero, so this waits for the original off her Drive.
 - **Class photos** are placeholders pulled from the Canva PDF (`class-beach-sunset.jpg`
-  640×427, `class-private-1/2.jpg` 320×400). Swap them for the originals.
+  640×427, `class-private-1/2.jpg` 320×400). Swap them for the originals — nothing else needs touching:
+  `PHOTO_SIZES` in `ClassDetailBlock.tsx` declares the widths the photos really
+  occupy (a flat 460px single / 224px paired from 1212px up), checked against the
+  rendered boxes at 375/768/1024/1280/1600, so Next uses the extra resolution the
+  moment it exists. Drop the files into `public/images/` under the same names and
+  redeploy. She confirmed on 2026-09-08 that she is uploading them.
 - **"Movement-inspired sessions blending yoga, mobility & flow"** — the live Canva drops
   "mindful", her screenshots still have it. Following the Canva; worth confirming.
 - **Nai Harn +200 THB travel fee** — her redesigned areas box drops it. Kept as a footnote
