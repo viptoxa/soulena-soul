@@ -9,6 +9,15 @@
   --color-brand-sage: #7a8b6f;
   --color-brand-sage-light: #9aab8f;
 
+  /*
+   * Soulena: "the 'white' text colour throughout the website isn't pure white
+   * — it's a slightly warm, yellowish off-white" (2026-09-09). Rather than
+   * touch the eighteen files that say text-white, the white token itself is
+   * redefined, so every text-/bg-/border-white and their opacity variants pick
+   * it up. #f9f8f0 is the fill she used on her own flower mark.
+   */
+  --color-white: #f9f8f0;
+
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }

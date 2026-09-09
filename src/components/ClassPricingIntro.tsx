@@ -6,7 +6,7 @@ export default function ClassPricingIntro() {
     <section className="relative isolate overflow-hidden text-brand-cream px-4 py-16 md:py-24 text-center">
       {/* Canva uses the underwater / jellyfish photo behind this note */}
       <Image
-        src="/images/classes-hero-jelly.jpg"
+        src="/images/classes-hero-v3.jpg"
         alt=""
         fill
         priority
@@ -35,9 +35,10 @@ export default function ClassPricingIntro() {
         <p className="text-brand-cream text-[15px] md:text-[17px] leading-relaxed">
           With love,
           <br />
-          {/* Sans italic, matching the signature on /booking — she prefers that
-              one and asked for both to use it (2026-09-07). */}
-          <em className="text-lg md:text-xl">Soulena Soul</em>
+          {/* Back to the serif italic: she corrected herself on 2026-09-09 —
+              "I gave you the wrong instruction here, this is actually the font
+              I want". */}
+          <span className="font-serif text-lg italic md:text-xl">Soulena Soul</span>
         </p>
       </div>
     </section>

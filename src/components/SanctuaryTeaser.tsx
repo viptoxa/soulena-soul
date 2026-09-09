@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "@/lib/constants";
-import { FlowerIcon } from "@/components/icons/SocialIcons";
+import { FlowerIcon, ArrowRightIcon } from "@/components/icons/SocialIcons";
 
 // Sampled straight from the Canva Classes page: warm dark-brown canvas with
 // every piece of type in the same soft gold, over a huge dimmed shell whose
@@ -83,7 +83,7 @@ export default function SanctuaryTeaser() {
               href={ROUTES.sanctuary}
               className="inline-flex items-center gap-4 rounded-full bg-brand-olive px-10 py-4 text-sm uppercase tracking-[0.12em] text-white transition-colors hover:bg-brand-olive-dark"
             >
-              Enter the Sanctuary <span aria-hidden>⟶</span>
+              Enter the Sanctuary <ArrowRightIcon className="h-3.5 w-[34px] shrink-0" />
             </Link>
           </div>
         </div>

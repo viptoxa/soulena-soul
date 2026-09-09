@@ -34,62 +34,10 @@ export default function BookingSection() {
     })();
   }, []);
 
+  // The page is only this block now, so it carries the top and bottom padding
+  // the removed hero used to provide.
   return (
-    <>
-      {/* ───────── Hero — BOOKING THE CLASS ───────── */}
-      <section className="relative isolate overflow-hidden">
-        <Image
-          src="/images/booking-sand-hero.jpg"
-          alt="Soulena's flower mark resting in the sand beside the beach yoga sign"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-          style={{ filter: "saturate(0.78) contrast(0.74)" }}
-        />
-        {/*
-         * Canva gives this photo a soft warm wash rather than a grey scrim.
-         * Measured off the export: its shadows sit at rgb(85,77,62) and the
-         * sand median at rgb(134,112,87) — so the teal "Soulena" sign reads
-         * olive-brown and white type stays legible over the whole frame.
-         * The contrast/saturate pair plus this overlay reproduce both points.
-         */}
-        <div className="absolute inset-0 bg-[#6f6346]/60" />
-
-        <div className="relative z-10 mx-auto max-w-[1000px] px-4 py-16 md:py-28 flex flex-col items-center text-center text-white">
-          <FlowerIcon className="w-8 h-8 md:w-10 md:h-10 text-white mb-5 md:mb-7" />
-
-          {/* Same scale and tracking as CLASS PRICING on /classes — she asked
-              for the two page titles to match (2026-09-07). */}
-          <h1 className="font-serif text-[32px] md:text-6xl uppercase tracking-[0.06em] text-balance">
-            Booking the Class
-          </h1>
-
-          {/* Thin vertical rule, as in the Canva */}
-          <span className="block w-px h-12 md:h-16 bg-white/70 my-7 md:my-9" aria-hidden="true" />
-
-          <p className="max-w-[860px] text-[15px] md:text-[19px] leading-relaxed text-white/95">
-            Whether you&apos;re joining a beach yoga class, booking a private session, or planning a
-            special wellness gathering, each experience is thoughtfully designed with care and
-            attention to your needs.
-          </p>
-
-          <p className="mt-5 md:mt-6 max-w-[860px] text-[15px] md:text-[19px] leading-relaxed text-white/95">
-            Simply fill out the booking form with a few details about the class you&apos;re interested in,{" "}
-            <br className="hidden md:inline" />
-            and I&apos;ll get back to you as soon as possible.
-          </p>
-
-          <p className="mt-7 md:mt-9 text-[15px] md:text-[19px] leading-relaxed text-white/95">
-            With love,
-            <br />
-            <em>Soulena Soul</em>
-          </p>
-        </div>
-      </section>
-
-      {/* ───────── View available dates ───────── */}
-      <section id={SECTION_IDS.booking} className="bg-brand-cream px-4 pt-12 md:pt-20 pb-12 md:pb-16">
+    <section id={SECTION_IDS.booking} className="bg-brand-cream px-4 pt-14 pb-14 md:pt-20 md:pb-20">
         <div className="mx-auto max-w-[1200px]">
           <h2
             className="flex items-center gap-3 md:gap-4 font-serif text-[27px] md:text-5xl uppercase tracking-wide mb-8 md:mb-10"
@@ -116,7 +64,6 @@ export default function BookingSection() {
             )}
           </div>
         </div>
-      </section>
-    </>
+    </section>
   );
 }

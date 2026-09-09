@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { SITE, NAV_LINKS } from "@/lib/constants";
+import { SITE, NAV_LINKS, ROUTES } from "@/lib/constants";
 import { WhatsAppIcon, MailIcon, InstagramIcon, ThreadsIcon } from "@/components/icons/SocialIcons";
 
 export default function Header() {
@@ -29,15 +30,31 @@ export default function Header() {
     >
       <div className="mx-auto max-w-[1200px] px-[15px] py-2.5 md:px-4 md:py-4 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
         {/*
-         * Top-left is deliberately empty: Soulena is designing a logo for this
-         * corner, which is why she asked for all four icons to move to the
-         * right (2026-09-07). The span keeps the flex/grid row balanced until
-         * the logo lands.
+         * Her logo, which is why the four icons moved to the right last round.
+         * The wordmark is set rather than baked into the image so it stays
+         * crisp and searchable: all caps with the leading S of each word a
+         * touch larger, as she specified. The wordmark drops out between md
+         * and lg: seven nav items plus the icons leave no room for it there,
+         * and she said herself to keep only what fits ("if having the logo
+         * there makes this area feel too crowded ... feel free to remove it").
          */}
-        <div aria-hidden className="md:pr-6" />
+        <Link href={ROUTES.home} className="group flex items-center gap-2 md:gap-2.5 md:pr-6">
+          <Image
+            src="/images/brand-mark.png"
+            alt=""
+            width={260}
+            height={235}
+            priority
+            className="h-[26px] w-auto md:h-[30px]"
+          />
+          <span className="hidden font-serif text-[12px] uppercase leading-none tracking-[0.16em] text-brand-charcoal transition-colors group-hover:text-brand-olive max-md:inline lg:inline lg:text-[13.5px]">
+            <span className="text-[1.2em]">S</span>oulena{" "}
+            <span className="text-[1.2em]">S</span>oul
+          </span>
+        </Link>
 
         {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6 justify-self-center whitespace-nowrap">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-5 justify-self-center whitespace-nowrap">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

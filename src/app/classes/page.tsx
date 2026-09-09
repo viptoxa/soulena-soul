@@ -4,7 +4,6 @@ import ClassDetailBlock, { type ClassDetailData } from "@/components/ClassDetail
 import GroupWellnessSection from "@/components/GroupWellnessSection";
 import SanctuaryTeaser from "@/components/SanctuaryTeaser";
 import LocationSection from "@/components/LocationSection";
-import PayButton from "@/components/PayButton";
 import { ROUTES } from "@/lib/constants";
 import {
   PersonIcon,
@@ -19,16 +18,6 @@ import {
 
 export const metadata: Metadata = {
   title: "Classes — Weekend Beach, Private & Wellness Events | Soulena Soul",
-};
-
-// Stripe Payment Links for the single-session prices quoted on this page. The
-// packages have their own buttons on /pricing; these four are only sold here,
-// so the link sits on the price line itself.
-const PAY_LINKS = {
-  beachDropIn: "https://buy.stripe.com/aFa5kwga05bX6Vuffx6Na00",
-  private1: "https://buy.stripe.com/4gM5kwga07k53Ji2sL6Na0b",
-  private2: "https://buy.stripe.com/bJe28k4ridItcfO0kD6Na0c",
-  private3: "https://buy.stripe.com/00w28k4rieMxfs04AT6Na0d",
 };
 
 const WEEKEND_BEACH: ClassDetailData = {
@@ -53,7 +42,7 @@ const WEEKEND_BEACH: ClassDetailData = {
   ],
   photos: [
     {
-      src: "/images/class-beach-sunset.jpg",
+      src: "/images/class-beach-v3.jpg",
       alt: "A group practising yoga on the sand at sunset, facing the sea",
     },
   ],
@@ -80,9 +69,7 @@ const WEEKEND_BEACH: ClassDetailData = {
     {
       heading: "Price",
       Icon: TagIcon,
-      items: [
-        <PayButton key="dropin" cardUrl={PAY_LINKS.beachDropIn} label="400 THB per person" />,
-      ],
+      items: ["400 THB per person"],
     },
   ],
   note: (
@@ -91,8 +78,8 @@ const WEEKEND_BEACH: ClassDetailData = {
       <br />— Class will be confirmed once minimum participants are reached.
     </>
   ),
-  primaryCta: { label: "Reserve Your Spot", href: ROUTES.booking },
-  secondaryCta: { label: "Explore Packages", href: ROUTES.pricing },
+  primaryCta: { label: "Explore Packages", href: ROUTES.pricing },
+  secondaryCta: { label: "Check Availability", href: ROUTES.booking },
 };
 
 const PRIVATE_SESSION: ClassDetailData = {
@@ -110,10 +97,10 @@ const PRIVATE_SESSION: ClassDetailData = {
   ],
   photos: [
     {
-      src: "/images/class-private-1.jpg",
+      src: "/images/class-private-v3-1.jpg",
       alt: "Soulena guiding two students through a forward fold on a terrace",
     },
-    { src: "/images/class-private-2.jpg", alt: "Three students seated on mats on a terrace" },
+    { src: "/images/class-private-v3-2.jpg", alt: "Three students seated on mats on a terrace" },
   ],
   session: (
     <>
@@ -141,35 +128,20 @@ const PRIVATE_SESSION: ClassDetailData = {
       Icon: PinIcon,
       // Listed row-major so the two rendered columns read the way she set them
       // out: Kathu / Karon / Kata on the left, Patong / Nai Harn / Chalong on
-      // the right. The Nai Harn travel fee moved to the footnote — her compact
-      // two-column box has no room for it inline, but it is a real charge.
+      // the right. The Nai Harn travel fee is gone at her request (2026-09-09)
+      // — "I'm okay with covering the travel costs to Nai Harn myself for now".
       columns: 2,
       items: ["Kathu", "Patong", "Karon", "Nai Harn", "Kata", "Chalong"],
-      footnote: "*Nai Harn Beach +200 THB travel fee",
     },
     {
       heading: "Price",
       Icon: TagIcon,
       items: ["1 person — 1,400 THB", "2 people — 2,200 THB", "3 people — 3,000 THB"],
       footnote: "*Maximum 3 people",
-      // One button for all three rates: this card is half the width of the
-      // right column, and a pill after every price pushed each one onto two
-      // lines. The popup carries the three card links instead.
-      footer: (
-        <PayButton
-          variant="block"
-          label="Private session"
-          cardOptions={[
-            { label: "1 person", url: PAY_LINKS.private1 },
-            { label: "2 people", url: PAY_LINKS.private2 },
-            { label: "3 people", url: PAY_LINKS.private3 },
-          ]}
-        />
-      ),
     },
   ],
-  primaryCta: { label: "Book a Private Session", href: ROUTES.booking },
-  secondaryCta: { label: "Explore Packages", href: ROUTES.pricing },
+  primaryCta: { label: "Explore Packages", href: ROUTES.pricing },
+  secondaryCta: { label: "Check Availability", href: ROUTES.booking },
 };
 
 export default function ClassesPage() {

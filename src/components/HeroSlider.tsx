@@ -6,25 +6,24 @@ import Link from "next/link";
 import { SITE, SECTION_IDS, ROUTES } from "@/lib/constants";
 import { FlowerIcon } from "@/components/icons/SocialIcons";
 
+// Her own three hero frames, sent 2026-09-09 (4269x2400 originals).
 const HERO_IMAGES = [
-  { src: "/images/hero-1.jpg", alt: "Sunset yoga session on the hilltop overlooking the ocean" },
-  { src: "/images/hero-2.jpg", alt: "Soulena assisting a student on the ocean deck" },
-  { src: "/images/hero-3.jpg", alt: "Beach yoga group practice at sunrise" },
+  { src: "/images/hero-v3-1.jpg", alt: "Practising on the sand as the sun sets behind the headland" },
+  { src: "/images/hero-v3-2.jpg", alt: "Late afternoon light on the open sea" },
+  { src: "/images/hero-v3-3.jpg", alt: "A seated practice among the granite boulders at the water's edge" },
 ];
 
-const CAL_BASE = "https://cal.com/soulena.soul";
-const inquiry = (topic: string) =>
-  `${SITE.whatsappUrl}?text=${encodeURIComponent(
-    `Hi Soulena! I'd like to inquire about ${topic}.`
-  )}`;
-
-// Hero CTAs mirror Soulena's Canva: two bookable classes (Cal.com), a wellness
-// event inquiry (WhatsApp), and the Soul & Sound Sanctuary (its own page).
+/*
+ * These used to drop straight into Cal.com and WhatsApp. Soulena asked for
+ * them to lead to the Classes page instead (2026-09-09) — read first, book
+ * after. Soul & Sound keeps its own page, which is neither booking nor a
+ * class listing.
+ */
 const CLASS_TYPES = [
-  { label: "BEACH YOGA CLASS", href: `${CAL_BASE}/beach-yoga-class`, external: true },
-  { label: "PRIVATE CLASS", href: `${CAL_BASE}/private-session`, external: true },
-  { label: "WELLNESS EVENT", href: inquiry("a Hotel & Wellness Event"), external: true },
-  { label: "SOUL & SOUND", href: ROUTES.sanctuary, external: false },
+  { label: "BEACH YOGA CLASS", href: ROUTES.classes },
+  { label: "PRIVATE CLASS", href: ROUTES.classes },
+  { label: "WELLNESS EVENT", href: ROUTES.classes },
+  { label: "SOUL & SOUND", href: ROUTES.sanctuary },
 ];
 
 export default function HeroSlider() {
@@ -73,12 +72,15 @@ export default function HeroSlider() {
           />
         </div>
 
-        {/* Flower icon */}
-        <FlowerIcon className="w-8 h-8 mb-4 opacity-80" />
+        {/* Turning slowly, the way the discount badge does — her request. */}
+        <FlowerIcon className="w-8 h-8 mb-4 opacity-80 [animation:spin_30s_linear_infinite] motion-reduce:animate-none" />
 
-        {/* Heading */}
+        {/* Heading — on a phone it reads better broken after "HELLO," than
+            wrapped mid-name, which is where it landed on its own. */}
         <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl tracking-wider mb-2">
-          HELLO, I&apos;M SOULENA SOUL
+          HELLO,
+          <br className="sm:hidden" />{" "}
+          I&apos;M SOULENA SOUL
         </h1>
 
         {/* Divider line */}
@@ -96,12 +98,8 @@ export default function HeroSlider() {
         <div className="flex flex-wrap justify-center gap-3">
           {CLASS_TYPES.map((ct) => {
             const cls =
-              "border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm tracking-wider uppercase hover:bg-white/20 transition-colors";
-            return ct.external ? (
-              <a key={ct.label} href={ct.href} target="_blank" rel="noopener noreferrer" className={cls}>
-                {ct.label}
-              </a>
-            ) : (
+              "border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm font-semibold tracking-wider uppercase hover:bg-white/20 transition-colors";
+            return (
               <Link key={ct.label} href={ct.href} className={cls}>
                 {ct.label}
               </Link>

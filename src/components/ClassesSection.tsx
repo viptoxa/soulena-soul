@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SECTION_IDS, ROUTES } from "@/lib/constants";
+import { ArrowRightIcon } from "@/components/icons/SocialIcons";
 
 type ClassCard = {
   title: string;
@@ -80,6 +81,7 @@ export default function ClassesSection() {
                 </div>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-white/70 px-4 py-1.5 text-[11px] uppercase tracking-wider text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-brand-charcoal">
                   Learn More
+                  <ArrowRightIcon className="h-2.5 w-[22px] shrink-0" />
                 </span>
               </div>
             </Link>

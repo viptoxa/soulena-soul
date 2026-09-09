@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
@@ -34,12 +35,12 @@ function DiscountBadge() {
               textLength="238.8"
               lengthAdjust="spacing"
             >
-              {"DISCOUNT\u00a0\u00a0\u00a0\u00a0DISCOUNT\u00a0\u00a0\u00a0\u00a0"}
+              {"DISCOUNT\u00a0\u00a0·\u00a0\u00a0DISCOUNT\u00a0\u00a0·\u00a0\u00a0"}
             </textPath>
           </text>
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
-          <span className="text-[9px] uppercase leading-[1.25] tracking-wide md:text-[12px] md:tracking-wider">
+          <span className="text-[9px] italic uppercase leading-[1.5] tracking-wide md:text-[12px] md:tracking-wider">
             New
             <br />
             Student*
@@ -47,7 +48,7 @@ function DiscountBadge() {
           <span className="mt-1 font-serif text-[26px] italic md:text-[38px]">10%</span>
         </div>
       </div>
-      <p className="mx-auto mt-2 w-28 text-center text-[8px] italic leading-tight text-white/75 md:mt-3 md:w-44 md:text-[11px]">
+      <p className="mx-auto -mt-1 w-28 text-center text-[8px] italic leading-tight text-white/75 md:-mt-2 md:w-44 md:text-[11px]">
         *For Weekend
         <br />
         Beach Classes only
@@ -87,15 +88,23 @@ export default function Footer() {
         </div>
 
         {/* Navigation */}
-        <nav className="mt-16 md:mt-28 flex flex-wrap gap-x-8 md:gap-x-14 gap-y-2">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm md:text-base uppercase tracking-wider text-white/90 underline underline-offset-8 decoration-white/50 hover:text-white hover:decoration-white transition-colors"
-            >
-              {link.label}
-            </Link>
+        {/* Centred with "|" between the items, which she thought would read as
+            more polished than the underlined left-aligned row (2026-09-09). */}
+        <nav className="mt-16 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 md:mt-28 md:gap-x-4">
+          {NAV_LINKS.map((link, i) => (
+            <Fragment key={link.href}>
+              {i > 0 ? (
+                <span aria-hidden className="text-sm text-white/40 md:text-base">
+                  |
+                </span>
+              ) : null}
+              <Link
+                href={link.href}
+                className="text-sm uppercase tracking-wider text-white/90 transition-colors hover:text-white md:text-base"
+              >
+                {link.label}
+              </Link>
+            </Fragment>
           ))}
         </nav>
 

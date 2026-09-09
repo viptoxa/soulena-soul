@@ -30,22 +30,44 @@ export function ThreadsIcon(props: IconProps) {
 
 export function MailIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M22 4L12 13 2 4" />
+    // The envelope only filled 20x16 of the 24-unit box while WhatsApp,
+    // Instagram and Threads fill almost all of it, so at the same class it read
+    // a size smaller — Soulena spotted it twice. Scaled up to 22x17.6.
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="1" y="3.2" width="22" height="17.6" rx="2.2" />
+      <path d="M22.4 4L12 13 1.6 4" />
     </svg>
   );
 }
 
 export function FlowerIcon(props: IconProps) {
-  // Eight teardrop petals radiating from the centre — rounded on the outer
-  // edge, tapering to a point in the middle (matches Soulena's Canva mark).
-  const petal = "M20 20 C 14.3 12 14.3 3.4 20 3 C 25.7 3.4 25.7 12 20 20 Z";
+  // Eight teardrop petals radiating from the centre. Re-cut 2026-09-09 to the
+  // mark she sent ("Flower icon_02/03.SVG"): its 29KB traced outline is one
+  // regular rosette, so the petal is drawn instead of shipped. The control
+  // points are a least-squares fit to her petal's measured half-width profile
+  // — widest at 0.79 of the radius, 0.249R across — rms error 0.007R.
+  const petal = "M20 20C20.36 10.1 29.9 4.7 20 2C10.1 4.7 19.64 10.1 20 20Z";
   return (
     <svg viewBox="0 0 40 40" fill="currentColor" {...props}>
       {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
         <path key={angle} d={petal} transform={`rotate(${angle} 20 20)`} />
       ))}
+    </svg>
+  );
+}
+
+/**
+ * Long arrow for the "read more" style buttons. The text glyphs these replace
+ * (→ and ⟶) sit on the baseline, so they hung low against the label — which
+ * is what Soulena kept seeing as "too close to the bottom edge" (2026-09-09).
+ * An inline SVG centres on the text box instead, and takes a real stroke
+ * weight so it can be a little bolder without being a bigger character.
+ */
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 34 12" fill="none" stroke="currentColor" strokeWidth={1.7}
+         strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <path d="M1 6h31M26.5 1.4 32.2 6l-5.7 4.6" />
     </svg>
   );
 }

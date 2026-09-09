@@ -5,11 +5,19 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 // circles into an infinity/wave (low · high · low · high) while the title
 // sweeps over the top and curves back under the bottom.
 const CIRCLES = [
-  { src: "/images/glimpse-a.jpg", left: "5.8%", top: "40.3%" }, // group meditation (lower)
-  { src: "/images/glimpse-b.jpg", left: "27.2%", top: "16.1%" }, // reclining stretch (upper)
-  { src: "/images/glimpse-c.jpg", left: "48.7%", top: "40.3%" }, // backbend by the sea (lower)
-  { src: "/images/glimpse-d.jpg", left: "70.1%", top: "16.1%" }, // beach class (upper)
+  { src: "/images/glimpse-v3-a.jpg", left: "5.8%", top: "40.3%" }, // jungle deck (lower)
+  { src: "/images/glimpse-v3-b.jpg", left: "27.2%", top: "16.1%" }, // reclining rest (upper)
+  { src: "/images/glimpse-v3-c.jpg", left: "48.7%", top: "40.3%" }, // sand practice (lower)
+  { src: "/images/glimpse-v3-d.jpg", left: "70.1%", top: "16.1%" }, // group by the sea (upper)
 ];
+
+/** Her wording, set as widely spaced caps under the title (2026-09-09). */
+const TAGLINE = "YOGA . NATURE . PEOPLE . PRESENCE";
+
+/** The hairlines she asked for, framing the section top and bottom. */
+function Hairline({ className = "" }: { className?: string }) {
+  return <span aria-hidden className={`mx-auto block h-px w-full max-w-[1120px] bg-[#e9dcb4]/35 ${className}`} />;
+}
 
 const CREAM = "#e9dcb4";
 const arcText = {
@@ -20,7 +28,9 @@ const arcText = {
 
 export default function GlimpseGallery() {
   return (
-    <section className="bg-[#7d7550] py-16 md:py-24 px-4 overflow-hidden">
+    <section className="bg-[#7d7550] px-4 py-12 md:py-16 overflow-hidden">
+      <Hairline className="mb-12 md:mb-16" />
+
       {/* Desktop — circles woven into an infinity, title sweeping around */}
       <div
         className="relative mx-auto hidden md:block w-full max-w-[1120px]"
@@ -56,28 +66,37 @@ export default function GlimpseGallery() {
         <FlowerIcon className="absolute -bottom-1 right-3 h-8 w-8 text-[#e9dcb4]" />
       </div>
 
+      <p className="mt-8 hidden text-center text-[13px] uppercase tracking-[0.42em] text-[#e9dcb4]/85 md:block lg:text-[15px]">
+        {TAGLINE}
+      </p>
+
       {/* Mobile — stacked title + a 2×2 grid. Four circles in one row only fit
           at ~110px each on a phone, which is too small to read the photos, so
           the wave is carried by offsetting the right-hand column instead. */}
       <div className="md:hidden text-center">
-        <h2 className="font-serif text-3xl leading-tight text-[#e9dcb4] mb-8">
+        <h2 className="font-serif text-3xl leading-tight text-[#e9dcb4]">
           A Glimpse Into
           <br />
           My Working Space
         </h2>
+        <p className="mx-auto mt-4 mb-8 max-w-[300px] text-[11px] uppercase leading-relaxed tracking-[0.3em] text-[#e9dcb4]/85">
+          {TAGLINE}
+        </p>
+        {/* The right-hand column used to sit 28px lower to echo the desktop
+            weave; she asked for all four on one level (2026-09-09). */}
         <div className="mx-auto grid max-w-[330px] grid-cols-2 gap-4">
-          {CIRCLES.map((c, i) => (
+          {CIRCLES.map((c) => (
             <div
               key={c.src}
-              className={`relative aspect-square overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-lg ${
-                i % 2 ? "mt-7" : ""
-              }`}
+              className="relative aspect-square overflow-hidden rounded-full ring-[3px] ring-[#c3b98d]/70 shadow-lg"
             >
               <Image src={c.src} alt="" fill sizes="160px" className="object-cover" />
             </div>
           ))}
         </div>
       </div>
+
+      <Hairline className="mt-12 md:mt-16" />
     </section>
   );
 }
