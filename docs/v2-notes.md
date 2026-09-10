@@ -120,6 +120,60 @@ implemented except the hero photo, which needs a file only she has:
 - **Nai Harn +200 THB travel fee** — her redesigned areas box drops it. Kept as a footnote
   on that card rather than silently losing a charge.
 
+## Her "Final.Final.Maybe Final" pass — 2026-09-09
+Eleven annotated pages plus a Drive folder of originals (three hero frames at
+4269x2400, the Classes hero, both class blocks, twenty About photos, her logo
+and flower in SVG, a palm drawing). Everything in it is live except two items
+that are hers to answer, below.
+
+- **Warm white.** "The white text throughout the website isn't pure white."
+  `--color-white: #f9f8f0` is redefined in `@theme`, so every `text-white`,
+  `bg-white`, `border-white` and their opacity variants follow — one line
+  instead of touching eighteen files. The value is the fill from her own mark.
+- **Logo** in the top-left: `brand-mark.png` (her SVG keyed off its white
+  plate) plus a set wordmark, all caps with a larger leading S per word. It
+  drops out between md and lg, where seven nav items leave no room.
+- **Flower** re-cut. Her SVG is a 29KB traced outline of a regular rosette, so
+  `FlowerIcon` draws it: the petal's cubic control points are a least-squares
+  fit to her measured half-width profile (widest 0.249R at 0.79R, rms 0.007R).
+  It turns slowly above the hero, as she asked.
+- **Booking is the calendar only** and the nav label reads Availability; the
+  route stays `/booking` so shared links live. Pricing + Policies is on
+  Packages alone now. Classes lost its pay pills for the same reason.
+- **Packages**: "Private Session" (no "Pack"), a Single Private Session card
+  quoting 1,400 | 2,200 | 3,000 with one Stripe link per group size behind the
+  popup, "Select" on every button, her palm on the drop-in card, and subtitles
+  that honour newlines so they break where she marked them.
+- Also: About's carousel (twenty photos, three non-overlapping columns, only
+  the neighbouring frames mounted), the Glimpse circles on one level under
+  "YOGA . NATURE . PEOPLE . PRESENCE" between hairlines, centred footer nav
+  with "|", the badge ring with dots, inline-SVG arrows, contact in four boxes,
+  the inquiry list in her order, Sanctuary's tracked-out white lines, rounded
+  collage corners with a lean on transition, and a 420ms blurred mobile menu.
+
+### ⏳ Waiting on her
+- **Testimonials.** She asked for the names unblurred and sent the originals,
+  but they carry full surnames (Paul Beaumont, Jana Noulton), an e-mail handle
+  (schuth.elisa) and Jana's face — and Paul & Sarah's consent was explicitly
+  "so long as no personal information is visible". Not done. The offer on the
+  table: re-cut from her high-res files so they are crisp, first names open,
+  surname/e-mail/avatar still covered.
+- **"Mistrully"** for the About script line — a Canva font, needs the file and
+  a licence to serve it.
+
+## Turbopack root — read this before debugging a dev-server 404
+`next dev` began answering **404 on every route, "/" included**, while
+`next build` stayed green. Turbopack picks the project root by looking for a
+lockfile and there is a stray `/Users/anton/package-lock.json` from 2023 above
+this directory; when it chooses that one, nothing under `src/app` resolves.
+`turbopack.root` is pinned in `next.config.ts`. Do not remove it.
+
+## Pushing: force HTTP/1.1 when the commit carries images
+A push with ~8MB of new photos fails as "the remote end hung up unexpectedly"
+and then lies with "Everything up-to-date" — check `git ls-remote` rather than
+believing it. This works:
+`git -c http.postBuffer=524288000 -c http.version=HTTP/1.1 push origin main`
+
 ## Remaining polish (nice-to-have)
 - Hero 3 nav dots already present; confirm slide transition feel.
 - "A Glimpse" gallery — approximate her curved-text circular collage more closely (currently staggered circles).
