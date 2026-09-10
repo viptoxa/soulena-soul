@@ -31,15 +31,23 @@ const FRAME_C: Slide[] = [
 const COUNT = FRAME_A.length;
 const INTERVAL_MS = 5600;
 
+/**
+ * `drift` is the direction an inactive photo sits in before it fades up. Give
+ * the outer two frames opposite drifts and the set appears to lean towards the
+ * middle as it changes — her "maybe they could move slightly toward each other
+ * during the transition" (2026-09-09).
+ */
 function Frame({
   slides,
   index,
   sizes,
+  drift = "translate-x-0",
   priority = false,
 }: {
   slides: Slide[];
   index: number;
   sizes: string;
+  drift?: string;
   priority?: boolean;
 }) {
   return (
@@ -56,7 +64,7 @@ function Frame({
             sizes={sizes}
             priority={priority && i === 0}
             className={`object-cover transition-[opacity,transform] duration-[1800ms] ease-out ${
-              active ? "scale-100 opacity-100" : "scale-[1.07] opacity-0"
+              active ? "translate-x-0 scale-100 opacity-100" : `${drift} scale-[1.07] opacity-0`
             }`}
           />
         );
@@ -116,23 +124,24 @@ export default function SanctuaryCollage() {
         aria-label="Soul & Sound Sanctuary gallery"
       >
         {/* Tall frame, top left */}
-        <div className="absolute left-[15.8%] top-0 h-[58.2%] w-[39.1%] overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+        <div className="absolute left-[15.8%] top-0 h-[58.2%] w-[39.1%] overflow-hidden rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
           <Frame
             slides={FRAME_A}
             index={index}
             sizes="(min-width: 768px) 22vw, 39vw"
+            drift="-translate-x-[4%]"
             priority
           />
         </div>
 
         {/* Tall frame, right — sits above the black-and-white one */}
-        <div className="absolute left-[48.4%] top-[16%] z-10 h-[84%] w-[49.7%] overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
-          <Frame slides={FRAME_C} index={index} sizes="(min-width: 768px) 27vw, 50vw" priority />
+        <div className="absolute left-[48.4%] top-[16%] z-10 h-[84%] w-[49.7%] overflow-hidden rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+          <Frame slides={FRAME_C} index={index} sizes="(min-width: 768px) 27vw, 50vw" drift="translate-x-[4%]" priority />
         </div>
 
         {/* Lower-left print — no mat, the photo is the frame */}
-        <div className="absolute left-[-1%] top-[37.5%] z-20 h-[35.05%] w-[32.1%] overflow-hidden shadow-[0_16px_36px_rgba(0,0,0,0.5)]">
-          <Frame slides={FRAME_B} index={index} sizes="(min-width: 768px) 17vw, 30vw" />
+        <div className="absolute left-[-1%] top-[37.5%] z-20 h-[35.05%] w-[32.1%] overflow-hidden rounded-xl shadow-[0_16px_36px_rgba(0,0,0,0.5)]">
+          <Frame slides={FRAME_B} index={index} sizes="(min-width: 768px) 17vw, 30vw" drift="-translate-x-[5%]" />
         </div>
       </div>
 

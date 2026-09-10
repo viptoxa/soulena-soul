@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { SITE } from "@/lib/constants";
 
+// Order is hers (2026-09-09): villa stays straight after the private session,
+// birthdays ahead of the bridal gatherings.
 const INTERESTS = [
   "Private yoga and sound healing",
-  "Bridal wellness gatherings",
-  "Couples retreats and honeymoon experiences",
   "Luxury villa stays",
   "Birthday gatherings",
+  "Bridal wellness gatherings",
+  "Couples retreats and honeymoon experiences",
   "Wellness photography and content creation",
   "Girls' trip",
 ];

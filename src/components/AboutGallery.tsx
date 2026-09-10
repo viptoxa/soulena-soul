@@ -37,17 +37,27 @@ function Frame({
   priority?: boolean;
 }) {
   if (slides.length === 0) return null;
-  const current = slides[step % slides.length];
+  const at = step % slides.length;
+  const current = slides[at];
 
   return (
     <button
       type="button"
       onClick={() => onOpen(current.index)}
       aria-label={`View ${current.image.alt}`}
-      className={`group absolute cursor-pointer overflow-hidden rounded-xl shadow-[0_14px_34px_rgba(80,70,55,0.22)] ${className}`}
+      className={`group relative cursor-pointer overflow-hidden rounded-2xl shadow-[0_14px_34px_rgba(80,70,55,0.22)] ${className}`}
     >
       {slides.map((slide, i) => {
-        const active = i === step % slides.length;
+        const active = i === at;
+        /*
+         * All the slides sit stacked in one box, so they are all "in view" and
+         * lazy loading never kicks in — twenty photos would be fetched on page
+         * load. Only the current frame and its neighbours are mounted.
+         */
+        const near =
+          slides.length <= 3 ||
+          [-1, 0, 1].some((d) => (at + d + slides.length) % slides.length === i);
+        if (!near) return null;
         return (
           <Image
             key={slide.image.src}
@@ -140,37 +150,40 @@ export default function AboutGallery({ images }: { images: GalleryImage[] }) {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
+      {/*
+       * Three columns side by side rather than the overlapping stack this
+       * started as: "please make sure the image boxes don't overlap each
+       * other" (2026-09-09). The staggered offsets keep the collage feel
+       * without any two frames touching, since each sits in its own cell.
+       */}
       <div
-        className="relative mx-auto aspect-[798/699] w-full max-w-[880px]"
+        className="mx-auto grid w-full max-w-[880px] grid-cols-3 items-start gap-3 sm:gap-4"
         role="group"
         aria-roledescription="carousel"
         aria-label="Photos from Soulena's classes"
       >
-        {/* Tall frame, upper left */}
         <Frame
           slides={lanes[0]}
           step={step}
           onOpen={setOpenIndex}
           priority
-          sizes="(min-width: 768px) 340px, 40vw"
-          className="left-[4%] top-0 h-[58%] w-[38%]"
+          sizes="(min-width: 880px) 280px, 30vw"
+          className="mt-6 aspect-[3/4] w-full sm:mt-10"
         />
-        {/* Tall frame, right — the largest of the three */}
         <Frame
           slides={lanes[1]}
           step={step}
           onOpen={setOpenIndex}
           priority
-          sizes="(min-width: 768px) 440px, 50vw"
-          className="left-[46%] top-[16%] z-10 h-[84%] w-[50%]"
+          sizes="(min-width: 880px) 280px, 30vw"
+          className="aspect-[3/4] w-full"
         />
-        {/* Small print overlapping the lower left */}
         <Frame
           slides={lanes[2]}
           step={step}
           onOpen={setOpenIndex}
-          sizes="(min-width: 768px) 280px, 32vw"
-          className="left-0 top-[38%] z-20 h-[35%] w-[32%]"
+          sizes="(min-width: 880px) 280px, 30vw"
+          className="mt-12 aspect-[3/4] w-full sm:mt-20"
         />
       </div>
 

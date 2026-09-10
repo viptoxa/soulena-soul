@@ -53,7 +53,7 @@ function ExperienceOrb({ image, imageAlt, title, points }: Experience) {
         </h3>
 
         <ul
-          className="mt-[5%] space-y-1 text-left text-[10.5px] italic leading-snug sm:text-[11.5px] lg:text-[12.5px]"
+          className="mt-[5%] space-y-1 text-left text-[10px] italic leading-snug sm:text-[11.5px] lg:text-[12.5px]"
           style={{ color: SANCTUARY_CREAM }}
         >
           {points.map((point) => (

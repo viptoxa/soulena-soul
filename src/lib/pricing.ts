@@ -20,19 +20,27 @@ export type IconTone = "green" | "gold";
 export interface PricingTier {
   id: string;
   title: string;
+  /** Newlines are honoured — she marks where a subtitle should break. */
   subtitle: string;
   /** Optional emphasis line, e.g. the 10% saving on the 5-times pack. */
   note?: string;
   /** Rendered inside parentheses under the subtitle. */
   validity?: string;
   priceTHB: number;
+  /** Overrides the rendered price, for the tier that quotes three at once. */
+  priceLabel?: string;
   /** Line-art illustration sitting under the subtitle, inside the card. */
-  illustration?: { src: string; alt: string };
+  illustration?: { src: string; alt: string; maxWidthPx?: number };
   /**
    * Stripe Payment Link for this exact package. A tier without one simply shows
    * no card button; the other payment options on /payment still apply.
    */
   stripeUrl?: string;
+  /**
+   * Several Stripe links behind one button, for a tier priced per group size.
+   * Takes precedence over stripeUrl.
+   */
+  cardOptions?: { label: string; url: string }[];
 }
 
 export interface PricingFamily {
@@ -56,6 +64,13 @@ export const PRICING: PricingFamily[] = [
         id: "beach-dropin",
         title: "Drop-in Class",
         subtitle: "Perfect for first-time visitors and mindful island stays",
+        illustration: {
+          src: "/images/pkg-palm.png",
+          alt: "Line drawing of palms on a beach with the sun over the water",
+          // Squarer than the laptop drawing, so capped narrower to keep the
+          // two cards' illustrations the same visual height.
+          maxWidthPx: 84,
+        },
         priceTHB: 400,
         stripeUrl: "https://buy.stripe.com/aFa5kwga05bX6Vuffx6Na00",
       },
@@ -80,11 +95,27 @@ export const PRICING: PricingFamily[] = [
   },
   {
     id: "private",
-    name: "Private Session Pack",
+    // "PACK" dropped 2026-09-09: the family now holds the single session too.
+    name: "Private Session",
     blurb: "Personalized guidance | Deeper transformation | Flexible time & location",
     icon: "person",
     iconTone: "gold",
     tiers: [
+      {
+        id: "private-single",
+        title: "Single Private Session",
+        subtitle: "Your personalized\none-time session",
+        validity: "1 person / 2 people / 3 people",
+        // The card quotes all three rates, so the button opens the popup with
+        // one Stripe link per group size rather than a single amount.
+        priceTHB: 1400,
+        priceLabel: "1,400 | 2,200 | 3,000 THB",
+        cardOptions: [
+          { label: "1 person", url: "https://buy.stripe.com/4gM5kwga07k53Ji2sL6Na0b" },
+          { label: "2 people", url: "https://buy.stripe.com/bJe28k4ridItcfO0kD6Na0c" },
+          { label: "3 people", url: "https://buy.stripe.com/00w28k4rieMxfs04AT6Na0d" },
+        ],
+      },
       {
         id: "private-5",
         title: "5 Times Private Pack",
@@ -96,7 +127,7 @@ export const PRICING: PricingFamily[] = [
       {
         id: "private-10",
         title: "10 Times Private Pack",
-        subtitle: "For dedicated souls who want it all!",
+        subtitle: "For dedicated souls\nwho want it all!",
         validity: "Valid for 90 days",
         priceTHB: 10000,
         stripeUrl: "https://buy.stripe.com/7sY3co6zq6g10x60kD6Na05",
@@ -149,7 +180,7 @@ export const PRICING: PricingFamily[] = [
       {
         id: "online-5",
         title: "5 Sessions Pack",
-        subtitle: "Build consistency at your own pace",
+        subtitle: "Build consistency\nat your own pace",
         validity: "Valid for 45 days",
         priceTHB: 5200,
         stripeUrl: "https://buy.stripe.com/00weV6cXO5bXenW9Vd6Na09",
@@ -157,7 +188,7 @@ export const PRICING: PricingFamily[] = [
       {
         id: "online-10",
         title: "10 Sessions Pack",
-        subtitle: "Deepen your practice and progress",
+        subtitle: "Deepen your practice\nand progress",
         validity: "Valid for 75 days",
         priceTHB: 9500,
         stripeUrl: "https://buy.stripe.com/00w9AM5vmfQBfs00kD6Na0a",
@@ -167,4 +198,6 @@ export const PRICING: PricingFamily[] = [
 ];
 
 /** True once at least one package has a live Stripe Payment Link. */
-export const HAS_STRIPE_LINKS = PRICING.some((f) => f.tiers.some((t) => t.stripeUrl));
+export const HAS_STRIPE_LINKS = PRICING.some((f) =>
+  f.tiers.some((t) => t.stripeUrl || t.cardOptions?.length)
+);

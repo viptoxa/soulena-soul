@@ -61,3 +61,19 @@ body {
   color: var(--color-brand-charcoal);
   background-color: var(--color-brand-cream);
 }
+
+/*
+ * Mobile menu. Soulena asked for the pop-up to come in "a bit slower and
+ * smoother" and for the panel to be slightly translucent (2026-09-09) — the
+ * blur keeps the type readable over whatever it covers.
+ */
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

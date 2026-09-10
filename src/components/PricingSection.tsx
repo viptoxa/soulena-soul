@@ -93,7 +93,9 @@ function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; t
       </h4>
 
       <div className="flex-1 border-y px-5 py-5 text-center md:px-6" style={{ borderColor: RULE }}>
-        <p className="text-balance text-[15px] uppercase leading-[1.45] text-brand-charcoal md:text-[16px]">
+        {/* whitespace-pre-line so the newlines she marks in the copy are the
+            breaks that actually happen, instead of text-balance guessing. */}
+        <p className="whitespace-pre-line text-balance text-[15px] uppercase leading-[1.45] text-brand-charcoal md:text-[16px]">
           {tier.subtitle}
         </p>
         {tier.illustration ? (
@@ -111,7 +113,8 @@ function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; t
             alt={tier.illustration.alt}
             width={454}
             height={240}
-            className="mx-auto mt-4 h-auto w-[39%] max-w-[130px] select-none"
+            className="mx-auto mt-4 h-auto w-[39%] select-none"
+            style={{ maxWidth: `${tier.illustration.maxWidthPx ?? 130}px` }}
           />
         ) : null}
         {tier.note ? (
@@ -125,17 +128,18 @@ function TierCard({ tier, icon, tone }: { tier: PricingTier; icon: FamilyIcon; t
       </div>
 
       <div className="px-5 py-5 text-center md:px-6">
-        <p className="font-serif text-[21px] text-brand-charcoal md:text-[24px]">
-          {tier.priceTHB.toLocaleString("en-US")} THB
+        <p className="font-serif text-[19px] text-brand-charcoal md:text-[24px]">
+          {tier.priceLabel ?? `${tier.priceTHB.toLocaleString("en-US")} THB`}
         </p>
         {/* Not in the Canva, but every package is payable — the popup offers
             card, PromptPay QR, bank transfer and cash, the same four options
             she asked for on the class prices (2026-09-07). */}
-        {tier.stripeUrl ? (
+        {tier.stripeUrl || tier.cardOptions ? (
           <PayButton
             variant="block"
             cardUrl={tier.stripeUrl}
-            label={`${tier.title} — ${tier.priceTHB.toLocaleString("en-US")} THB`}
+            cardOptions={tier.cardOptions}
+            label={`${tier.title} — ${tier.priceLabel ?? `${tier.priceTHB.toLocaleString("en-US")} THB`}`}
           />
         ) : null}
       </div>

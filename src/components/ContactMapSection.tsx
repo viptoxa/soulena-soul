@@ -60,18 +60,20 @@ export default function ContactMapSection() {
             also where a visitor looks first for a way to reach her. The e-mail
             address is far wider than the other three, so one per line below sm
             keeps the row from breaking 1 / 2 / 1. */}
-        <ul className="mx-auto mt-8 flex max-w-[900px] flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 md:mt-10">
+        {/* Four outlined boxes rather than a plain row — "I think having four
+            items in a box like this would work perfectly" (2026-09-09). */}
+        <ul className="mx-auto mt-8 grid max-w-[760px] gap-3 sm:grid-cols-2 md:mt-10 md:gap-4">
           {CHANNELS.map(({ label, href, display, external, Icon }) => (
             <li key={label}>
               <a
                 href={href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener noreferrer" : undefined}
-                className="group flex items-center gap-2.5 text-brand-charcoal transition-colors hover:text-brand-olive"
+                className="group flex items-center justify-center gap-3 rounded-2xl border border-brand-olive/30 px-4 py-4 text-brand-charcoal transition-colors hover:border-brand-olive hover:bg-brand-olive/5"
               >
                 <Icon className="h-[22px] w-[22px] shrink-0" aria-hidden="true" />
                 <span className="sr-only">{label}: </span>
-                <span className="text-[13px] opacity-75 transition-opacity group-hover:opacity-100">
+                <span className="text-[14px] opacity-80 transition-opacity group-hover:opacity-100">
                   {display}
                 </span>
               </a>

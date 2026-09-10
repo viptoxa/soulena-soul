@@ -91,7 +91,7 @@ export default function PayButton({
           onClick={() => setOpen(true)}
           className="mt-4 inline-block rounded-full bg-brand-olive px-7 py-2.5 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
         >
-          Pay now
+          Select
         </button>
       ) : (
         <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -101,7 +101,7 @@ export default function PayButton({
             onClick={() => setOpen(true)}
             className="whitespace-nowrap rounded-full bg-brand-olive px-3 py-1 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
           >
-            Pay now
+            Select
           </button>
         </span>
       )}
@@ -116,8 +116,11 @@ export default function PayButton({
         }}
         className="w-[min(560px,92vw)] rounded-3xl border border-brand-olive/15 bg-brand-cream p-0 text-brand-charcoal shadow-2xl backdrop:bg-black/45 backdrop:backdrop-blur-[2px]"
       >
-        <div className="max-h-[85vh] overflow-y-auto p-6 md:p-8">
-          <div className="flex items-start justify-between gap-4">
+        {/* Centred throughout — her note on the popup was simply "please
+            center-align everything" (2026-09-09). The close button leaves the
+            flow so the heading can sit on the true centre. */}
+        <div className="relative max-h-[85vh] overflow-y-auto p-6 text-center md:p-8">
+          <div>
             <div>
               <h2 id={titleId} className="font-serif text-[22px] uppercase tracking-wide md:text-[26px]">
                 How would you like to pay?
@@ -128,7 +131,7 @@ export default function PayButton({
               type="button"
               onClick={close}
               aria-label="Close"
-              className="-mr-1 -mt-1 shrink-0 rounded-full p-2 text-brand-charcoal/60 transition-colors hover:bg-brand-olive/10 hover:text-brand-charcoal"
+              className="absolute right-4 top-4 rounded-full p-2 text-brand-charcoal/60 transition-colors hover:bg-brand-olive/10 hover:text-brand-charcoal md:right-5 md:top-5"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.6}>
                 <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -143,7 +146,7 @@ export default function PayButton({
                 <p className="mt-1 text-[15px] leading-relaxed text-brand-charcoal/75">
                   Secure online payment through Stripe. You are charged in your own currency.
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap justify-center gap-2">
                   {cards.map((card) => (
                     <a
                       key={card.url}
@@ -161,12 +164,12 @@ export default function PayButton({
 
             <li className="rounded-2xl border border-brand-olive/15 bg-white/70 p-5">
               <h3 className="font-serif text-[18px] uppercase tracking-wide">PromptPay QR</h3>
-              <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start">
+              <div className="mt-3 flex flex-col items-center gap-4">
                 <div className="relative aspect-square w-[150px] shrink-0 overflow-hidden rounded-xl shadow-sm">
                   <Image src={QR_IMAGE} alt="Soulena Soul PromptPay QR code" fill sizes="150px" className="object-cover" />
                 </div>
                 <div className="text-[15px] leading-relaxed text-brand-charcoal/75">
-                  <p>Scan with any Thai banking app, then send me the slip so I can confirm your place.</p>
+                  <p>Scan with any Thai banking app, then send me the slip so I can confirm your spot.</p>
                   <button
                     type="button"
                     onClick={() => copy(BANK.promptPay, "promptpay")}

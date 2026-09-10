@@ -114,7 +114,7 @@ export default function Header() {
 
       {/* Mobile navigation dropdown */}
       {menuOpen && (
-        <nav id="mobile-nav" className="md:hidden absolute inset-x-0 top-full z-50 border-t border-brand-cream-dark bg-brand-cream shadow-lg px-[15px] py-3">
+        <nav id="mobile-nav" className="absolute inset-x-0 top-full z-50 border-t border-brand-cream-dark bg-brand-cream/85 px-[15px] py-3 shadow-lg backdrop-blur-md [animation:menuIn_420ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:animate-none md:hidden">
           <ul className="flex flex-col gap-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

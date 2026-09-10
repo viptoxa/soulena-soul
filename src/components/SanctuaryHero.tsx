@@ -70,7 +70,7 @@ export default function SanctuaryHero() {
             />
 
             <p
-              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.22em] sm:text-[1.17cqw]"
+              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.34em] sm:text-[1.17cqw] sm:tracking-[0.38em]"
               style={{ color: SANCTUARY_CREAM }}
             >
               Curated Private
@@ -96,7 +96,7 @@ export default function SanctuaryHero() {
             </h1>
 
             <p
-              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.22em] sm:text-[1.17cqw]"
+              className="text-[1.8cqw] uppercase leading-[1.6] tracking-[0.34em] sm:text-[1.17cqw] sm:tracking-[0.38em]"
               style={{ color: SANCTUARY_CREAM }}
             >
               For Your Special Day

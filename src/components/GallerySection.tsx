@@ -1,15 +1,30 @@
 import { SECTION_IDS } from "@/lib/constants";
 import AboutGallery from "./AboutGallery";
 
+// The twenty photos she uploaded on 2026-09-09 for this block. The alt text is
+// deliberately generic: she sent them without captions, and a wrong specific
+// description is worse for a screen reader than an honest general one.
 const GALLERY_IMAGES = [
-  { src: "/images/about-gallery-1.jpg", alt: "Sunset beach yoga class group photo" },
-  { src: "/images/about-gallery-2.jpg", alt: "Group meditation on the deck surrounded by nature" },
-  { src: "/images/about-gallery-3.jpg", alt: "Restorative stretch on the mats in the sun" },
-  { src: "/images/about-gallery-4.jpg", alt: "Assisted backbend by the sea" },
-  { src: "/images/about-gallery-5.jpg", alt: "Beach movement class on the sand" },
-  { src: "/images/about-gallery-6.jpg", alt: "Sunrise flow on the hillside overlooking the ocean" },
-  { src: "/images/about-gallery-7.jpg", alt: "Studio mobility class" },
-  { src: "/images/about-gallery-8.jpg", alt: "Warrior pose on the deck by the ocean" },
+  { src: "/images/about-gal-v3-01.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-02.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-03.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-04.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-05.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-06.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-07.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-08.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-09.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-10.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-11.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-12.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-13.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-14.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-15.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-16.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-17.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-18.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-19.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-20.jpg", alt: "Soulena teaching in Phuket" },
 ];
 
 export default function GallerySection() {
