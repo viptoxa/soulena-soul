@@ -95,7 +95,7 @@ export default function PaymentSection() {
                 </p>
                 <p>
                   Once it is done, please send the payment slip to me on WhatsApp so I can
-                  confirm your place in the class.
+                  confirm your spot in the class.
                 </p>
               </div>
               <a
@@ -158,7 +158,7 @@ export default function PaymentSection() {
               </div>
             </dl>
             <p className="text-brand-charcoal/60">
-              Please send the transfer slip on WhatsApp so I can confirm your place.
+              Please send the transfer slip on WhatsApp so I can confirm your spot.
             </p>
           </MethodCard>
         </div>

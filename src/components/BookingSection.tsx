@@ -39,13 +39,15 @@ export default function BookingSection() {
   return (
     <section id={SECTION_IDS.booking} className="bg-brand-cream px-4 pt-14 pb-14 md:pt-20 md:pb-20">
         <div className="mx-auto max-w-[1200px]">
-          <h2
+          {/* The page's only heading now that the hero is gone, so it is the
+              h1 — otherwise /booking ships without one at all. */}
+          <h1
             className="flex items-center gap-3 md:gap-4 font-serif text-[27px] md:text-5xl uppercase tracking-wide mb-8 md:mb-10"
             style={{ color: SLATE }}
           >
             <CalendarIcon className="w-6 h-6 md:w-9 md:h-9 shrink-0" />
             View Available Dates
-          </h2>
+          </h1>
 
           <div className="rounded-2xl overflow-hidden bg-white/60 border border-brand-cream-dark shadow-sm">
             {CAL_USERNAME ? (

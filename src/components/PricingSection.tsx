@@ -227,14 +227,16 @@ export default function PricingSection() {
           className="mx-auto w-[58px] select-none md:w-[66px]"
         />
 
-        <h2
+        {/* This section is only ever the Packages page, and the page had no
+            h1 at all, so the title takes it. */}
+        <h1
           className="mt-3 text-center font-serif text-[32px] leading-[1.15] sm:text-[46px] lg:text-[62px]"
           style={{ color: SLATE }}
         >
           Find the Package
           <br />
           That Fits <em className="italic">Your Flow</em>
-        </h2>
+        </h1>
 
         {/* Gold rule with a four-point sparkle at its centre */}
         <svg
