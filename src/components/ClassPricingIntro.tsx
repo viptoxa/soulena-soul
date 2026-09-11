@@ -4,13 +4,25 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 export default function ClassPricingIntro() {
   return (
     <section className="relative isolate overflow-hidden text-brand-cream px-4 py-16 md:py-24 text-center">
-      {/* Canva uses the underwater / jellyfish photo behind this note */}
+      {/*
+       * Her own re-grade of the same deck, sent 2026-09-11: "please replace
+       * this photo with the same one in this colour tone instead... I think
+       * this tone will blend in better with the other photos on the page."
+       * It is far flatter than the original (channel spread 77 -> 39), which
+       * also lifts the copy off it better than the old frame did.
+       *
+       * It is 16:9 where the old file was 3:4, so on a phone the box is much
+       * taller than the picture and object-cover has to scale it up to about
+       * three times the viewport width. "100vw" would ask for a file a third
+       * of the size it renders at and the photo would go soft — the same trap
+       * the class photos fell into on 2026-09-09.
+       */}
       <Image
-        src="/images/classes-hero-v3.jpg"
+        src="/images/classes-hero-v4.jpg"
         alt=""
         fill
         priority
-        sizes="100vw"
+        sizes="(min-width: 1024px) 100vw, (min-width: 640px) 150vw, 320vw"
         className="object-cover object-center -z-10"
       />
       <div className="absolute inset-0 -z-10 bg-[#123044]/45" />
