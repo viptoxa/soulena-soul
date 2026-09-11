@@ -77,3 +77,27 @@ body {
     transform: translateY(0);
   }
 }
+
+/*
+ * The flower mark turns slowly wherever it appears — "please make these icons
+ * rotate continuously" (2026-09-11). It lives on the icon itself rather than
+ * on each call site, so no flower can be left behind, and every one of them
+ * keeps the same 30s beat the hero's has had since 2026-09-09.
+ */
+@keyframes flowerTurn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.flower-turn {
+  transform-origin: 50% 50%;
+  animation: flowerTurn 30s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flower-turn {
+    animation: none;
+  }
+}

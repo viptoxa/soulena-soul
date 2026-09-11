@@ -54,7 +54,7 @@ export default function GroupWellnessSection() {
               href={inquiryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-full bg-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+              className="inline-block rounded-full bg-brand-olive px-8 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
             >
               Get in Touch
             </a>

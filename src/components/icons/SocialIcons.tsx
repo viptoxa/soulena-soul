@@ -40,7 +40,7 @@ export function MailIcon(props: IconProps) {
   );
 }
 
-export function FlowerIcon(props: IconProps) {
+export function FlowerIcon({ className, ...props }: IconProps) {
   // Eight teardrop petals radiating from the centre. Re-cut 2026-09-09 to the
   // mark she sent ("Flower icon_02/03.SVG"): its 29KB traced outline is one
   // regular rosette, so the petal is drawn instead of shipped. The control
@@ -48,7 +48,14 @@ export function FlowerIcon(props: IconProps) {
   // — widest at 0.79 of the radius, 0.249R across — rms error 0.007R.
   const petal = "M20 20C20.36 10.1 29.9 4.7 20 2C10.1 4.7 19.64 10.1 20 20Z";
   return (
-    <svg viewBox="0 0 40 40" fill="currentColor" {...props}>
+    <svg
+      viewBox="0 0 40 40"
+      fill="currentColor"
+      // Every flower turns — .flower-turn carries the shared 30s rotation and
+      // stops itself under prefers-reduced-motion.
+      className={className ? `flower-turn ${className}` : "flower-turn"}
+      {...props}
+    >
       {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
         <path key={angle} d={petal} transform={`rotate(${angle} 20 20)`} />
       ))}

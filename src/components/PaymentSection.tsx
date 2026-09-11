@@ -102,7 +102,7 @@ export default function PaymentSection() {
                 href={SITE.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block rounded-full bg-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+                className="mt-6 inline-block rounded-full bg-brand-olive px-8 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
               >
                 Send slip on WhatsApp
               </a>
@@ -123,7 +123,7 @@ export default function PaymentSection() {
             {HAS_STRIPE_LINKS ? (
               <Link
                 href={ROUTES.pricing}
-                className="mt-2 inline-block rounded-full border-2 border-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
+                className="mt-2 inline-block rounded-full border-2 border-brand-olive px-8 py-3 text-xs font-bold uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
               >
                 Go to packages
               </Link>

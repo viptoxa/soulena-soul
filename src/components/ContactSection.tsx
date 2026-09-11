@@ -24,7 +24,7 @@ export default function ContactSection() {
 
         <a
           href="#booking"
-          className="inline-block rounded-full bg-brand-cream px-8 py-3.5 md:px-10 md:py-4 text-sm uppercase tracking-wider text-brand-charcoal hover:bg-white transition-colors shadow-lg mb-12"
+          className="inline-block rounded-full bg-brand-cream px-8 py-3.5 md:px-10 md:py-4 text-sm font-bold uppercase tracking-wider text-brand-charcoal hover:bg-white transition-colors shadow-lg mb-12"
         >
           Book a Class
         </a>

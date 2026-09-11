@@ -81,7 +81,7 @@ export default function SanctuaryTeaser() {
             <FlowerIcon className="h-11 w-11 shrink-0 lg:h-14 lg:w-14" style={{ color: GOLD }} />
             <Link
               href={ROUTES.sanctuary}
-              className="inline-flex items-center gap-4 rounded-full bg-brand-olive px-10 py-4 text-sm uppercase tracking-[0.12em] text-white transition-colors hover:bg-brand-olive-dark"
+              className="inline-flex items-center gap-4 rounded-full bg-brand-olive px-10 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-brand-olive-dark"
             >
               Enter the Sanctuary <ArrowRightIcon className="h-3.5 w-[34px] shrink-0" />
             </Link>

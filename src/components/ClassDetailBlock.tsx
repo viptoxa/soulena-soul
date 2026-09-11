@@ -156,7 +156,7 @@ function Bullets({ items, columns = 1 }: { items: ReactNode[]; columns?: 1 | 2 }
    pair is exactly the same height. Soulena spotted them differing by the 4px
    the outline was adding (2026-09-07). */
 const BUTTON_BASE =
-  "block rounded-full border-2 px-6 py-3 text-center text-xs uppercase tracking-wider transition-colors";
+  "block rounded-full border-2 px-6 py-3 text-center text-xs font-bold uppercase tracking-wider transition-colors";
 
 function PrimaryButton({ href, children }: { href: string; children: ReactNode }) {
   return (

@@ -175,7 +175,7 @@ export default function SanctuaryExperiences() {
             />
             <Link
               href={ROUTES.inquiry}
-              className="rounded-full bg-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+              className="rounded-full bg-brand-olive px-8 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
             >
               Make an Inquiry
             </Link>

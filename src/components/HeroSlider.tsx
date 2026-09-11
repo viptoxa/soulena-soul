@@ -8,9 +8,12 @@ import { FlowerIcon } from "@/components/icons/SocialIcons";
 
 // Her own three hero frames, sent 2026-09-09 (4269x2400 originals).
 const HERO_IMAGES = [
+  /* She asked for the boulder practice to open the page (2026-09-11) — "replace
+     the first image in the Hero section with this photo of me doing yoga". The
+     other two keep their order behind it. */
+  { src: "/images/hero-v3-3.jpg", alt: "A seated practice among the granite boulders at the water's edge" },
   { src: "/images/hero-v3-1.jpg", alt: "Practising on the sand as the sun sets behind the headland" },
   { src: "/images/hero-v3-2.jpg", alt: "Late afternoon light on the open sea" },
-  { src: "/images/hero-v3-3.jpg", alt: "A seated practice among the granite boulders at the water's edge" },
 ];
 
 /*
@@ -72,8 +75,8 @@ export default function HeroSlider() {
           />
         </div>
 
-        {/* Turning slowly, the way the discount badge does — her request. */}
-        <FlowerIcon className="w-8 h-8 mb-4 opacity-80 [animation:spin_30s_linear_infinite] motion-reduce:animate-none" />
+        {/* The turn now comes from FlowerIcon itself, so it matches the rest. */}
+        <FlowerIcon className="w-8 h-8 mb-4 opacity-80" />
 
         {/* Heading — on a phone it reads better broken after "HELLO," than
             wrapped mid-name, which is where it landed on its own. */}
@@ -98,7 +101,7 @@ export default function HeroSlider() {
         <div className="flex flex-wrap justify-center gap-3">
           {CLASS_TYPES.map((ct) => {
             const cls =
-              "border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm font-semibold tracking-wider uppercase hover:bg-white/20 transition-colors";
+              "border border-white/60 rounded-full px-5 py-2 text-xs md:text-sm font-bold tracking-wider uppercase hover:bg-white/20 transition-colors";
             return (
               <Link key={ct.label} href={ct.href} className={cls}>
                 {ct.label}

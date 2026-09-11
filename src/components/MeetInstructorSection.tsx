@@ -49,17 +49,19 @@ export default function MeetInstructorSection() {
           </div>
           <Link
             href={ROUTES.about}
-            className="inline-flex items-center gap-2 mt-8 border-2 border-brand-olive text-brand-olive rounded-full px-7 py-3 text-sm uppercase tracking-wider hover:bg-brand-olive hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 mt-8 border-2 border-brand-olive text-brand-olive rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-olive hover:text-white transition-colors"
           >
             Read More About Soulena <ArrowRightIcon className="h-3 w-[30px] shrink-0" />
           </Link>
         </div>
         <div className="order-2 md:order-2 relative aspect-[4/5] rounded-3xl overflow-hidden">
           <Image
-            /* Swapped 2026-09-09 — the previous shot is the one used on the
-               Join My Classes card, so the page repeated itself. */
-            src="/images/instructor-v3.jpg"
-            alt="Soulena Soul on the beach"
+            /* Back to the original shot at her request (2026-09-11): "since
+               I'm doing a yoga pose it connects really nicely with 'Simply move
+               with Soulena Soul' underneath... my face is already fairly
+               visible there", and she'd rather not add a circular inset. */
+            src="/images/instructor-v2.jpg"
+            alt="Soulena Soul in a standing pose on the deck, being adjusted"
             fill
             sizes="(min-width: 768px) 40vw, 100vw"
             className="object-cover"

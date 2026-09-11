@@ -195,7 +195,7 @@ export default function InquiryForm() {
       <div className="pt-2 text-center">
         <button
           type="submit"
-          className="inline-block rounded-full bg-brand-olive px-8 py-3 text-xs uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+          className="inline-block rounded-full bg-brand-olive px-8 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
         >
           Make an Inquiry
         </button>

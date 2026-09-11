@@ -89,7 +89,7 @@ export default function PayButton({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="mt-4 inline-block rounded-full bg-brand-olive px-7 py-2.5 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+          className="mt-4 inline-block rounded-full bg-brand-olive px-7 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
         >
           Select
         </button>
@@ -99,7 +99,7 @@ export default function PayButton({
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="whitespace-nowrap rounded-full bg-brand-olive px-3 py-1 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+            className="whitespace-nowrap rounded-full bg-brand-olive px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
           >
             Select
           </button>
@@ -153,7 +153,7 @@ export default function PayButton({
                       href={card.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block rounded-full bg-brand-olive px-6 py-2.5 text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
+                      className="inline-block rounded-full bg-brand-olive px-6 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-brand-olive-dark"
                     >
                       {card.label}
                     </a>
@@ -221,7 +221,7 @@ export default function PayButton({
             href={SITE.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 block rounded-full border-2 border-brand-olive px-6 py-3 text-center text-[11px] uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
+            className="mt-6 block rounded-full border-2 border-brand-olive px-6 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-brand-olive transition-colors hover:bg-brand-olive hover:text-white"
           >
             Send the slip on WhatsApp
           </a>
