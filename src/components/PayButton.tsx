@@ -114,7 +114,15 @@ export default function PayButton({
           // Clicking the backdrop lands on the dialog element itself.
           if (e.target === ref.current) close();
         }}
-        className="w-[min(560px,92vw)] rounded-3xl border border-brand-olive/15 bg-brand-cream p-0 text-brand-charcoal shadow-2xl backdrop:bg-black/45 backdrop:backdrop-blur-[2px]"
+        /*
+         * m-auto is doing real work. A modal <dialog> is centred by the UA
+         * sheet's own `margin: auto` against `inset: 0`, and Tailwind's
+         * preflight zeroes the margin on every element — so the popup was
+         * sitting in the top-left corner of the screen. This is almost
+         * certainly what Soulena meant on 2026-09-09 by "please center-align
+         * everything"; centring the copy only fixed half of it.
+         */
+        className="m-auto w-[min(560px,92vw)] rounded-3xl border border-brand-olive/15 bg-brand-cream p-0 text-brand-charcoal shadow-2xl backdrop:bg-black/45 backdrop:backdrop-blur-[2px]"
       >
         {/* Centred throughout — her note on the popup was simply "please
             center-align everything" (2026-09-09). The close button leaves the
