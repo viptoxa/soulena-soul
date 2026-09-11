@@ -228,3 +228,43 @@ footer-hands.jpg, contact-bg.jpg, booking-bg.jpg.
 3. Notion self-editing for prices + a short walkthrough for her (prices are locked now).
 4. Cal.com — confirm she finished tidying her availability and event types.
 5. (optional) One more true sunset/beach landscape for the 3rd hero slide.
+
+## 2026-09-11 pass — "only these 3 little pages" (shipped 2026-09-12)
+
+Closed by her in the same message, so they need no further work: the four hero buttons
+stay as built, the testimonials **stay blurred** ("we can just keep their names blurred
+like that, it's totally fine"), and the fonts are fine — **Mistrully is no longer wanted**.
+
+| Her note | What shipped |
+|---|---|
+| First hero image → the photo of her doing yoga | `hero-v3-3.jpg` moved to the front of `HERO_IMAGES`; the other two keep their order. It was already in the repo, nothing to download. |
+| Meet Your Instructor | Back to `instructor-v2.jpg`. "The original photo" means the yoga pose — her reason ("since I'm doing a yoga pose it connects with 'Simply move with Soulena Soul'") only fits that one, and the three options she lists are all about adding a small circular face photo, which only makes sense when the face is not the subject. She declined the inset. Bonus: it is a native 4:5, so `aspect-[4/5]` stops cropping her. |
+| "Make these icons rotate continuously" | The rotation moved **into `FlowerIcon`** (`.flower-turn` in `globals.css`, 30s, stops under `prefers-reduced-motion`) instead of onto each call site, so all twenty flowers turn and none can be missed. The hero's old `[animation:spin_30s…]` was removed so it does not fight the class. |
+| "Make all the text on these buttons Bold" | `font-bold` on all 15 pill buttons. Arrows are SVG strokes and are untouched — "the arrow size is okay now no need to be Bold". Verified by grepping every built page for a `rounded-full … uppercase` class without `font-bold`: zero. |
+| Class Pricing photo in her colour tone | `classes-hero-v4.jpg`, from her `CLASSES.PNG` Canva export. Her grade flattens the frame hard (channel spread 77 → 39) and drops the blue. The section's `#123044/45` scrim is unchanged, and under it the copy went from 3.5:1 to **4.4:1** against the brightest tenth of its backdrop. |
+
+**`sizes` had to change with it.** The new file is 16:9 where the old was 3:4, so on a phone
+the box is far taller than the picture and `object-cover` scales it to roughly three times
+the viewport width. `100vw` would have fetched a third of the pixels it renders at. It is now
+`(min-width: 1024px) 100vw, (min-width: 640px) 150vw, 320vw`. Same trap as the class photos
+on 2026-09-09 — whenever an image's aspect ratio changes, re-derive `sizes`.
+
+### Bug found while checking, now fixed
+**The pay popup was opening in the top-left corner of the window.** A modal `<dialog>` is
+centred by the UA sheet's own `margin: auto` against `inset: 0`, and Tailwind v4 preflight
+sets `margin: 0` on `*`, which silently removed it (`getComputedStyle(dialog).margin` →
+`"0px"`). Fixed with `m-auto` on the dialog. This is almost certainly what Soulena meant on
+2026-09-09 by "please center-align everything" — centring the copy fixed only half of it.
+
+### Still open
+The About carousel shows `about-gal-v3-03.jpg` twice. It is not a duplicate file: 20 photos
+deal into three lanes as 7/7/6 and `steps = max(lane lengths)`, so the six-photo lane wraps
+back to its first photo at step 6 — the same photo, same column, first and last dot. **One
+more photo makes it 7/7/7 and the repeat disappears**, which is what she offered. It was not
+in the Classes folder pulled on 2026-09-12; it would be in the **About** folder on her Drive.
+
+### Her Drive is not browsable from here
+The connector sees the shared folder `Soulena Website Photos`
+(`1iDjzJtualHWg-nOCrfPnvNJ781cbsWu_`) but `parentId = '…'` returns nothing and none of her
+files are indexed, so subfolders are invisible. Anton downloads the folder by hand — the
+2026-09-09 drop is at `Soulena Website Photos – 9:09/`. Ask him rather than fighting it.
