@@ -1,9 +1,23 @@
 import { SECTION_IDS } from "@/lib/constants";
 import AboutGallery from "./AboutGallery";
 
-// The twenty photos she uploaded on 2026-09-09 for this block. The alt text is
-// deliberately generic: she sent them without captions, and a wrong specific
-// description is worse for a screen reader than an honest general one.
+/*
+ * Her photos for this block. The alt text is deliberately generic: she sent
+ * them without captions, and a wrong specific description is worse for a
+ * screen reader than an honest general one.
+ *
+ * The count matters. AboutGallery deals these round-robin into three columns
+ * and steps every column together, so with twenty they split 7 / 7 / 6 and the
+ * short column ran out a step early and looped back to its own first photo —
+ * which is the repeat Soulena spotted on 2026-09-11, same picture in the same
+ * column on the first dot and the last. Twenty-one makes it 7 / 7 / 7 and it
+ * is gone. Keep this list a multiple of three.
+ *
+ * -21 goes last on purpose, not in filename order. It is IMG_7278, the frame
+ * either side of -01's IMG_7279 — same trees, same view — and first in the
+ * list they would have shared a row looking like a mistake. Last, it lands in
+ * the exact slot the repeat used to occupy.
+ */
 const GALLERY_IMAGES = [
   { src: "/images/about-gal-v3-01.jpg", alt: "Soulena teaching in Phuket" },
   { src: "/images/about-gal-v3-02.jpg", alt: "Soulena teaching in Phuket" },
@@ -25,6 +39,7 @@ const GALLERY_IMAGES = [
   { src: "/images/about-gal-v3-18.jpg", alt: "Soulena teaching in Phuket" },
   { src: "/images/about-gal-v3-19.jpg", alt: "Soulena teaching in Phuket" },
   { src: "/images/about-gal-v3-20.jpg", alt: "Soulena teaching in Phuket" },
+  { src: "/images/about-gal-v3-21.jpg", alt: "Soulena teaching in Phuket" },
 ];
 
 export default function GallerySection() {
