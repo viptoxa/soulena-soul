@@ -268,3 +268,9 @@ The connector sees the shared folder `Soulena Website Photos`
 (`1iDjzJtualHWg-nOCrfPnvNJ781cbsWu_`) but `parentId = '…'` returns nothing and none of her
 files are indexed, so subfolders are invisible. Anton downloads the folder by hand — the
 2026-09-09 drop is at `Soulena Website Photos – 9:09/`. Ask him rather than fighting it.
+
+**Closed 2026-09-12.** Her `IMG_7278` shipped as `about-gal-v3-21.jpg`, appended (not in
+filename order — it is the frame beside -01's IMG_7279, and first in the list the two
+near-twins would have opened the carousel side by side). Lanes are 7/7/7, every step was
+enumerated: no photo appears twice, none is skipped. **Keep `GALLERY_IMAGES` a multiple of
+three.** Nothing from her feedback is outstanding.
